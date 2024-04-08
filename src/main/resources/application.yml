@@ -3,7 +3,7 @@ server:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.kosta.kostaservice2.bean
+  type-aliases-package: com.kosta.humanstory.domain
 
 spring:
   datasource:
