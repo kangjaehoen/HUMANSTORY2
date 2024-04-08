@@ -2,10 +2,36 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.kosta.humanstory.mapper.EmployeeMapper">
+
+
+        <insert id="insertEmpInfo">
+            INSERT INTO employee(empNum, empName,pw)
+            VALUES (empNum_seq.NEXTVAL, #{empName}, #{pw})
+        </insert>
+
+    <select id="read" parameterType="String">
+        select * from employee where empNum=#{empNum}
+    </select>
+
+    <select id="getList" resultType="com.kosta.humanstory.domain.EmployeeVO">
+        select  * from employee
+    </select>
+
+    <delete id="delete" parameterType="String">
+        delete employee where empNum=#{empNum}
+    </delete>
+
+    <update id="update" >
+        update employee set
+           empName=#{empName},
+           pw=#{pw}
+        where empNum=#{empNum}
+        }
+    </update>
 
 
 
 </mapper>
+
 
