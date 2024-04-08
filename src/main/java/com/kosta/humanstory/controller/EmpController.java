@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/emp/*")
 public class EmpController {
     @Autowired
-    EmpService service;
+    private EmpService service;
 
 //    @GetMapping("/hello")
 //    public String hello(){
@@ -34,7 +34,7 @@ public class EmpController {
         service.register(emp);
         rttr.addFlashAttribute("result",emp.getEmpNum());
 
-        return "redirect:/emp/register";
+        return "redirect:/emp/list";
     }
     @GetMapping({"/get","/modify"})
     public void get(@RequestParam("empNum")String empNum,Model model){

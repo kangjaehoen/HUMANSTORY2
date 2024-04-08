@@ -12,22 +12,18 @@ public class Criteria {
     private int pageNum;
     private int amount;
 
-    private int deptpageNum;
-    private int deptamount;
-
     private String type;
     private String keyword;
 
     public Criteria() {
-        this(1, 10 ,1, 10);
+        this(1, 10 );
     }
 
-    public Criteria(int pageNum, int amount,int deptpageNum, int deptamount) {
+    public Criteria(int pageNum, int amount) {
         super();
         this.pageNum = pageNum;
         this.amount = amount;
-        this.deptpageNum = deptpageNum;
-        this.deptamount = deptamount;
+
     }
 
 

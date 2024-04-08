@@ -106,6 +106,138 @@
 </body>
 </html>
 
-<script type="text/javascript">
 
+
+<script type="text/javascript">
+    $(document)
+        .ready(
+            function() {
+                $("#myModal").modal("hide");
+                var result = '<c:out value="${result}"/>';
+
+                checkModal(result);
+
+                history.replaceState({}, null, null);
+
+                function checkModal(result) {
+
+                    if (result === '' || history.state) {
+                        return;
+                    }
+
+                    $("#myModal").modal("show");
+                }
+
+                $("#regBtn").on("click", function() {
+
+                    self.location = "/emp/register";
+
+                });
+                $("#modiBtn").on(
+                    "click",
+                    function() {
+
+                        var selectedEmpNums = [];
+                        $(".empCheckbox:checked").each(function() {
+                            selectedEmpNums.push($(this).val());
+                        });
+                        if (selectedEmpNums.length == 0) {
+                            console.log("수정할 직원을 선택해주세요.");
+                            return;
+                        }
+                        if (selectedEmpNums.length > 1) {
+                            console.log("다중 선택은 지원되지 않습니다.");
+                            return;
+                        }
+
+                        var selectedEmpNum = selectedEmpNums[0];
+
+                        self.location = "/emp/modify?empNum="
+                            + selectedEmpNum;
+
+                    });
+
+                var actionForm = $("#actionForm");
+
+                $(".paginate_button a").on(
+                    "click",
+                    function(e) {
+
+                        e.preventDefault();
+
+                        console.log('click');
+
+                        actionForm.find("input[name='emppageNum']")
+                            .val($(this).attr("href"));
+                        actionForm.submit();
+                    });
+
+                $(".move")
+                    .on(
+                        "click",
+                        function(e) {
+
+                            e.preventDefault();
+                            actionForm
+                                .append("<input type='hidden' name='empNum' value='"
+                                    + $(this).attr(
+                                        "href")
+                                    + "'>");
+                            actionForm.attr("action",
+                                "/emp/get");
+                            actionForm.submit();
+
+                        });
+
+                var searchForm = $("#searchForm");
+
+                $("#searchForm button").on(
+                    "click",
+                    function(e) {
+
+                        if (!searchForm.find("option:selected")
+                            .val()) {
+                            alert("검색종류를 선택하세요");
+                            return false;
+                        }
+
+                        if (!searchForm.find(
+                            "input[name='keyword']").val()) {
+                            alert("키워드를 입력하세요");
+                            return false;
+                        }
+
+                        searchForm.find("input[name='emppageNum']")
+                            .val("1");
+                        e.preventDefault();
+
+                        searchForm.submit();
+
+                    });
+
+            });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
