@@ -7,7 +7,7 @@
     <title>Insert title here</title>
 </head>
 <body>
-<h1>good bye</h1>
+
 
 </body>
 </html>

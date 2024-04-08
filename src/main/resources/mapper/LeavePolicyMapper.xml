@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosta.humanstory.mapper.LeavePolicyMapper">
+
+    <select id="getList" resultType="com.kosta.humanstory.domain.LeavePolicyVO">
+		<![CDATA[
+        SELECT lpNum, empNum, title, detail, registerDate
+        FROM(
+                SELECT /*+INDEX_DESC(leavePolicy PK_leavePolicy) */
+                    rownum rn, lpNum, empNum,title, detail, registerDate
+                FROM leavePolicy
+                WHERE rownum<= #{pageNum} * #{amount}
+            )
+        WHERE rn> (#{pageNum} - 1) * #{amount}
+        ]]>
+	</select>
+
+	<select id="listTotalCount" resultType="int">
+		select count(*) from
+			leavePolicy
+	</select>
+
+
+
+</mapper>
+
