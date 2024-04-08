@@ -9,7 +9,7 @@ import java.util.List;
 public class LeavePolicyVO {
 
     private int lpNum;
-    private int empNum;
+    private String empNum;
     private String title;
     private String detail;
     private Date registerDate;

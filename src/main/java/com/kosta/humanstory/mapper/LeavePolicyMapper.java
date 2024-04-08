@@ -10,4 +10,10 @@ import java.util.List;
 public interface LeavePolicyMapper {
     public List<LeavePolicyVO> getList(Criteria cri);
     public int listTotalCount(Criteria cri);
+    public void insert(LeavePolicyVO vo);
+    public LeavePolicyVO getDetail(int lpNum);
+    public int update(LeavePolicyVO vo);
+
+    public int delete(int lpNum);
+
 }

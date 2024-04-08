@@ -21,8 +21,6 @@ public class EmployeeVO {
 
     private String email; // 이메일
 
-    private int annualLeaveNum; // 연차일
-
     private String address; // 주소
 
     private int workDate; // 근무일
