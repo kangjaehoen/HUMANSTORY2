@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-public class EmployeeController {
+public class EmployeeVO {
     private String empNum; // 사원번호
 
     private String empName; // 사원명
