@@ -6,7 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-public class EmployeeVO {
+    public class EmployeeVO {
+
     private String empNum; // 사원번호
 
     private String empName; // 사원명
@@ -27,15 +28,17 @@ public class EmployeeVO {
 
     private int birthDate; // 생년월일
 
-    private  String  departNum; // 부서
+    private  String  departNum; // 부서 // -추가
 
-    private String uploadPath; // 사원 프로필사진
+    private String uploadPath; // 사원 프로필사진 - > 수정(추가)
 
     private boolean enabled; // 시큐리티 적용확인
 
     private List<AuthVO> authList; // 권한
 
     private List<LeaveVO> leaveVO; //휴가 신청내역
+
+
 
 
 
