@@ -1,7 +1,9 @@
-package com.kosta.humanstory.controller;
+package com.kosta.humanstory.controllerTest;
 
 
+import com.kosta.humanstory.domain.Criteria;
 import com.kosta.humanstory.domain.EmployeeVO;
+import com.kosta.humanstory.domain.PageDTO;
 import com.kosta.humanstory.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,10 +22,11 @@ public class EmpController {
 //        return "/emp/hello";
 //    }
     @GetMapping("/list")
-    public void list(Model model){
+    public void list(Criteria cri  ,Model model){
         System.out.println("list");
-        model.addAttribute("list",service.getList());
-
+//        model.addAttribute("list",service.getList());
+        model.addAttribute("list",service.getList(cri));
+        model.addAttribute("pageMaker",new PageDTO(cri,service.getTotal(cri)));
     }
     @GetMapping("/register")
     public void register(){
@@ -38,8 +41,18 @@ public class EmpController {
     }
     @GetMapping({"/get","/modify"})
     public void get(@RequestParam("empNum")String empNum,Model model){
-        System.out.println("/get or modify");
+        System.out.println("/get or /modify");
         model.addAttribute("emp",service.get(empNum));
+    }
+    @PostMapping("/modify")
+    public String modify(EmployeeVO emp, @ModelAttribute("cri")Criteria cri,RedirectAttributes rttr){
+        System.out.println(emp);
+        if(service.modify(emp)){
+            rttr.addFlashAttribute("result","success");
+        }
+        rttr.addAttribute("pageNum",cri.getPageNum());
+        rttr.addAttribute("amount",cri.getAmount());
+        return "redirect:/emp/list";
     }
 
     @PostMapping("/remove")
@@ -47,7 +60,7 @@ public class EmpController {
         if(service.remove(empNum)){
             rttr.addFlashAttribute("result","success");
         };
-
+//        System.out.println("remove 작동중");
         return "redirect:/emp/list";
     }
 

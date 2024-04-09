@@ -1,4 +1,4 @@
-package com.kosta.humanstory.controller;
+package com.kosta.humanstory.controllerTest;
 
 import com.kosta.humanstory.domain.Criteria;
 import com.kosta.humanstory.domain.PageDTO;

@@ -12,7 +12,7 @@ public interface EmployeeMapper {
 
     public EmployeeVO read(String empNum);
 
-    public EmployeeVO authread(String empNum);
+//    public EmployeeVO authread(String empNum);
 
     public List<EmployeeVO> getListWithPaging(Criteria cri);
 

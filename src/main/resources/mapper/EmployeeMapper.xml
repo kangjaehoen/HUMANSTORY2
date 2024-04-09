@@ -9,7 +9,7 @@
         select  * from employee
     </select>
 
-<!--
+
 
 
     <sql id="criteria">
@@ -17,49 +17,75 @@
             <foreach collection="typeArr">
                 <trim prefix="OR">
                     <choose>
-                        <when test="type == 'T'.toString()"> empNum like '%'||#{keyword}||'%' </when>
-                        <when test="type == 'C'.toString()"> empName like '%'||#{keyword}||'%' </when>
-                        <when test="type == 'W'.toString()"> deptName like '%'||#{keyword}||'%' </when>
+                        <when test="type == '1'.toString()"> empNum like '%'||#{keyword}||'%' </when>
+                        <when test="type == '2'.toString()"> empName like '%'||#{keyword}||'%' </when>
+                        <when test="type == '3'.toString()"> deptName like '%'||#{keyword}||'%' </when>
                     </choose>
                 </trim>
             </foreach>
         </trim>
     </sql>
 
-  -->
-<!--
+
+
 
     <select id="getListWithPaging"
-            resultType="org.hs.domain.EmployeeVO">
+            resultType="com.kosta.humanstory.domain.EmployeeVO">
         <![CDATA[
 	SELECT
-		empNum,empName,pw,job,phoneNum,hireDate,annualLeaveNum,workdate,birthdate
+		EMPNUM ,EMPNAME,JOB,PW,PHONENUM,HIREDATE,EMAIL,ANNUALLEAVENUM,ADDRESS,WORKDATE,BIRTHDATE,DEPARTNUM
 	FROM
 		(
 			select
-				rownum rn,empNum,empName, pw,job,phoneNum,hireDate,annualLeaveNum,workdate,birthdate
+				rownum rn,EMPNUM ,EMPNAME,JOB,PW,PHONENUM,HIREDATE,EMAIL,ANNUALLEAVENUM,ADDRESS,WORKDATE,BIRTHDATE,DEPARTNUM
 			FROM EMPLOYEE
 			where
 	]]>
         <include refid="criteria" />
         <![CDATA[
-             rownum <= #{emppageNum}*#{empamount}
+             rownum <= #{pageNum}*#{amount}
          )
-         WHERE rn > (#{emppageNum}-1)*#{empamount}
+         WHERE rn > (#{pageNum}-1)*#{amount}
 
       ]]>
     </select>
--->
+
+    <select id="getTotalCount" resultType="int">
+    <![CDATA[
+    select count(*) from Employee
+    where
+        ]]>
+    <include refid="criteria"/>
+        <![CDATA[
+        empNum >=0
+        ]]>
+
+    </select>
+
+
 
 
     <insert id="insertEmpInfo">
-        INSERT INTO employee (empNum, empName, pw, job,
-                              phoneNum,hireDate,
-                              annualLeaveNum,workDate,birthDate, adminNum,
-                              authNum, deptNum)
-        VALUES (empNum_seq.NEXTVAL, #{empName},#{pw}, #{job},
-                #{phoneNum},#{hireDate}, #{annualLeaveNum}, #{workDate},#{birthDate},
-                #{adminNum}, #{authNum}, #{deptNum})
+        INSERT INTO employee (
+                              empNum,
+                              empName,
+                              pw,
+                              job,
+                              phoneNum,
+                              address,
+                            annualLeaveNum
+
+
+)
+        VALUES (empNum_seq.NEXTVAL,
+                            #{empName},
+                            #{pw},
+                            #{job},
+                            #{phoneNum},
+                            #{workDate},
+                            #{annualLeaveNum}
+
+                )
     </insert>
 
 
@@ -82,18 +108,9 @@
     <update id="update">
         update employee set
             empName=#{empName},
-            pw=#{pw},
-            job=#{job},
-            phoneNum=#{phoneNum},
-            hireDate=#{hireDate},
-            annualLeaveNum=#{annualLeaveNum},
-            workDate=#{workDate},
-            birthDate=#{birthDate},
-            adminNum=#{adminNum},
-            authNum=#{authNum},
-            deptNum=#{deptNum}
+            pw=#{pw}
 
-        where empNum=#{empNum}
+            where empNum=#{empNum}
     </update>
 
 <!--    <select id="empEmailSend" resultType="com.kosta.humanstory.domain.EmployeeVO">-->

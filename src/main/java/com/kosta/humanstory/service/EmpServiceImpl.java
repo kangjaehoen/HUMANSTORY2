@@ -1,5 +1,6 @@
 package com.kosta.humanstory.service;
 
+import com.kosta.humanstory.domain.Criteria;
 import com.kosta.humanstory.domain.EmployeeVO;
 import com.kosta.humanstory.mapper.EmployeeMapper;
 import lombok.AllArgsConstructor;
@@ -31,6 +32,11 @@ public class EmpServiceImpl implements EmpService{
     }
 
     @Override
+    public List<EmployeeVO> getList(Criteria cri) {
+        return mapper.getListWithPaging(cri);
+    }
+
+    @Override
     public boolean remove(String empNum) {
         return mapper.delete(empNum)==1;
     }
@@ -45,7 +51,10 @@ public class EmpServiceImpl implements EmpService{
         return mapper.read(empNum);
     }
 
-
+    @Override
+    public int getTotal(Criteria cri) {
+        return mapper.getTotalCount(cri);
+    }
 
 
 }
