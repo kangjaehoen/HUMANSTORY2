@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosta.humanstory.mapper.SystemMapper">
+    
+    <select id="hireDateFind" resultType="com.kosta.humanstory.domain.EmployeeVO">
+        select * from employee
+    </select>
+
+    <update id="leaveGrantNum">
+        UPDATE LEAVECATEGORY SET grantDate = #{grantDate} WHERE leaveType  = '연차'
+    </update>
+
+    <select id="annulLeaveNumSetApply" resultType="com.kosta.humanstory.domain.LeaveCategoryVO">
+        SELECT grantDate FROM LEAVECATEGORY WHERE leaveType =  '연차'
+    </select>
+
+    <update id="annulLeaveDay">
+        UPDATE LEAVECATEGORY SET grantDay= #{grantDay} WHERE leaveType  = '연차'
+    </update>
+
+    <select id="leaveGrantDaySetApply" resultType="com.kosta.humanstory.domain.LeaveCategoryVO">
+        SELECT grantDay FROM LEAVECATEGORY WHERE leaveType  = '연차'
+    </select>
+
+    <update id="oneYearsLess">
+        <!-- 직원의 추가 휴가일을 personalLeaveDay 테이블에 반영 -->
+        UPDATE personalLeaveDay
+        SET it_days = it_days + #{leaveDays}
+        WHERE empNum = #{employeeNumber}
+    </update>
+
+    <update id="oneYears">
+        update personalLeaveDay set it_days =#{grantDate}
+    </update>
+
+
+
+
+
+
+
+
+</mapper>

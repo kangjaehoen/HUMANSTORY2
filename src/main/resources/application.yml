@@ -15,7 +15,16 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 215MB
+      location: C://upload
+      enabled: true
+      file-size-threshold: 2KB
 
 logging:
   level:
     org.springframework: debug
+
+

@@ -309,7 +309,7 @@
 <%--        C:\workspace\springBoots_work\humanstory\src\main\resources\img\alert.png--%>
 <%--        C:\workspace\springBoots_work\humanstory\src\main\webapp\WEB-INF\views\leavePolicy\get.jsp--%>
         <span class="close">&times;</span>
-    <img alt="삭제 경고" src="../../../../resources/img/alert.png">
+    <img alt="삭제 경고" src="/img/alert.png">
         <p>경고! 정말 삭제하시겠습니까?</p>
         <button id="confirmDeleteBtn">삭제</button>
         <button id="cancleDeleteBtn">취소</buttom>
