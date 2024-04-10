@@ -154,9 +154,9 @@
         </div>
         <div>
             <ul class="nav nav-pills nav-justified ">
-                <li class="active"><a href="employeelist.it">직원관리</a></li>
+                <li class="active"><a href="/emp/list">직원관리</a></li>
                 <li><a href="regionlist.it">지역관리</a></li>
-                <li><a href="departmentlist.it">부서관리</a></li>
+                <li><a href="/dept/list">부서관리</a></li>
                 <li><a href="positionlist.it">직위관리</a></li>
                 <%-- 세션 정보를 EL 표현으로 출력 --%>
                 <li><a href="j_spring_security_logout" style="color: red">
@@ -173,22 +173,23 @@
             <div class="panel-body">
 
                 <%--button 위치들--%>
-                <div>
-                    <form class="form-inline" id="searchForm" action="/emp/list" method="get">
-                        <select class="form-control" id="key" name="type">
-                            <option value="T">사원번호</option>
-                            <option value="C">사원명</option>
-                            <option value="W">부서명</option>
-                        </select>
+<%--                <div>--%>
+<%--                    <form class="form-inline" id="searchForm" action="/emp/list" method="get">--%>
+<%--                        <select class="form-control" id="key" name="type">--%>
+<%--                            <option value="T">사원번호</option>--%>
+<%--                            <option value="C">사원명</option>--%>
+<%--                            <option value="W">부서명</option>--%>
+<%--                        </select>--%>
 
-                        <input type="text" name="keyword" required="required" class="form-control"
-                               value='<c:out value="${pageMaker.cri.keyword}"/>'
-                        >
-                        <button type="submit" class="btn btn-default">
-                        <span class="glyphicon glyphicon-search"></span> Search
-                        </button>
-                    </form>
-                </div>
+<%--                        <input type="text" name="keyword" required="required" class="form-control"--%>
+<%--                               value='<c:out value="${pageMaker.cri.keyword}"/>'--%>
+<%--                        >--%>
+<%--                        <button type="submit" class="btn btn-default">--%>
+<%--                        <span class="glyphicon glyphicon-search"></span> Search--%>
+<%--                        </button>--%>
+<%--                    </form>--%>
+<%--                </div>--%>
+
             </div>
             <div>
                 <table class="table">
@@ -252,12 +253,12 @@
 
                 <form class="form-inline" role="form" method="post">
                     <a href="/emp/register" class="btn btn-default">Add</a>
-                    <button type="button" class="btn btn-default">
-                        totalCount <span class="badge">${totalcount}</span>
-                    </button>
-                    <button type="button" class="btn btn-default">
-                        Count <span class="badge">${count}</span>
-                    </button>
+<%--                    <button type="button" class="btn btn-default">--%>
+<%--                        totalCount <span class="badge">${totalcount}</span>--%>
+<%--                    </button>--%>
+<%--                    <button type="button" class="btn btn-default">--%>
+<%--                        Count <span class="badge">${count}</span>--%>
+<%--                    </button>--%>
                 </form>
                 <%-- table 들--%>
             </div>

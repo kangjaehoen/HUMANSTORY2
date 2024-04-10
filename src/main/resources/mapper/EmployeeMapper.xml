@@ -73,6 +73,7 @@
                               job,
                               phoneNum,
                               hireDate,
+                              email,
                               annualLeaveNum,
                               address,
                               workDate,
@@ -87,6 +88,7 @@
                             #{job},
                             #{phoneNum},
                             #{hireDate},
+                            #{email},
                             #{annualLeaveNum},
                             #{address},
                             #{workDate},
@@ -116,8 +118,17 @@
     <update id="update">
         update employee set
             empName=#{empName},
-            pw=#{pw}
-
+            pw=#{pw},
+            job=#{job},
+            phoneNum=#{phoneNum},
+            hireDate= #{hireDate},
+            email=#{email},
+            annualLeaveNum=#{annualLeaveNum},
+            address=#{address},
+            workDate=#{workDate},
+            birthDate=#{birthDate},
+            departNum=#{departNum},
+            enabled=#{enabled}
             where empNum=#{empNum}
     </update>
 

@@ -19,9 +19,9 @@ public class DeptController {
     @GetMapping("/list")
     public void list(Criteria cri, Model model){
         System.out.println("list");
-       // model.addAttribute("list",service.getList());
-        model.addAttribute("list",service.getList(cri));
-        model.addAttribute("pageMaker",new PageDTO(cri,service.getTotal(cri)));
+        model.addAttribute("list",service.getList());
+//        model.addAttribute("list",service.getList(cri));
+//        model.addAttribute("pageMaker",new PageDTO(cri,service.getTotal(cri)));
     }
 
     @GetMapping("/register")
@@ -34,15 +34,20 @@ public class DeptController {
         rttr.addFlashAttribute("result",dept.getDeptNum());
         return "redirect:/dept/list";
     }
+    @GetMapping({"/get","/modify"})
+    public void get(@RequestParam("deptNum")String deptNum,Model model){
+        System.out.println("/get or /modify");
+        model.addAttribute("dept",service.get(deptNum));
+    }
 
     @PostMapping("/modify")
-    public String modify(DeptVO dept, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr){
+    public String modify(DeptVO dept, RedirectAttributes rttr){
         System.out.println(dept);
         if(service.modify(dept)){
             rttr.addFlashAttribute("result","success");
         }
-        rttr.addAttribute("pageNum",cri.getPageNum());
-        rttr.addAttribute("amount",cri.getAmount());
+//        rttr.addAttribute("pageNum",cri.getPageNum());
+//        rttr.addAttribute("amount",cri.getAmount());
         return "redirect:/dept/list";
     }
 

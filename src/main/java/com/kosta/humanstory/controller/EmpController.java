@@ -45,13 +45,13 @@ public class EmpController {
         model.addAttribute("emp",service.get(empNum));
     }
     @PostMapping("/modify")
-    public String modify(EmployeeVO emp, @ModelAttribute("cri")Criteria cri,RedirectAttributes rttr){
+    public String modify(EmployeeVO emp,RedirectAttributes rttr){
         System.out.println(emp);
         if(service.modify(emp)){
             rttr.addFlashAttribute("result","success");
         }
-        rttr.addAttribute("pageNum",cri.getPageNum());
-        rttr.addAttribute("amount",cri.getAmount());
+//        rttr.addAttribute("pageNum",cri.getPageNum());
+//        rttr.addAttribute("amount",cri.getAmount());
         return "redirect:/emp/list";
     }
 

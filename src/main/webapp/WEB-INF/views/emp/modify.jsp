@@ -27,10 +27,10 @@
 
 
 
-                    <input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum }"/>'>
-                    <input type='hidden' name='empamount' value='<c:out value="${cri.empamount }"/>'>
-                    <input type='hidden' name='type' value='<c:out value="${cri.type }"/>'>
-                    <input type='hidden' name='keyword' value='<c:out value="${cri.keyword }"/>'>
+<%--                    <input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum }"/>'>--%>
+<%--                    <input type='hidden' name='empamount' value='<c:out value="${cri.empamount }"/>'>--%>
+<%--                    <input type='hidden' name='type' value='<c:out value="${cri.type }"/>'>--%>
+<%--                    <input type='hidden' name='keyword' value='<c:out value="${cri.keyword }"/>'>--%>
 
 
                     <div class="form-group">
@@ -54,13 +54,13 @@
                     <div class="form-group">
                         <label>job</label>
                         <input class="form-control" name='job'
-                               value='<c:out value="${emp.job }"/>' >
+                               value='<c:out value="${emp.job}"/>' >
                     </div>
 
                     <div class="form-group">
                         <label>phoneNum</label>
                         <input class="form-control" name='phoneNum'
-                               value='<c:out value="${emp.phoneNum }"/>' >
+                               value='<c:out value="${emp.phoneNum}"/>' >
                     </div>
 
                     <div class="form-group">
@@ -99,13 +99,16 @@
                         <input class="form-control" name='birthDate'
                                value='<c:out value="${emp.birthDate }"/>' >
                     </div>
-                    <%--
+
                     <div class="form-group">
-                      <label>department</label>
-                      <input class="form-control" name='department'
-                        value='<c:out value="${emp.department.deptName }"/>' >
+                        <label>departNum</label>
+                        <input class="form-control" name='departNum'
+                               value='<c:out value="${emp.departNum }"/>' >
                     </div>
-                     --%>
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" name='Enabled'
+                               value="1">
+                    </div>
 
                     <button type="submit" data-oper='modify' class="btn btn-secondary">Modify</button>
                     <button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>

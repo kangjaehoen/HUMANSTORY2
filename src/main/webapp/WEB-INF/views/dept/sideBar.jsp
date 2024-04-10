@@ -12,65 +12,65 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<%--    <script type="text/javascript">--%>
-<%--        $(function(){--%>
-<%--            (function(){--%>
-<%--                var empNum = $("#empNumPf").val();--%>
-<%--                console.log("직원 번호: " + empNum);--%>
+    <script type="text/javascript">
+        $(function(){
+            (function(){
+                var empNum = $("#empNumPf").val();
+                console.log("직원 번호: " + empNum);
 
-<%--                $.getJSON("/getEmpProfile", {empNum: empNum}, function(arr){--%>
-<%--                    console.log("==============");--%>
-<%--                    console.log(arr);--%>
-<%--                    var str = "";--%>
+                $.getJSON("/getEmpProfile", {empNum: empNum}, function(arr){
+                    console.log("==============");
+                    console.log(arr);
+                    var str = "";
 
-<%--                    $(arr).each(function(i, attach){--%>
-<%--                        //image type--%>
-<%--                        if(attach.fileType){--%>
-<%--                            var fileCallPath =  encodeURIComponent( attach.uploadPath+ "/s_"+attach.uuid +"_"+attach.fileName);--%>
+                    $(arr).each(function(i, attach){
+                        //image type
+                        if(attach.fileType){
+                            var fileCallPath =  encodeURIComponent( attach.uploadPath+ "/s_"+attach.uuid +"_"+attach.fileName);
 
-<%--                            str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='"+attach.fileType+"' ><div>";--%>
-<%--                            str += "<img src='/display?fileName=" + fileCallPath + "' style='border-radius: 50%;'>";--%>
-<%--                            str += "</div>";--%>
-<%--                            str +"</li>";--%>
-<%--                        }else{--%>
+                            str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='"+attach.fileType+"' ><div>";
+                            str += "<img src='/display?fileName=" + fileCallPath + "' style='border-radius: 50%;'>";
+                            str += "</div>";
+                            str +"</li>";
+                        }else{
 
-<%--                            str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='"+attach.fileType+"' ><div>";--%>
-<%--                            str += "<span> "+ attach.fileName+"</span><br/>";--%>
-<%--                            str += "<img src='/resources/img/attach.png'></a>";--%>
-<%--                            str += "</div>";--%>
-<%--                            str +"</li>";--%>
-<%--                        }--%>
-<%--                    });--%>
-<%--                    $("#EmpProFile ul").html(str);--%>
-
-
-<%--                });--%>
-<%--            })();--%>
-<%--            function showImage(fileCallPath){--%>
-
-<%--                alert(fileCallPath);--%>
-
-<%--                $(".bigPictureWrapper").css("display","flex").show();--%>
-
-<%--                $(".bigPicture")--%>
-<%--                    .html("<img src='/display?fileName="+fileCallPath+"' >")--%>
-<%--                    .animate({width:'100%', height: '100%'}, 1000);--%>
-
-<%--            }--%>
-
-<%--            $("#profileMove").click(function(){--%>
-<%--                window.location.href="/emp/proFile"--%>
-<%--            });--%>
-
-<%--        });--%>
-<%--    </script>--%>
-<%--    <style>--%>
-<%--        #EmpProFile{--%>
+                            str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='"+attach.fileType+"' ><div>";
+                            str += "<span> "+ attach.fileName+"</span><br/>";
+                            str += "<img src='/resources/img/attach.png'></a>";
+                            str += "</div>";
+                            str +"</li>";
+                        }
+                    });
+                    $("#EmpProFile ul").html(str);
 
 
-<%--        }--%>
+                });
+            })();
+            function showImage(fileCallPath){
 
-<%--    </style>--%>
+                alert(fileCallPath);
+
+                $(".bigPictureWrapper").css("display","flex").show();
+
+                $(".bigPicture")
+                    .html("<img src='/display?fileName="+fileCallPath+"' >")
+                    .animate({width:'100%', height: '100%'}, 1000);
+
+            }
+
+            $("#profileMove").click(function(){
+                window.location.href="/emp/proFile"
+            });
+
+        });
+    </script>
+    <style>
+        #EmpProFile{
+
+
+        }
+
+    </style>
 
 
 
@@ -205,9 +205,6 @@
         </div>
 
 
-
-
-
         <ul class="space-y-4 font-midium">
             <li>
                 <a href="#" class="flex items-center p-1 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group mt-5">
@@ -240,7 +237,7 @@
                 </a>
             </li>
             <!-- Dashboard -->
-            <!-- <div x-data="{ open: false }">
+             <div x-data="{ open: false }">
              <li>
                  <a href="#" class="flex items-center p-2 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                      <button @click="open = !open" class="flex justify-between items-center pr-5 text-gra cursor-pointer hover:bg-gray-100 hover:text-gray-700 focus:outline-none">
@@ -262,7 +259,7 @@
                      <a class="py-2 px-16 block text-sm text-white hover:bg-blue-500 hover:text-gray-900 hover:bg-white rounded-lg text-center" href="#">PTO List</a>
                  </div>
               </li>
-             </div> -->
+             </div>
             <!-- --------------------- -->
             <div x-data="{ open: false }">
                 <li>
