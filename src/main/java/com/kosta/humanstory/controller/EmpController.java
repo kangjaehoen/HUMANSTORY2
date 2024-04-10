@@ -1,4 +1,4 @@
-package com.kosta.humanstory.controllerTest;
+package com.kosta.humanstory.controller;
 
 
 import com.kosta.humanstory.domain.Criteria;
@@ -24,9 +24,9 @@ public class EmpController {
     @GetMapping("/list")
     public void list(Criteria cri  ,Model model){
         System.out.println("list");
-//        model.addAttribute("list",service.getList());
-        model.addAttribute("list",service.getList(cri));
-        model.addAttribute("pageMaker",new PageDTO(cri,service.getTotal(cri)));
+        model.addAttribute("list",service.getList());
+//        model.addAttribute("list",service.getList(cri));
+//        model.addAttribute("pageMaker",new PageDTO(cri,service.getTotal(cri)));
     }
     @GetMapping("/register")
     public void register(){

@@ -1,4 +1,4 @@
-package com.kosta.humanstory.controllerTest;
+package com.kosta.humanstory.controller;
 
 import com.kosta.humanstory.domain.Criteria;
 import com.kosta.humanstory.domain.DeptVO;

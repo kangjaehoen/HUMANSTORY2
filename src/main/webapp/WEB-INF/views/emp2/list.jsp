@@ -117,16 +117,17 @@
         </div>
 
     </div>
+
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-heading">직원 출력</div>
             <div class="panel-body">
                 <%-- form 태그에서 action="" 속성 생략하면 서브밋 주소가 자기 자신을 호출한다.--%>
-                <form class="form-inline" role="form" method="post">
-                    <select class="form-control" id="key" name="key">
-                        <option value="1">번호</option>
-                        <option value="2">이름</option>
-                        <option value="3">지역</option>
+                <form class="form-inline" action="/emp2/list" role="form" method="get">
+                    <select class="form-control" id="key" name="type">
+                        <option value="T">번호</option>
+                        <option value="C">이름</option>
+                        <option value="W">지역</option>
                     </select>
 <%--                    <label for="name"></label>--%>
                     <input type="text" class="form-control" id="value" name="value" required="required">
@@ -182,11 +183,16 @@
                             <button type="button" class="btn btn-default btn-xs picture"
                                     value="${emp.empNum}">사진</button>
                         </c:if></td>
-                        <td>${emp.birthDate}</td>
-                        <td>${emp.phonNum}</td>
-                        <td>${emp.address}</td>
-                        <td>${emp.departNum}</td>
                         <td>${emp.job}</td>
+                        <td>${emp.phonNum}</td>
+                        <td>${emp.birthDate}</td>
+                        <td>${emp.email}</td>
+                        <td>${emp.annualLeaveNum}</td>
+                        <td>${emp.address}</td>
+                        <td>${emp.workDate}</td>
+                        <td>${emp.birthDate}</td>
+<%--                        <td>${emp.departNum}</td>--%>
+
                         <td><button type="button"
                                     class="btn btn-default btn-xs  btnPictureInsert pictureInsertForm">사진등록</button></td>
                         <td><button type="button"
@@ -200,7 +206,7 @@
                 </table>
 
                 <form class="form-inline" role="form" method="post">
-                    <a href="employeeinsertform.it" class="btn btn-default">Add</a>
+                    <a href="/emp2/register" class="btn btn-default">Add</a>
                     <button type="button" class="btn btn-default">
                         totalCount <span class="badge">${totalcount}</span>
                     </button>
@@ -214,108 +220,108 @@
     </div>
 
     <!-- 사진보기 모달 -->
-<%--    <div id="pictureModal" class="modal fade" role="dialog">--%>
-<%--        <div class="modal-dialog modal-sm">--%>
+    <div id="pictureModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-sm">
 
-<%--            <!-- Modal content-->--%>
-<%--            <div class="modal-content">--%>
-<%--                <div class="modal-header">--%>
-<%--                    <button type="button" class="close" data-dismiss="modal">&times;</button>--%>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-<%--                    &lt;%&ndash; 사진 보기 선택한 사용자의 이름 출력 &ndash;%&gt;--%>
-<%--                    <h4 class="modal-title pictureName">홍길동의 사진</h4>--%>
+                    <%-- 사진 보기 선택한 사용자의 이름 출력 --%>
+                    <h4 class="modal-title pictureName">홍길동의 사진</h4>
 
-<%--                </div>--%>
-<%--                <div class="modal-body">--%>
-<%--                    <div style="text-align: center;">--%>
+                </div>
+                <div class="modal-body">
+                    <div style="text-align: center;">
 
-<%--                        &lt;%&ndash; Ajax 요청에 대한 응답 결과를 가지고 이미지 처리 &ndash;%&gt;--%>
-<%--                        <img src="resources/picture/noimage.jpg" width="100%">--%>
+                        <%-- Ajax 요청에 대한 응답 결과를 가지고 이미지 처리 --%>
+                        <img src="resources/picture/noimage.jpg" width="100%">
 
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="modal-footer">--%>
-<%--                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
 
-<%--        </div>--%>
-<%--    </div>--%>
+        </div>
+    </div>
 
 </div>
 
 <!-- 사진등록 모달 -->
-<%--<div id="pictureInsertForm" class="modal fade" role="dialog">--%>
-<%--    <div class="modal-dialog">--%>
+<div id="pictureInsertForm" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
-<%--        <!-- Modal content-->--%>
-<%--        <div class="modal-content">--%>
-<%--            <div class="modal-header">--%>
-<%--                <button type="button" class="close" data-dismiss="modal">&times;</button>--%>
-<%--                <h4 class="modal-title">사진 등록</h4>--%>
-<%--            </div>--%>
-<%--            <div class="modal-body">--%>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">사진 등록</h4>
+            </div>
+            <div class="modal-body">
 
-<%--                &lt;%&ndash; 파일 업로드를 위한 설정 추가. enctype="multipart/form-data" &ndash;%&gt;--%>
-<%--                <form id="fileUpload" role="form" action="employeepictureinsert.it" method="post"--%>
-<%--                      enctype="multipart/form-data">--%>
+                <%-- 파일 업로드를 위한 설정 추가. enctype="multipart/form-data" --%>
+                <form id="fileUpload" role="form" action="employeepictureinsert.it" method="post"
+                      enctype="multipart/form-data">
 
-<%--                    &lt;%&ndash; 파일 업로드를 위한 직원 번호 전송 준비 &ndash;%&gt;--%>
-<%--                    <input type="hidden" id="empNum" name="empNum" value="">--%>
-<%--                    &lt;%&ndash; 파일 업로드를 위한 사진 액션 구분(신규 등록 0, 수정 1) &ndash;%&gt;--%>
-<%--                    <input type="hidden" id="picturekey" name="picturekey" value="0">--%>
+                    <%-- 파일 업로드를 위한 직원 번호 전송 준비 --%>
+                    <input type="hidden" id="empNum" name="empNum" value="">
+                    <%-- 파일 업로드를 위한 사진 액션 구분(신규 등록 0, 수정 1) --%>
+                    <input type="hidden" id="picturekey" name="picturekey" value="0">
 
-<%--                    <div class="form-group">--%>
-<%--                        &lt;%&ndash;<label for="fileName">사진등록 (only JPG, 100K byte 이내):</label> <input--%>
-<%--                            type="file" class="form-control" id="file"--%>
-<%--                            name="file" required="required">&ndash;%&gt;--%>
-<%--                    </div>--%>
-<%--                    <button type="submit" class="btn btn-default">Submit</button>--%>
-<%--                </form>--%>
+                    <div class="form-group">
+                        <%--<label for="fileName">사진등록 (only JPG, 100K byte 이내):</label> <input
+                            type="file" class="form-control" id="file"
+                            name="file" required="required">--%>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
 
 
-<%--            </div>--%>
-<%--            <div class="modal-footer">--%>
-<%--                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
-<%--            </div>--%>
-<%--        </div>--%>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
 
-<%--    </div>--%>
-<%--</div>--%>
+    </div>
+</div>
 
 <!-- 삭제 폼 Modal -->
-<%--<div id="deleteFormModal" class="modal fade" role="dialog">--%>
-<%--    <div class="modal-dialog">--%>
+<div id="deleteFormModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
-<%--        <!-- Modal content-->--%>
-<%--        <div class="modal-content">--%>
-<%--            <div class="modal-header">--%>
-<%--                <button type="button" class="close" data-dismiss="modal">&times;</button>--%>
-<%--                <h4 class="modal-title">직원 삭제</h4>--%>
-<%--            </div>--%>
-<%--            <div class="modal-body">--%>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">직원 삭제</h4>
+            </div>
+            <div class="modal-body">
 
-<%--                <p>현재 선택한 직원 정보(<span id="comment"></span>)를 삭제할까요?</p>--%>
-<%--                <!-- 삭제 진행시 번호와 패스워드를 서버로 전송해야 한다. -->--%>
-<%--                <form action="employeedelete.it" method="post">--%>
+                <p>현재 선택한 직원 정보(<span id="comment"></span>)를 삭제할까요?</p>
+                <!-- 삭제 진행시 번호와 패스워드를 서버로 전송해야 한다. -->
+                <form action="employeedelete.it" method="post">
 
-<%--                    <!-- 번호 전송은 hidden form 사용 -->--%>
-<%--                    &lt;%&ndash; hidden form 추가 &ndash;%&gt;--%>
-<%--                    <input type="hidden" id="empNum" name="empNum" value="">--%>
+                    <!-- 번호 전송은 hidden form 사용 -->
+                    <%-- hidden form 추가 --%>
+                    <input type="hidden" id="empNum" name="empNum" value="">
 
-<%--                    <button type="submit" class="btn btn-default">삭제</button>--%>
+                    <button type="submit" class="btn btn-default">삭제</button>
 
-<%--                </form>--%>
+                </form>
 
-<%--            </div>--%>
-<%--            <div class="modal-footer">--%>
-<%--                <button type="button" class="btn btn-default btn-sm"--%>
-<%--                        data-dismiss="modal">Close</button>--%>
-<%--            </div>--%>
-<%--        </div>--%>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm"
+                        data-dismiss="modal">Close</button>
+            </div>
+        </div>
 
-<%--    </div>--%>
-<%--</div>--%>
+    </div>
+</div>
 
 </body>
 </html>

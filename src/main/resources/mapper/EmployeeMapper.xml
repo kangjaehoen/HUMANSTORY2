@@ -17,9 +17,9 @@
             <foreach collection="typeArr">
                 <trim prefix="OR">
                     <choose>
-                        <when test="type == '1'.toString()"> empNum like '%'||#{keyword}||'%' </when>
-                        <when test="type == '2'.toString()"> empName like '%'||#{keyword}||'%' </when>
-                        <when test="type == '3'.toString()"> deptName like '%'||#{keyword}||'%' </when>
+                        <when test="type == 'T'.toString()"> empNum like '%'||#{keyword}||'%' </when>
+                        <when test="type == 'C'.toString()"> empName like '%'||#{keyword}||'%' </when>
+                        <when test="type == 'W'.toString()"> deptName like '%'||#{keyword}||'%' </when>
                     </choose>
                 </trim>
             </foreach>
@@ -72,9 +72,13 @@
                               pw,
                               job,
                               phoneNum,
+                              hireDate,
+                              annualLeaveNum,
                               address,
-                            annualLeaveNum
-
+                              workDate,
+                              birthDate,
+                              departNum,
+                              enabled
 
 )
         VALUES (empNum_seq.NEXTVAL,
@@ -82,9 +86,13 @@
                             #{pw},
                             #{job},
                             #{phoneNum},
+                            #{hireDate},
+                            #{annualLeaveNum},
+                            #{address},
                             #{workDate},
-                            #{annualLeaveNum}
-
+                            #{birthDate},
+                            #{departNum},
+                            #{enabled}
                 )
     </insert>
 
