@@ -11,16 +11,11 @@ import java.util.List;
 public interface SystemMapper {
     public List<EmployeeVO> hireDateFind();
     public  int leaveGrantNum(AnnualLeaveDTO dto);
-
     public int  annulLeaveDay(AnnualLeaveDTO dto);
-
     public LeaveCategoryVO annulLeaveNumSetApply();
-
     public LeaveCategoryVO leaveGrantDaySetApply();
-
-
     public int oneYears(AnnualLeaveDTO dto);
+    public void oneYearsLess(String empNum, double leaveDays);
 
 
-    void oneYearsLess(String empNum, double leaveDays);
 }

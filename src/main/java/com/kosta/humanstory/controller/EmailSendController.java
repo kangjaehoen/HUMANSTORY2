@@ -35,8 +35,7 @@ public class EmailSendController {
     }
 
     @RequestMapping("/emailSend")
-    @ResponseBody
-    public Map findAuth(EmpEmailInfoDTO dto, Model model) {
+    public String findAuth(EmpEmailInfoDTO dto, Model model) {
 
         Map map = new HashMap();
 
@@ -44,9 +43,10 @@ public class EmailSendController {
 
         String setFrom = "gjsdms3340@gmail.com";
         String tomail = dto.getEmail();
-        String title = "휴가 잔여 촉구 안내 이메일입니다.";
+        String title = "안녕하세요 HUMANSTORY에서 보내는 휴가 잔여 촉구 안내입니다.";
         sb.append(String.format("안녕하세요 %s님\n", dto.getEmpName()));
-        sb.append("휴가 잔여일은 ").append(dto.getIt_days()).append(" 일입니다.");
+        sb.append("휴가 잔여일은 ").append(dto.getIt_days()).append(" 일입니다.\n");
+        sb.append(String.format("만료일 까지 연차 휴가 사용을 부탁드립니다."));
         String content = sb.toString();
 
         try {
@@ -66,6 +66,6 @@ public class EmailSendController {
         map.put("name", dto.getEmpName());
         map.put("leaveNum", dto.getIt_days());
 
-        return map;
+         return "redirect:/email/list";
     }
 }

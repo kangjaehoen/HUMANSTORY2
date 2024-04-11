@@ -29,15 +29,12 @@
         <!-- 직원의 추가 휴가일을 personalLeaveDay 테이블에 반영 -->
         UPDATE personalLeaveDay
         SET it_days = it_days + #{leaveDays}
-        WHERE empNum = #{employeeNumber}
+        WHERE empNum = #{empNum}
     </update>
 
     <update id="oneYears">
-        update personalLeaveDay set it_days =#{grantDate}
+        update personalLeaveDay set it_days =#{grantDate} WHERE empNum = #{empNum}
     </update>
-
-
-
 
 
 
