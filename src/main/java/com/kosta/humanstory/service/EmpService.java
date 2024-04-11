@@ -17,4 +17,5 @@ public interface EmpService {
 
    public int getTotal(Criteria cri);
 
+
 }

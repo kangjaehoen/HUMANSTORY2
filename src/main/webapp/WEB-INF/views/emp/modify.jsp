@@ -109,6 +109,12 @@
                         <input type="hidden" class="form-control" name='Enabled'
                                value="1">
                     </div>
+<%--                    <button type="button" id="Auth_button">권한부여</button>--%>
+
+                        <div class="form-group" id="Auth">
+                            <label>권한 부여</label>
+                            <input type="text" class="form-control" name='role'>
+                        </div>
 
                     <button type="submit" data-oper='modify' class="btn btn-secondary">Modify</button>
                     <button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
@@ -129,6 +135,13 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        // $("#Auth").hide();
+        // $("document").on("click",function (e){
+        //
+        //     if(emp.role==="ROLE_ADMIN"){
+        //         $("#Auth").show();
+        //     }
+        // });
 
 
         var formObj = $("form");
@@ -153,6 +166,8 @@
 
             formObj.submit();
         });
+
+
 
     });
 </script>

@@ -29,9 +29,7 @@ public class EmployeeVO {
     private String uploadPath; // 사원 프로필사진
     private boolean enabled; // 시큐리티 적용확인
 
-    private String role;
-
-      private List<AuthVO> authList; // 권한
+    private String role; //권한
 
       private List<LeaveVO> leaveVO; //휴가 신청내역
 

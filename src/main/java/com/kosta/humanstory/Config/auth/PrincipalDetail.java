@@ -19,10 +19,10 @@ public class PrincipalDetail implements UserDetails {
         this.emp=emp;
     }
 
-//    public PrincipalDetail(EmployeeVO emp, Map<String,Objects> attributes){
-//        this.emp=emp;
-//        this.attributes=attributes;
-//    }
+    public PrincipalDetail(EmployeeVO emp, Map<String,Objects> attributes){
+        this.emp=emp;
+        this.attributes=attributes;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -45,6 +45,8 @@ public class PrincipalDetail implements UserDetails {
     public String getUsername() {
         return emp.getEmpName();
     }
+
+
 
     @Override
     public boolean isAccountNonExpired() {

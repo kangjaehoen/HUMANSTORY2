@@ -16,5 +16,4 @@ public class EmployeeDTO {
     private List<EmployeeVO> employeeVOList;
     private Date workDate;
 
-
 }

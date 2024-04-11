@@ -159,8 +159,8 @@
                 <li><a href="/dept/list">부서관리</a></li>
                 <li><a href="positionlist.it">직위관리</a></li>
                 <%-- 세션 정보를 EL 표현으로 출력 --%>
-                <li><a href="j_spring_security_logout" style="color: red">
-                    ${pageContext.request.userPrincipal.name} 로그아웃</a></li>
+<%--                <li><a href="j_spring_security_logout" style="color: red">--%>
+<%--                    ${pageContext.request.userPrincipal.name} 로그아웃</a></li>--%>
 
             </ul>
         </div>

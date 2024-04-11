@@ -62,6 +62,7 @@
                 window.location.href="/emp/proFile"
             });
 
+
         });
     </script>
     <style>
@@ -145,7 +146,7 @@
                                 <a href="#" class="block px-3 py-1 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-whitetext-white dark:hover:text-white" role="menuitem">Document</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-3 py-1 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-whitetext-white dark:hover:text-white" role="menuitem">Sign out</a>
+                                <a href="/logout" class="block px-3 py-1 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-whitetext-white dark:hover:text-white" role="menuitem">Sign out</a>
                             </li>
                         </ul>
                     </div>
@@ -346,7 +347,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center p-2 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <a href="/logout" class="flex items-center p-2 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 text-gray-100 transition duration-75 dark:text-gray-400 group-hover:text-white hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"/>
                     </svg>

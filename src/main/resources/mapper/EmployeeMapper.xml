@@ -135,7 +135,9 @@
             workDate=#{workDate},
             birthDate=#{birthDate},
             departNum=#{departNum},
-            enabled=#{enabled}
+            enabled=#{enabled},
+            role=#{role}
+
             where empNum=#{empNum}
     </update>
 

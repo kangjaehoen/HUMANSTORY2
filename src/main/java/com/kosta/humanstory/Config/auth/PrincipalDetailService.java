@@ -19,9 +19,9 @@ public class PrincipalDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("empNum: "+ username);
+//        System.out.println("empNum: "+ username);
         EmployeeVO empEntity=mapper.findByEmpNum(username);
-        System.out.println("empEntity: " + empEntity);
+//        System.out.println("empEntity: " + empEntity);
         if(empEntity!=null){
             return new PrincipalDetail(empEntity);
         }

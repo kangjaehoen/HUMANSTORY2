@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.Role;
 import java.util.List;
 
 @Service
@@ -55,6 +56,7 @@ public class EmpServiceImpl implements EmpService{
     public int getTotal(Criteria cri) {
         return mapper.getTotalCount(cri);
     }
+
 
 
 }
