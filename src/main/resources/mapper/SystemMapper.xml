@@ -6,7 +6,7 @@
 <mapper namespace="com.kosta.humanstory.mapper.SystemMapper">
     
     <select id="hireDateFind" resultType="com.kosta.humanstory.domain.EmployeeVO">
-        select * from employee
+        SELECT * FROM employee
     </select>
 
     <update id="leaveGrantNum">
@@ -33,8 +33,26 @@
     </update>
 
     <update id="oneYears">
-        update personalLeaveDay set it_days =#{grantDate} WHERE empNum = #{empNum}
+        UPDATE personalLeaveDay SET it_days =#{grantDate} WHERE empNum = #{empNum}
     </update>
+
+
+
+    
+    <update id="leaveUpdate">
+        UPDATE  personalLeaveDay SET it_days = it_days + #{it_days}
+        WHERE leaveType = #{leaveType}
+        AND empNum = #{empNum}
+    </update>
+
+    <insert id="insertLeave">
+        INSERT INTO  personalLeaveDay (empNum,leaveType,it_days) VALUES (#{empNum},
+                                                                         #{leaveType},#{it_days})
+    </insert>
+
+    <select id="existenceLeave">
+        SELECT * FROM personalLeaveDay WHERE empNum=#{empNum} AND leaveType=#{leaveType}
+    </select>
 
 
 

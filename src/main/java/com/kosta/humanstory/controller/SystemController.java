@@ -1,6 +1,7 @@
 package com.kosta.humanstory.controller;
 
 import com.kosta.humanstory.domain.AnnualLeaveDTO;
+import com.kosta.humanstory.domain.LeaveUserDTO;
 import com.kosta.humanstory.service.EmailSendService;
 import com.kosta.humanstory.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,13 @@ public class SystemController {
         return "redirect:/system/annualForm";
     }
 
-
+    @PostMapping("/updateLeave")
+    public String updateLeaveANDInsertLeave(@ModelAttribute LeaveUserDTO leaveUserDTO){
+        System.out.println("휴가 업데이트 또는 등록");
+        System.out.println(leaveUserDTO);
+        systemService.insertAndUpdateLeave(leaveUserDTO);
+        System.out.println(systemService.insertAndUpdateLeave(leaveUserDTO));
+        return "redirect:/system/annualForm";
+    }
 
 }
