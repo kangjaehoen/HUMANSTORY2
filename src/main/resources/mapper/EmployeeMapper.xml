@@ -79,7 +79,8 @@
                               workDate,
                               birthDate,
                               departNum,
-                              enabled
+                              enabled,
+                              ROLE
 
 )
         VALUES (empNum_seq.NEXTVAL,
@@ -94,7 +95,8 @@
                             #{workDate},
                             #{birthDate},
                             #{departNum},
-                            #{enabled}
+                            #{enabled},
+                            #{role}
                 )
     </insert>
 
@@ -102,6 +104,11 @@
     <select id="read" parameterType="String">
         select * from employee where empNum=#{empNum}
     </select>
+
+    <select id="findByEmpNum" parameterType="String">
+        select * from employee where empNum=#{empNum}
+    </select>
+
 <!--
 
     <select id="authread" resultMap="managerMap">

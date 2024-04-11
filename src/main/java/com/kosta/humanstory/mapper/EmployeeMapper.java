@@ -28,6 +28,7 @@ public interface EmployeeMapper {
 
 //    public List<EmployeeVO> empEmailSend();
 
+    public EmployeeVO findByEmpNum(String EmpNum);
 
 
 }
