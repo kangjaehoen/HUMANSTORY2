@@ -97,7 +97,6 @@ public class SystemService {
 
     public void less1Years() { // 1년 미만인 사람에게 부여되는 휴가 부여 매서드
         LocalDate today = LocalDate.now(); // 현재 날짜
-        System.out.println("오늘 날짜 : " + today);
 
         List<EmployeeVO> emp = systemMapper.hireDateFind();
 
@@ -106,14 +105,13 @@ public class SystemService {
             LocalDate hireLocalDate = hireDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
             long monthsSinceHire = ChronoUnit.MONTHS.between(hireLocalDate, today); // 입사 후 개월 수
-            System.out.println("근무 개월 수 : " + monthsSinceHire);
-            System.out.println(employee.getEmpNum());
+
 
             // 만약 한 달이 경과했을 때에만 휴가 일수를 증가시킴
             if (monthsSinceHire < 12) { // 12개월(1년)미만일 때 증가
                 double leaveDays = 1.0; // 1개월에 1일씩 증가
                 systemMapper.oneYearsLess(employee.getEmpNum(), leaveDays);
-                System.out.println("1개월 증가: " + employee.getEmpNum()+","+leaveDays);
+
             }
         }
     }

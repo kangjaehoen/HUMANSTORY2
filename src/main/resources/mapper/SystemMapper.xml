@@ -67,6 +67,8 @@
         FROM Employee e
                  JOIN PersonalLeaveDay p ON e.empNum = p.empNum
     </select>
+    
+    <resultMap id="userMap" type=""
 
 
 
