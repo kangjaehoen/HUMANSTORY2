@@ -48,7 +48,7 @@
                                formData.append("uploadFile",files[i]);
                            }
                            $.ajax({
-                               url:'uploadAjaxAction',
+                               url:'/upload',
                                processData:false,
                                data:formData,
                                type:'POST',

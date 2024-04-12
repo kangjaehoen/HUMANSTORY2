@@ -1,10 +1,8 @@
 package com.kosta.humanstory.controller;
 
 import com.kosta.humanstory.service.FileUploadService;
-import com.kosta.humanstory.service.FileUploadServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +22,7 @@ public class FileUploadController {
     }
 
     @PostMapping("/upload")
-    public void uploadFile(MultipartFile[] uploadFile){
+    public static String uploadFile(@RequestParam("file") MultipartFile[] uploadFile, RedirectAttributes rttr){
 
         String uploadFolder="D:\\upload";
 
@@ -32,6 +30,9 @@ public class FileUploadController {
             System.out.println("===========================");
             System.out.println("Upload File Name"+multipartFile.getOriginalFilename());
             System.out.println("Upload File Size"+multipartFile.getSize());
+
+            String uploadFileName=multipartFile.getOriginalFilename();
+            uploadFileName=uploadFileName.substring(uploadFileName.lastIndexOf("\\")+1);
 
             File saveFile=new File(uploadFolder,multipartFile.getOriginalFilename());
 
@@ -44,17 +45,8 @@ public class FileUploadController {
             }
 
         }//end for
-
+        return "redirect:emp/list";
     }
-//    @PostMapping("/upload")
-//    public void uploadFormPost(MultipartFile[] uploadFile,Model model){
-//        for (MultipartFile multipartFile: uploadFile){
-//            System.out.println("----------------");
-//            System.out.println("Upload File Name:"+multipartFile.getOriginalFilename());
-//            System.out.println("Upload File Size:"+multipartFile.getSize());
-//
-//        }
-//
-//    }
+
 
 }
