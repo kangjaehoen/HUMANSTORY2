@@ -1,7 +1,7 @@
 package com.kosta.humanstory.service;
 
 import com.kosta.humanstory.domain.AttachVO;
-import com.kosta.humanstory.mapper.EmpAttachMapper;
+import com.kosta.humanstory.mapper.AttachMapper;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUploadServiceImpl implements FileUploadService {
 
 @Autowired
- EmpAttachMapper mapper;
+AttachMapper mapper;
 
 
     @Override
