@@ -43,19 +43,21 @@
     }
 
     .navigation {
-        margin-left: 430px;
-        margin-top: 100px;
+        margin-top: 25px;
+        margin-left: 255px;
     }
 
     .navigation div {
         display: inline;
-        padding-bottom: 10px;
-        margin-right: 50px;
+
+        margin-right: 20px;
+
+
     }
 
     .navigation div a {
         text-decoration: none;
-        color: #a5a5a5;
+        color: #dae0eb;
         font-weight: bold;
         display: block; /* a태그는 글자성격 = inline */
         float: left;
@@ -70,11 +72,11 @@
         color: #2900c5;
     }
 
-    #giveDate {
-        color: #333;
+    #giveDate{
+        color: #676767;
     }
 
-    #giveDate:hover {
+    #giveDate:hover{
         color: #2900c5;
     }
 
@@ -87,30 +89,41 @@
         font-size: 12px;
 
     }
+    #box1{
+        margin-top:30px;
+
+    }
 
 
 </style>
 
-</head>
-<body>
+
 
 
 <div class="navigation">
-    <div>
-        <a href="/">메인페이지</a>
-    </div>
-    <div>
-        <a id="giveDate" href="/system/annualForm">휴가 일수 부여 설정</a>
-    </div>
-    <div>
-        <a id="empEmail" href="/email/list">휴가 촉진 대상자</a>
-    </div>
-    <div>
-        <a href="/leavePromote/list">휴가 촉진</a>
-    </div>
-    <div>
-        <a id="policyNav" href="/leavePolicy/list">휴가 정책</a>
-    </div>
+    <nav class="dark:bg-gray-900 pt-4">
+        <div class="max-w-screen-xl justify-between mx-auto p-4">
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg bg-gray-800 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-gray-800 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <li>
+                        <a href="/" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">메인페이지</a>
+                    </li>
+                    <li>
+                        <a id="giveDate" href="/system/annualForm" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">휴가 일수 부여 설정</a>
+                    </li>
+                    <li>
+                        <a href="/email/list" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">휴가 촉진 대상자</a>
+                    </li>
+                    <li>
+                        <a href="/leavePromote/list"  id="promoteNav" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">휴가 촉진</a>
+                    </li>
+                    <li>
+                        <a href="/leavePolicy/list" id="policyNav" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">휴가 정책</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </div>
 
 
@@ -137,12 +150,13 @@
 
 
 <div id="sessionBox">
-    <section class="bg-gray-50 dark:bg-gray-900  h-screen flex items-center">
+    <section class="bg-gray-50 dark:bg-gray-900  h-screen  items-center">
         <div class="max-w-screen-xl px-4 mx-auto lg:px-12 w-full">
 
 
             <!-- Start coding here -->
-            <div class="relative bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
+            <br>
+            <div id ="box1" class="relative bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
                 <h2>1. 휴가 부여일 설정</h2>
                 <div
                         class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
@@ -215,7 +229,7 @@
                                 </div>
                                 <input type="text" id="simple-search2"
                                        class="block w-1/2 p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                       placeholder="부여할 휴가일수를 입력하세요. ex)15" required="">
+                                       placeholder="부여할 휴가일수 ex)15" required="">
                             </div>
                         </form>
                     </div>
@@ -247,10 +261,12 @@
                     </div>
                 </div>
             </div>
+            <br><br>
+
 
             <button id="modalBtn" type="button" data-modal-target="crypto-modal" data-modal-toggle="crypto-modal" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
                 <svg aria-hidden="true" class="w-4 h-4 me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
-                휴가 수동 부여
+                휴가일 수동 부여
             </button><br><br>
 
 
@@ -294,7 +310,8 @@
                                                                      type="checkbox" /></th>
                             <th scope="col" class="px-4 py-3">사원번호</th>
                             <th scope="col" class="px-4 py-3">사원명</th>
-                            <th scope="col" class="px-4 py-3">잔여 연차 일수</th>
+                            <th scope="col" class="px-4 py-3">직책</th>
+                            <th scope="col" class="px-4 py-3">입사일</th>
                             <th scope="col" class="px-4 py-3">이메일</th>
                             <th scope="col" class="px-4 py-3"></th>
                         </tr>
@@ -307,7 +324,9 @@
                                 <th scope="row"
                                     class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white" id="empNum">${list.empNum }</th>
                                 <td class="px-4 py-3" id="empName">${list.empName}</td>
-                                <td class="px-4 py-3" id="it_days">${list.it_days}</td>
+                                <td class="px-4 py-3" id="job">${list.job}</td>
+                                <td class="px-4 py-3" id="it_days"><fmt:formatDate pattern="yyyy-MM-dd"
+                                                                                   value="${list.hireDate}"/></td>
                                 <td class="px-4 py-3" id="email">${list.email}</td>
                             </tr>
                         </c:forEach>
@@ -317,7 +336,7 @@
 
                 <ul class="my-4 space-y-3">
                     <li>
-                        <a href="#" id="userList" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                        <a href="#1" id="userList" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-width="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
                             </svg>
@@ -388,9 +407,40 @@
             </div>
                     <div>
                             <a href="#" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
-                                <svg aria-hidden="true" class="h-4" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M72.0998 0.600098H48.3998H24.5998H0.799805V24.4001V48.2001V49.7001V71.8001V71.9001V95.5001H24.5998V72.0001V71.9001V49.8001V48.3001V24.5001H48.3998H72.1998H95.9998V0.700104H72.0998V0.600098Z" fill="#617BFF"/><path d="M48.5 71.8002H72.1V95.6002H73C79.1 95.6002 84.9 93.2002 89.2 88.9002C93.5 84.6002 95.9 78.8002 95.9 72.7002V48.2002H48.5V71.8002Z" fill="#617BFF"/></svg>
-                                <span class="flex-1 ms-3 whitespace-nowrap">Fortmatic</span>
+                                <?xml version="1.0" ?><svg  width="30" height="30" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#04009a;}.cls-2{fill:#77acf1;}</style></defs><g data-name="25. Checklist" id="_25._Checklist"><path class="cls-1" d="M24,6H22a2,2,0,0,0-2-2H19V3a3,3,0,0,0-6,0V4H12a2,2,0,0,0-2,2H8A3,3,0,0,0,5,9V29a3,3,0,0,0,3,3h9a1,1,0,0,0,0-2H8a1,1,0,0,1-1-1V9A1,1,0,0,1,8,8h2a2,2,0,0,0,2,2h8a2,2,0,0,0,2-2h2a1,1,0,0,1,1,1v8a1,1,0,0,0,2,0V9A3,3,0,0,0,24,6ZM15,3a1,1,0,0,1,2,0V4H15ZM12,8V6h8V7h0V8Z"/><path class="cls-2" d="M17,24a1,1,0,1,1,.71-.29A1.05,1.05,0,0,1,17,24Z"/><path class="cls-2" d="M11,25a1,1,0,0,1-.71-.29l-1-1a1,1,0,0,1,1.42-1.42l.29.3,1.29-1.3a1,1,0,0,1,1.42,1.42l-2,2A1,1,0,0,1,11,25Z"/><path class="cls-2" d="M22,16H17a1,1,0,0,1,0-2h5a1,1,0,0,1,0,2Z"/><path class="cls-2" d="M11,17a1,1,0,0,1-.71-.29l-1-1a1,1,0,0,1,1.42-1.42l.29.3,1.29-1.3a1,1,0,0,1,1.42,1.42l-2,2A1,1,0,0,1,11,17Z"/><path class="cls-2" d="M24,21h4a0,0,0,0,1,0,0v3a1,1,0,0,1-1,1H25a1,1,0,0,1-1-1V21A0,0,0,0,1,24,21Z"/><path class="cls-1" d="M29,32H23a3,3,0,0,1-3-3V23a3,3,0,0,1,3-3h6a3,3,0,0,1,3,3v6A3,3,0,0,1,29,32ZM23,22a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V23a1,1,0,0,0-1-1Z"/></g></svg>                                <span class="flex-1 ms-3 whitespace-nowrap">휴가 리스트</span>
                             </a>
+                    </div>
+
+                    <div class="p-4 md:p-5"  id="leaveList" style="display: none">
+                        <div class="overflow-x-auto" #click="">
+                            <table
+                                    class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead
+                                        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+
+                                    <th scope="col" class="px-4 py-3">사원번호</th>
+                                    <th scope="col" class="px-4 py-3">사원명</th>
+                                    <th scope="col" class="px-4 py-3">휴가명</th>
+                                    <th scope="col" class="px-4 py-3">잔여 연차 일수</th>
+                                    <th scope="col" class="px-4 py-3">이메일</th>
+                                    <th scope="col" class="px-4 py-3"></th>
+                                </tr>
+                                </thead>
+                                <tbody id="listTbody1">
+                                <c:forEach items="${leave}" var="list">
+                                    <tr class="border-b dark:border-gray-700">
+                                        <th scope="row"
+                                            class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white" id="empNum1">${list.empNum }</th>
+                                        <td class="px-4 py-3" id="empName1">${list.empName}</td>
+                                        <td class="px-4 py-3" id="leaveType1">${list.leaveType}</td>
+                                        <td class="px-4 py-3" id="it_days1">${list.it_days}</td>
+                                        <td class="px-4 py-3" id="email1">${list.email}</td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
 
@@ -409,9 +459,16 @@
                         <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
                     </div>
 
+                    <div class="flex items-center">
+                        <input id="link-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="link-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">이메일 발송 여부 <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline">terms and conditions</a>.</label>
+                    </div>
+
 
                     <button id="userManagerBTN" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
-                        <svg aria-hidden="true" class="w-6 h-5 me-2 -ms-1" viewBox="0 0 2405 2501" fill="none" xmlns="http://www.w3.org/2000/svg"> <g clip-path="url(#clip0_1512_1323)"> <path d="M2278.79 1730.86L2133.62 2221.69L1848.64 2143.76L2278.79 1730.86Z" fill="#E4761B" stroke="#E4761B" stroke-width="5.94955"/> <path d="M1848.64 2143.76L2123.51 1767.15L2278.79 1730.86L1848.64 2143.76Z" fill="#E4761B" stroke="#E4761B" stroke-width="5.94955"/> <path d="M2065.2 1360.79L2278.79 1730.86L2123.51 1767.15L2065.2 1360.79ZM2065.2 1360.79L2202.64 1265.6L2278.79 1730.86L2065.2 1360.79Z" fill="#F6851B" stroke="#F6851B" stroke-width="5.94955"/> <path d="M1890.29 1081.17L2285.34 919.338L2265.7 1007.99L1890.29 1081.17ZM2253.21 1114.48L1890.29 1081.17L2265.7 1007.99L2253.21 1114.48Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M2253.21 1114.48L2202.64 1265.6L1890.29 1081.17L2253.21 1114.48ZM2332.34 956.82L2265.7 1007.99L2285.34 919.338L2332.34 956.82ZM2253.21 1114.48L2265.7 1007.99L2318.65 1052.01L2253.21 1114.48Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M1542.24 2024.17L1641 2055.7L1848.64 2143.75L1542.24 2024.17Z" fill="#E2761B" stroke="#E2761B" stroke-width="5.94955"/> <path d="M2202.64 1265.6L2253.21 1114.48L2296.64 1147.8L2202.64 1265.6ZM2202.64 1265.6L1792.71 1130.55L1890.29 1081.17L2202.64 1265.6Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M1987.86 617.696L1890.29 1081.17L1792.71 1130.55L1987.86 617.696Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M2285.34 919.338L1890.29 1081.17L1987.86 617.696L2285.34 919.338Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M1987.86 617.696L2400.16 570.1L2285.34 919.338L1987.86 617.696Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M2202.64 1265.6L2065.2 1360.79L1792.71 1130.55L2202.64 1265.6Z" fill="#F6851B" stroke="#F6851B" stroke-width="5.94955"/> <path d="M2382.31 236.33L2400.16 570.1L1987.86 617.696L2382.31 236.33Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M2382.31 236.33L1558.3 835.45L1547.59 429.095L2382.31 236.33Z" fill="#E2761B" stroke="#E2761B" stroke-width="5.94955"/> <path d="M934.789 380.309L1547.59 429.095L1558.3 835.449L934.789 380.309Z" fill="#F6851B" stroke="#F6851B" stroke-width="5.94955"/> <path d="M1792.71 1130.55L1558.3 835.449L1987.86 617.696L1792.71 1130.55Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M1792.71 1130.55L2065.2 1360.79L1682.65 1403.04L1792.71 1130.55Z" fill="#E4761B" stroke="#E4761B" stroke-width="5.94955"/> <path d="M1682.65 1403.04L1558.3 835.449L1792.71 1130.55L1682.65 1403.04Z" fill="#E4761B" stroke="#E4761B" stroke-width="5.94955"/> <path d="M1987.86 617.696L1558.3 835.45L2382.31 236.33L1987.86 617.696Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M940.144 2134.24L1134.69 2337.11L869.939 2096.16L940.144 2134.24Z" fill="#C0AD9E" stroke="#C0AD9E" stroke-width="5.94955"/> <path d="M1848.64 2143.75L1940.86 1793.33L2123.51 1767.15L1848.64 2143.75Z" fill="#CD6116" stroke="#CD6116" stroke-width="5.94955"/> <path d="M151.234 1157.92L487.978 803.917L194.666 1115.67L151.234 1157.92Z" fill="#E2761B" stroke="#E2761B" stroke-width="5.94955"/> <path d="M2123.51 1767.15L1940.86 1793.33L2065.2 1360.79L2123.51 1767.15ZM1558.3 835.449L1230.48 824.74L934.789 380.309L1558.3 835.449Z" fill="#F6851B" stroke="#F6851B" stroke-width="5.94955"/> <path d="M2065.2 1360.79L1940.86 1793.33L1930.74 1582.12L2065.2 1360.79Z" fill="#E4751F" stroke="#E4751F" stroke-width="5.94955"/> <path d="M1682.65 1403.04L2065.2 1360.79L1930.74 1582.12L1682.65 1403.04Z" fill="#CD6116" stroke="#CD6116" stroke-width="5.94955"/> <path d="M1230.48 824.74L1558.3 835.449L1682.65 1403.04L1230.48 824.74Z" fill="#F6851B" stroke="#F6851B" stroke-width="5.94955"/> <path d="M1230.48 824.74L345.784 6.08252L934.79 380.309L1230.48 824.74ZM934.195 2258.58L165.513 2496.56L12.0146 1910.53L934.195 2258.58Z" fill="#E4761B" stroke="#E4761B" stroke-width="5.94955"/> <path d="M265.465 1304.27L555.803 1076.41L799.14 1132.93L265.465 1304.27Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M799.139 1132.93L555.803 1076.41L686.098 538.567L799.139 1132.93Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M194.666 1115.67L555.803 1076.41L265.465 1304.27L194.666 1115.67Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M1930.74 1582.12L1780.81 1506.56L1682.65 1403.04L1930.74 1582.12Z" fill="#CD6116" stroke="#CD6116" stroke-width="5.94955"/> <path d="M194.666 1115.67L169.083 980.618L555.803 1076.41L194.666 1115.67Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M1749.88 1676.72L1780.81 1506.56L1930.74 1582.12L1749.88 1676.72Z" fill="#233447" stroke="#233447" stroke-width="5.94955"/> <path d="M1940.86 1793.33L1749.88 1676.72L1930.74 1582.12L1940.86 1793.33Z" fill="#F6851B" stroke="#F6851B" stroke-width="5.94955"/> <path d="M555.803 1076.41L169.082 980.618L137.55 866.982L555.803 1076.41ZM686.098 538.567L555.803 1076.41L137.55 866.982L686.098 538.567ZM686.098 538.567L1230.48 824.74L799.139 1132.93L686.098 538.567Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M799.14 1132.93L1230.48 824.74L1422.65 1411.96L799.14 1132.93ZM1422.65 1411.96L826.508 1399.47L799.14 1132.93L1422.65 1411.96Z" fill="#E4761B" stroke="#E4761B" stroke-width="5.94955"/> <path d="M265.465 1304.27L799.14 1132.93L826.508 1399.47L265.465 1304.27ZM1682.65 1403.04L1422.65 1411.96L1230.48 824.74L1682.65 1403.04Z" fill="#F6851B" stroke="#F6851B" stroke-width="5.94955"/> <path d="M1780.81 1506.56L1749.88 1676.72L1682.65 1403.04L1780.81 1506.56Z" fill="#CD6116" stroke="#CD6116" stroke-width="5.94955"/> <path d="M345.784 6.08252L1230.48 824.74L686.098 538.567L345.784 6.08252Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M12.0146 1910.53L758.088 1879.59L934.195 2258.58L12.0146 1910.53Z" fill="#E4761B" stroke="#E4761B" stroke-width="5.94955"/> <path d="M934.194 2258.58L758.088 1879.59L1124.58 1861.75L934.194 2258.58Z" fill="#CD6116" stroke="#CD6116" stroke-width="5.94955"/> <path d="M1749.88 1676.72L1940.86 1793.33L2046.16 2041.42L1749.88 1676.72ZM826.508 1399.47L12.0146 1910.53L265.465 1304.27L826.508 1399.47ZM758.088 1879.59L12.0146 1910.53L826.508 1399.47L758.088 1879.59ZM1682.65 1403.04L1731.43 1580.33L1495.83 1594.02L1682.65 1403.04ZM1495.83 1594.02L1422.65 1411.96L1682.65 1403.04L1495.83 1594.02Z" fill="#F6851B" stroke="#F6851B" stroke-width="5.94955"/> <path d="M1134.69 2337.11L934.194 2258.58L1631.48 2375.79L1134.69 2337.11Z" fill="#C0AD9E" stroke="#C0AD9E" stroke-width="5.94955"/> <path d="M265.465 1304.27L151.234 1157.91L194.666 1115.67L265.465 1304.27Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M1710.61 2288.92L1631.48 2375.79L934.194 2258.58L1710.61 2288.92Z" fill="#D7C1B3" stroke="#D7C1B3" stroke-width="5.94955"/> <path d="M1748.09 2075.93L934.194 2258.58L1124.58 1861.75L1748.09 2075.93Z" fill="#E4761B" stroke="#E4761B" stroke-width="5.94955"/> <path d="M934.194 2258.58L1748.09 2075.93L1710.61 2288.92L934.194 2258.58Z" fill="#D7C1B3" stroke="#D7C1B3" stroke-width="5.94955"/> <path d="M137.55 866.982L110.777 409.462L686.098 538.567L137.55 866.982ZM194.665 1115.67L115.536 1035.35L169.082 980.618L194.665 1115.67Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M1289.38 1529.76L1422.65 1411.96L1403.61 1699.92L1289.38 1529.76Z" fill="#CD6116" stroke="#CD6116" stroke-width="5.94955"/> <path d="M1422.65 1411.96L1289.38 1529.76L1095.43 1630.31L1422.65 1411.96Z" fill="#CD6116" stroke="#CD6116" stroke-width="5.94955"/> <path d="M2046.16 2041.42L2009.87 2014.65L1749.88 1676.72L2046.16 2041.42Z" fill="#F6851B" stroke="#F6851B" stroke-width="5.94955"/> <path d="M1095.43 1630.31L826.508 1399.47L1422.65 1411.96L1095.43 1630.31Z" fill="#CD6116" stroke="#CD6116" stroke-width="5.94955"/> <path d="M1403.61 1699.92L1422.65 1411.96L1495.83 1594.02L1403.61 1699.92Z" fill="#E4751F" stroke="#E4751F" stroke-width="5.94955"/> <path d="M89.3589 912.199L137.55 866.982L169.083 980.618L89.3589 912.199Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M1403.61 1699.92L1095.43 1630.31L1289.38 1529.76L1403.61 1699.92Z" fill="#233447" stroke="#233447" stroke-width="5.94955"/> <path d="M686.098 538.567L110.777 409.462L345.784 6.08252L686.098 538.567Z" fill="#763D16" stroke="#763D16" stroke-width="5.94955"/> <path d="M1631.48 2375.79L1664.2 2465.03L1134.69 2337.12L1631.48 2375.79Z" fill="#C0AD9E" stroke="#C0AD9E" stroke-width="5.94955"/> <path d="M1124.58 1861.75L1095.43 1630.31L1403.61 1699.92L1124.58 1861.75Z" fill="#F6851B" stroke="#F6851B" stroke-width="5.94955"/> <path d="M826.508 1399.47L1095.43 1630.31L1124.58 1861.75L826.508 1399.47Z" fill="#E4751F" stroke="#E4751F" stroke-width="5.94955"/> <path d="M1495.83 1594.02L1731.43 1580.33L2009.87 2014.65L1495.83 1594.02ZM826.508 1399.47L1124.58 1861.75L758.088 1879.59L826.508 1399.47Z" fill="#F6851B" stroke="#F6851B" stroke-width="5.94955"/> <path d="M1495.83 1594.02L1788.55 2039.64L1403.61 1699.92L1495.83 1594.02Z" fill="#E4751F" stroke="#E4751F" stroke-width="5.94955"/> <path d="M1403.61 1699.92L1788.55 2039.64L1748.09 2075.93L1403.61 1699.92Z" fill="#F6851B" stroke="#F6851B" stroke-width="5.94955"/> <path d="M1748.09 2075.93L1124.58 1861.75L1403.61 1699.92L1748.09 2075.93ZM2009.87 2014.65L1788.55 2039.64L1495.83 1594.02L2009.87 2014.65Z" fill="#F6851B" stroke="#F6851B" stroke-width="5.94955"/> <path d="M2068.18 2224.07L1972.99 2415.05L1664.2 2465.03L2068.18 2224.07ZM1664.2 2465.03L1631.48 2375.79L1710.61 2288.92L1664.2 2465.03Z" fill="#C0AD9E" stroke="#C0AD9E" stroke-width="5.94955"/> <path d="M1710.61 2288.92L1768.92 2265.72L1664.2 2465.03L1710.61 2288.92ZM1664.2 2465.03L1768.92 2265.72L2068.18 2224.07L1664.2 2465.03Z" fill="#C0AD9E" stroke="#C0AD9E" stroke-width="5.94955"/> <path d="M2009.87 2014.65L2083.05 2059.27L1860.54 2086.04L2009.87 2014.65Z" fill="#161616" stroke="#161616" stroke-width="5.94955"/> <path d="M1860.54 2086.04L1788.55 2039.64L2009.87 2014.65L1860.54 2086.04ZM1834.96 2121.15L2105.66 2088.42L2068.18 2224.07L1834.96 2121.15Z" fill="#161616" stroke="#161616" stroke-width="5.94955"/> <path d="M2068.18 2224.07L1768.92 2265.72L1834.96 2121.15L2068.18 2224.07ZM1768.92 2265.72L1710.61 2288.92L1748.09 2075.93L1768.92 2265.72ZM1748.09 2075.93L1788.55 2039.64L1860.54 2086.04L1748.09 2075.93ZM2083.05 2059.27L2105.66 2088.42L1834.96 2121.15L2083.05 2059.27Z" fill="#161616" stroke="#161616" stroke-width="5.94955"/> <path d="M1834.96 2121.15L1860.54 2086.04L2083.05 2059.27L1834.96 2121.15ZM1748.09 2075.93L1834.96 2121.15L1768.92 2265.72L1748.09 2075.93Z" fill="#161616" stroke="#161616" stroke-width="5.94955"/> <path d="M1860.54 2086.04L1834.96 2121.15L1748.09 2075.93L1860.54 2086.04Z" fill="#161616" stroke="#161616" stroke-width="5.94955"/> </g> <defs> <clipPath id="clip0_1512_1323"> <rect width="2404" height="2500" fill="white" transform="translate(0.519043 0.132812)"/> </clipPath> </defs> </svg>
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                        </svg>
                         사용자 휴가 부여
                     </button>
 
@@ -432,15 +489,26 @@
     <div>
         <form id="updateLeave" action="/system/updateLeave" method="post">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
         </form>
     </div>
 
 
+<%--    <div>--%>
+<%--        <form id="updateLeaveEmailSend" action="/email/updateLeaveSend" method="post">--%>
+<%--            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />--%>
+<%--        </form>--%>
+<%--    </div>--%>
 
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+    var clickText;
+
     $(function() {
         $("#simple-search").change(function() {
             let dateValue = $(this).val();
@@ -487,21 +555,36 @@
         // })
 
         $("#multi-dropdown ul li").click(function (){
-            var clickText = $(this).text().trim();
+             clickText = $(this).text().trim();
             console.log(clickText);
 
-            $('<input>').attr({
-                type : "hidden",
-                name : "leaveType",
-                value : clickText
-            }).appendTo("#updateLeave");
+            var leaveTypeInput = $('#updateLeave input[name="leaveType"]');
+            if (leaveTypeInput.length === 0) {
+                // leaveType 입력 필드가 존재하지 않으면 새로 추가
+                $('<input>').attr({
+                    type : "hidden",
+                    name : "leaveType",
+                    value : clickText
+                }).appendTo("#updateLeave");
+            } else {
+                leaveTypeInput.val(clickText);
+            }
 
+            var updateLeaveEmail = $('#updateLeaveEmailSend input[name="leaveType"]');
+            if (updateLeaveEmail.length === 0) {
+                // updateLeaveEmail 입력 필드가 존재하지 않으면 새로 추가
+                $('<input>').attr({
+                    type : "hidden",
+                    name : "leaveType",
+                    value : clickText
+                }).appendTo("#updateLeaveEmailSend");
+            } else {
+                updateLeaveEmail.val(clickText);
+            }
 
             if (clickText === "출산 휴가") {
                 let birtLeaveText = "출산휴가는 출산일을 기준으로 전후 45일씩 부여";
                 $("#guideMessage").text(birtLeaveText);
-            }else {
-                let annualText = "연차일 수를 부여해주세요."
             }
 
             $("#multiLevelDropdownButton").text(clickText);
@@ -519,10 +602,12 @@
                 var empName = empRow.find("#empName").text();
                /* var it_days = empRow.find("#it_days").text();*/
                 var email = empRow.find("#email").text();
+                var job = empRow.find("#job").text();
 
                 console.log("empNum : " + empNum);
                 console.log("empName :" + empName);
                 console.log("email :" + email);
+                console.log("직책 : " + job);
              /*   console.log("it_days :" + it_days);*/
                 $('<input>').attr({
                     type : "hidden",
@@ -542,19 +627,57 @@
                     value : email
                 }).appendTo("#updateLeave");
 
+                $('<input>').attr({
+                    type : "hidden",
+                    name : "job",
+                    value : job
+                }).appendTo("#updateLeave");
 
+                //이메일
+                $('<input>').attr({
+                    type : "hidden",
+                    name : "empNum",
+                    value : empNum
+                }).appendTo("#updateLeaveEmailSend");
+
+                $('<input>').attr({
+                    type : "hidden",
+                    name : "empName",
+                    value : empName
+                }).appendTo("#updateLeaveEmailSend");
+
+                $('<input>').attr({
+                    type : "hidden",
+                    name : "email",
+                    value : email
+                }).appendTo("#updateLeaveEmailSend");
+
+                $('<input>').attr({
+                    type : "hidden",
+                    name : "job",
+                    value : job
+                }).appendTo("#updateLeaveEmailSend");
 
 
             }else {
                 $('#updateLeave input[name="empNum"]').remove();
                 $('#updateLeave input[name="empName"]').remove();
-                // $('#empEmailInfo input[name="it_days"]').remove();
                 $('#updateLeave input[name="email"]').remove();
+                $('#updateLeave input[name="job"]').remove();
+
+                    //이메일
+                $('#updateLeaveEmailSend input[name="empNum"]').remove();
+                $('#updateLeaveEmailSend input[name="empName"]').remove();
+                $('#updateLeaveEmailSend input[name="email"]').remove();
+                $('#updateLeaveEmailSend input[name="job"]').remove();
             }
 
 
         });
         $("#price").change(function (){
+
+            $('#updateLeave input[name="it_days"]').remove();
+            $('#updateLeaveEmailSend input[name="it_days"]').remove();
             var price = parseFloat($(this).val());
                 console.log(price);
 
@@ -564,12 +687,79 @@
                 value : price
             }).appendTo("#updateLeave");
 
+            $('<input>').attr({
+                type : "hidden",
+                name : "it_days",
+                value : price
+            }).appendTo("#updateLeaveEmailSend");
+
         })
 
-        $("#userManagerBTN").click(function (){
-            $("#updateLeave").submit();
+        $("#userManagerBTN").click(function (event){
+            event.preventDefault();
 
+           let leaveType =   $('#updateLeave input[name="leaveType"]').val();
+           let empNum =  $('#updateLeave input[name="empNum"]').val();
+           let empName =   $('#updateLeave input[name="empName"]').val();
+           let email = $('#updateLeave input[name="email"]').val();
+           let it_days =  $('#updateLeave input[name="it_days"]').val();
+            let job =  $('#updateLeave input[name="job"]').val();
+            let message = $('#message').val();
+            let emailCheckboxChecked = $('#link-checkbox').prop('checked');
+
+
+            if(leaveType == null || empNum==null || empName==null || email==null || it_days ==null ){
+                alert("업데이트할 사원, 휴가명, 휴가일수를 선택해주세요.");
+            }else {
+                $("#updateLeave").submit();
+                alert("이메일 발송");
+                if (emailCheckboxChecked) {
+                    $.ajax({
+                        url: "/email/updateLeaveSend",
+                        method: "POST",
+                        data: {
+                            leaveType: leaveType,
+                            empNum: empNum,
+                            empName: empName,
+                            email: email,
+                            it_days: it_days,
+                            job: job,
+                            message:message
+                        },
+                        <%--headers: {--%>
+                        <%--    "${_csrf.parameterName}": "${_csrf.token}"--%>
+                        <%--},--%>
+                        success: function(response) {
+                            alert("사원번호가 " + response.empNum + "인 " + response.empName + "님한테 휴가 부여 메일을 보냈습니다.");
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
+                            alert("휴가 부여 메일 전송 중 오류가 발생했습니다.");
+                        }
+                    });
+                }
+            }
         })
+
+        $('.tdCheck').click(function(){
+            $('.tdCheck').not(this).prop('checked', false);
+        });
+        $("a[href='#']").click(function(){
+
+            $("#leaveList").toggle();
+        });
+        $("#updateLeave").submit(function (){
+            let empName1 = $('#updateLeave input[name="empName"]').val();
+            let  itDays1 = $('#updateLeave input[name="it_days"]').val();
+
+            alert(empName1 + "님 한테 " + clickText + "를 " + itDays1 + "일 부여하였습니다.");
+        })
+        // $("#updateLeaveEmailSend").submit(function (){
+        //     let empNum = $('#updateLeave input[name="empNum"]').val();
+        //     let empName1 = $('#updateLeave input[name="empName"]').val();
+        //     alert("사원번호가 "+empNum+"인 "+ empName1+"님한테 휴가 부여 메일을 보냈습니다.");
+        //
+        // });
 
     });
 

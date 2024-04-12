@@ -14,12 +14,11 @@ public interface SystemMapper {
     public LeaveCategoryVO leaveGrantDaySetApply();
     public int oneYears(AnnualLeaveDTO dto);
     public void oneYearsLess(String empNum, double leaveDays);
-
-
-
     public int leaveUpdate(LeaveUserDTO dto);
     public int insertLeave(LeaveUserDTO dto);
     public PersonalLeaveDayVO existenceLeave(LeaveUserDTO dto);
+
+    public List<EmployeeWithPersonalLeaveDayDTO> userListManager();
 
 
 }

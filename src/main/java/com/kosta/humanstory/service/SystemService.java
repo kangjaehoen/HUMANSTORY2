@@ -4,6 +4,7 @@ import com.kosta.humanstory.domain.*;
 import com.kosta.humanstory.mapper.SystemMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -121,16 +122,24 @@ public class SystemService {
         return systemMapper.hireDateFind();
     }
 
-    public int insertAndUpdateLeave(LeaveUserDTO dto) {
-        PersonalLeaveDayVO personalLeaveDayVO = systemMapper.existenceLeave(dto);
 
-        if(personalLeaveDayVO == null){
+    public void insertAndUpdateLeave(LeaveUserDTO dto) {
+        PersonalLeaveDayVO personalLeaveDayVO = systemMapper.existenceLeave(dto);
+        System.out.println("서비스단 확인 : "+personalLeaveDayVO);
+
+        if (personalLeaveDayVO == null) {
             System.out.println("한번도 신청한적 없는 휴가 , 등록");
-            return systemMapper.insertLeave(dto);
-        }else{
+           systemMapper.insertLeave(dto);
+        } else {
             System.out.println("신청내역이 있어서 업데이트");
-            return systemMapper.leaveUpdate(dto);
+             systemMapper.leaveUpdate(dto);
         }
     }
+
+    public List<EmployeeWithPersonalLeaveDayDTO>  userListManager(){
+        System.out.println("관리자용 사원 휴가 리스트");
+        return systemMapper.userListManager();
+    }
+
 
 }

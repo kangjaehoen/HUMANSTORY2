@@ -54,6 +54,19 @@
         SELECT * FROM personalLeaveDay WHERE empNum=#{empNum} AND leaveType=#{leaveType}
     </select>
 
+    <resultMap id="userMap" type="com.kosta.humanstory.domain.EmployeeWithPersonalLeaveDayDTO">
+        <id property="empNum" column="empNum" />
+        <result property="empName" column="empName" />
+        <result property="email" column="email" />
+        <result property="leaveType" column="leaveType" />
+        <result property="it_days" column="it_days" />
+    </resultMap>
+
+    <select id="userListManager" resultMap="userMap">
+        SELECT e.empNum, e.empName, e.email, p.leaveType, p.it_days
+        FROM Employee e
+                 JOIN PersonalLeaveDay p ON e.empNum = p.empNum
+    </select>
 
 
 
