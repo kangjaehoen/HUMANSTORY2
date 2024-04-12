@@ -31,7 +31,8 @@ public class EmployeeVO {
 
     private String role; //권한
 
-      private List<LeaveVO> leaveVO; //휴가 신청내역
+    private List<LeaveVO> leaveVO; //휴가 신청내역
+
 
 
 }

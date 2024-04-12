@@ -4,11 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
+<%@ include file="sideBar.jsp" %>
 <head>
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%@ include file="sideBar.jsp" %>
+
 
 <link rel="stylesheet"
       href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -33,6 +34,39 @@
     $(document)
         .ready(
             function() {
+                $(".btnPictureInsert").click(function(){
+
+
+                   $("#pictureInsertForm").modal(function (){
+                       $('#uploadBtn').on("click",function(e){
+                           var formData=new formData();
+                           var inputFile=$("input[name='file']");
+                           var files=inputFile[0].files;
+                           console.log(files);
+
+                           for (var i=0; i<files.length;i++){
+                               formData.append("uploadFile",files[i]);
+                           }
+                           $.ajax({
+                               url:'uploadAjaxAction',
+                               processData:false,
+                               data:formData,
+                               type:'POST',
+                               success:function (result){
+                                   alert("Uploaded");
+                               }
+                           });
+                       });
+                   });
+                });
+                // $(".pictureModal").click(function (){
+                //     $("#pictureModal").modal();
+                // })
+
+
+
+
+
                 <%--$("#myModal").modal("hide");--%>
                 <%--var result = '<c:out value="${result}"/>';--%>
 
@@ -54,13 +88,13 @@
                     console.log("등록이동");
                 });
 
-                $(".empNum").on(
-                    "click",
-                    function() {
-                        self.location.href = "/emp/modify?empNum="
-                            +empNum;
-
-                    });
+                // $(".empNum").on(
+                //     "click",
+                //     function() {
+                //         self.location.href = "/emp/modify?empNum="
+                //             +empNum;
+                //
+                //     });
 
                 var actionForm = $("#actionForm");
 
@@ -176,9 +210,9 @@
 <%--                <div>--%>
 <%--                    <form class="form-inline" id="searchForm" action="/emp/list" method="get">--%>
 <%--                        <select class="form-control" id="key" name="type">--%>
-<%--                            <option value="T">사원번호</option>--%>
-<%--                            <option value="C">사원명</option>--%>
-<%--                            <option value="W">부서명</option>--%>
+<%--                            <option value="1">사원번호</option>--%>
+<%--                            <option value="2">사원명</option>--%>
+<%--                            <option value="3">부서명</option>--%>
 <%--                        </select>--%>
 
 <%--                        <input type="text" name="keyword" required="required" class="form-control"--%>
@@ -189,9 +223,38 @@
 <%--                        </button>--%>
 <%--                    </form>--%>
 <%--                </div>--%>
+<%--                    <form class="form-inline" role="form" method="post">--%>
+<%--                        <select class="form-control" id="key" name="key">--%>
+<%--                            <option value="1">번호</option>--%>
+<%--                            <option value="2">이름</option>--%>
+<%--                            <option value="3">지역</option>--%>
+<%--                            <option value="4">부서</option>--%>
+<%--                            <option value="5">직위</option>--%>
+<%--                        </select>--%>
+<%--                        <label for="name"></label>--%>
+<%--                        <input type="text" class="form-control" id="name" name="name" required="required">--%>
+<%--                        <button type="submit" class="btn btn-default">--%>
+<%--                            <span class="glyphicon glyphicon-search"></span> Search--%>
+<%--                        </button>--%>
+<%--                    </form>--%>
+
+
+
+
 
             </div>
             <div>
+<%--                    <div class="card" style="width: 18rem;">--%>
+<%--                        <img src="..." class="card-img-top" alt="...">--%>
+<%--                        <div class="card-body">--%>
+
+<%--                            <h5 class="empNum"><c:out value="${emp.empNum}"/>--%>
+<%--                                --%>
+
+<%--                        </div>--%>
+<%--                    </div>--%>
+
+
                 <table class="table">
                     <thead>
                         <tr>
@@ -218,49 +281,50 @@
                                 <td class="empNum" ><c:out value="${emp.empNum}"/></td>
 
                                 <td><span>${emp.empName}</span>
-<%--                                    <c:if test="${not empty emp.empFileName}">  &lt;%&ndash;&lt;%&ndash;이거 사진 파일&ndash;%&gt;&ndash;%&gt;--%>
-<%--                                        <button type="button" class="btn btn-default btn-xs picture"--%>
-<%--                                                value="${emp.empNum}">사진</button>--%>
-<%--                                    </c:if>--%>
-                                </td>
-                                <td>${emp.job}</td>
-                                <td>${emp.phoneNum}</td>
-                                <c:if test="${not empty emp.hireDate}">
-                                    <fmt:formatDate value="${emp.hireDate}" pattern="yyyy/mm/dd" var="formattedhireDate"/>
-                                <td>${formattedhireDate}</td>
-                                </c:if>
-                                <td>${emp.email}</td>
-                                <td>${emp.annualLeaveNum}</td>
-                                <td>${emp.address}</td>
-                                <td>${emp.workDate}</td>
-                                <td>${emp.birthDate}</td>
-                                <td>${emp.departNum}</td>
-                                <td><button class="btn btn-default btn-xs btnPictureInsert pictureInsertForm">
-                                    사진등록
-                                </button></td>
-                                <td>
-                                    <button type="button" class="btn btn-default btn-xs delete"
-                                            value="${emp.empNum}">삭제</button>
-                                </td>
-                                <td>
-                                    <a href="/emp/modify?empNum=${emp.empNum}" role="button"
-                                       class="btn btn-default btn-xs">수정</a>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+<%--                                        <c:if test="${not empty emp.uploadPath}">--%>
+<%--                                            <button type="button" class="btn btn-default btn-xs picture"--%>
+<%--                                            value="${emp.empNum}">사진</button>--%>
+<%--                                        </c:if>--%>
+                                        </td>
+                                        <td>${emp.job}</td>
+                                        <td>${emp.phoneNum}</td>
+                                        <c:if test="${not empty emp.hireDate}">
+                                            <fmt:formatDate value="${emp.hireDate}" pattern="yyyy/mm/dd" var="formattedhireDate"/>
+                                        <td>${formattedhireDate}</td>
+                                        </c:if>
+                                        <td>${emp.email}</td>
+                                        <td>${emp.annualLeaveNum}</td>
+                                        <td>${emp.address}</td>
+                                        <td>${emp.workDate}</td>
+                                        <td>${emp.birthDate}</td>
+                                        <td>${emp.departNum}</td>
+                                        <td><button class="btn btn-default btn-xs
+                                        btnPictureInsert pictureInsertForm">
+                                            사진등록
+                                        </button></td>
+                                        <td>
+                                            <button type="button" class="btn btn-default btn-xs delete"
+                                                    value="${emp.empNum}">삭제</button>
+                                        </td>
+                                        <td>
+                                            <a href="/emp/modify?empNum=${emp.empNum}" role="button"
+                                               class="btn btn-default btn-xs">수정</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
 
-                <form class="form-inline" role="form" method="post">
-                    <a href="/emp/register" class="btn btn-default">Add</a>
-<%--                    <button type="button" class="btn btn-default">--%>
-<%--                        totalCount <span class="badge">${totalcount}</span>--%>
-<%--                    </button>--%>
-<%--                    <button type="button" class="btn btn-default">--%>
-<%--                        Count <span class="badge">${count}</span>--%>
-<%--                    </button>--%>
-                </form>
-                <%-- table 들--%>
+                        <form class="form-inline" role="form" method="post">
+                            <a href="/emp/register" class="btn btn-default">Add</a>
+                            <button type="button" class="btn btn-default">
+                                totalCount <span class="badge">${totalcount}</span>
+                            </button>
+                            <button type="button" class="btn btn-default">
+                                Count <span class="badge">${count}</span>
+                            </button>
+                        </form>
+                        <%-- table 들--%>
             </div>
         </div>
     </div>
@@ -279,14 +343,16 @@
                     <h4 class="modal-title pictureName">홍길동의 사진</h4>
 
                 </div>
+
                 <div class="modal-body">
                     <div style="text-align: center;">
 
                         <%-- Ajax 요청에 대한 응답 결과를 가지고 이미지 처리 --%>
-                        <img src="resources/picture/noimage.jpg" width="100%">
+                        <img src="resources/img/tree.jpg" width="100%">
 
                     </div>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
@@ -309,20 +375,20 @@
             <div class="modal-body">
 
                 <%-- 파일 업로드를 위한 설정 추가. enctype="multipart/form-data" --%>
-                <form id="fileUpload" role="form" action="employeepictureinsert.it" method="post"
+                <form id="fileUpload" role="form" action="/upload" method="post"
                       enctype="multipart/form-data">
 
                     <%-- 파일 업로드를 위한 직원 번호 전송 준비 --%>
-                    <input type="hidden" id="empNum" name="empNum" value="">
+<%--                    <input type="hidden" id="empNum" name="empNum" value="">--%>
                     <%-- 파일 업로드를 위한 사진 액션 구분(신규 등록 0, 수정 1) --%>
-                    <input type="hidden" id="picturekey" name="picturekey" value="0">
+<%--                    <input type="hidden" id="picturekey" name="picturekey" value="0">--%>
 
                     <div class="form-group">
-                        <%--<label for="fileName">사진등록 (only JPG, 100K byte 이내):</label> <input
-                            type="file" class="form-control" id="file"
-                            name="file" required="required">--%>
+                        <label for="file">사진등록 (only JPG, 100K byte 이내):</label>
+                        <input type="file" name="file" multipleclass="form-control" id="file" required="required"  >
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button id="uploadBtn" type="submit" class="btn btn-default">Submit</button>
+<%--                    <button type="button" class="btn btn-default pictureModal">사진 확인</button>--%>
                 </form>
 
 
@@ -369,6 +435,7 @@
 
     </div>
 </div>
+
 
 
 </body>

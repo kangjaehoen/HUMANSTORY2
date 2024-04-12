@@ -137,62 +137,61 @@
 
 
 
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">부서 출력</div>
+            <div class="panel-body">
+<%--                    <div>--%>
+<%--                        <form id="searchForm" action="/dept/list" method="get">--%>
+<%--                            <select name="type">--%>
+<%--                                <option value=" ">---</option>--%>
+<%--                                <option value="T">부서번호</option>--%>
+<%--                                <option value="C"> 부서명</option>--%>
+<%--                                <option value="TC">부서번호 or 부서명</option>--%>
+<%--                            </select>--%>
+<%--&lt;%&ndash;                            <input type="text" name="keyword"&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            value='<c:out value="${pageMaker.cri.keyword}"/>'>&ndash;%&gt;--%>
+<%--                            <button> 검색</button>--%>
+<%--                        </form>--%>
+<%--                    </div>--%>
+            </div>
+            <div >
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>부서번호</th>
+                            <th>부서명</th>
+                            <th>삭제</th>
+                            <th>수정</th>
+                        </tr>
+                    </thead>
 
-    <div class="panel panel-default">
-        <div class="pannel-heading">부서 출력</div>
-        <div class="pannel-body">
-            <%--    <div>--%>
-            <%--        <form id="searchForm" action="/dept/list" method="get">--%>
-            <%--            <select name="type">--%>
-            <%--                <option value=" ">---</option>--%>
-            <%--                <option value="T">부서번호</option>--%>
-            <%--                <option value="C"> 부서명</option>--%>
-            <%--                <option value="TC">부서번호 or 부서명</option>--%>
-            <%--            </select>--%>
-            <%--            <input type="text" name="keyword"--%>
-            <%--            value='<c:out value="${pageMaker.cri.keyword}"/>'>--%>
-            <%--            <button> 검색</button>--%>
-            <%--        </form>--%>
-            <%--    </div>--%>
-        </div>
-        <div >
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>부서번호</th>
-                        <th>부서명</th>
-                        <th>삭제</th>
-                        <th>수정</th>
-                    </tr>
-                </thead>
+                    <tbody>
+                    <c:forEach items="${list}" var="dept">
+                        <tr>
+                            <td class="deptNum">${dept.deptNum} </td>
 
-                <tbody>
-                <c:forEach items="${list}" var="dept">
-                    <tr>
-                        <td class="deptNum">${dept.deptNum} </td>
-
-                        <td>${dept.deptName} </td>
-                        <td>
-                            <button type="button" class="btn btn-default btn-xs delete"
-                                    value="${dept.deptNum}">삭제</button>
-                        </td>
-                        <td>
-                            <a href="/dept/modify?deptNum=${dept.deptNum}" role="button"
-                               class="btn btn-default btn-xs">수정</a>
-                        </td>
+                            <td>${dept.deptName} </td>
+                            <td>
+                                <button type="button" class="btn btn-default btn-xs delete"
+                                        value="${dept.deptNum}">삭제</button>
+                            </td>
+                            <td>
+                                <a href="/dept/modify?deptNum=${dept.deptNum}" role="button"
+                                   class="btn btn-default btn-xs">수정</a>
+                            </td>
 
 
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-            <form class="form-inline" role="form" method="post">
-                <a href="/dept/register" class="btn btn-default">Add</a>
-            </form>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+                <form class="form-inline" role="form" method="post">
+                    <a href="/dept/register" class="btn btn-default">Add</a>
+                </form>
+            </div>
         </div>
     </div>
-
-
 </div>
 <%--containner finished--%>
 

@@ -15,5 +15,5 @@ import java.util.List;
 public class EmployeeDTO {
     private List<EmployeeVO> employeeVOList;
     private Date workDate;
-
+    private String uploadPath; // 사원 프로필사진
 }

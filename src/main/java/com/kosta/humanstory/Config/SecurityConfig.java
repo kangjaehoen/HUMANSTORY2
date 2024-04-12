@@ -24,8 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         // /emp로 들어가는 주소는 모두 허락해준다.
-//        http.headers().frameOptions().disable();
-//        http.authorizeRequests().antMatchers("/emp/**").permitAll();
+        http.headers().frameOptions().disable();
+        http.authorizeRequests().antMatchers("/emp2/**").permitAll();
 
         http.authorizeRequests()
                 .antMatchers("/emp/**").authenticated() //등록하면 유저 권한만 들어갈 수 있다.
@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/customlogin")
                 .loginProcessingUrl("/customlogin")
-                .defaultSuccessUrl("/");
+                .defaultSuccessUrl("/main");
 
         http.logout()
                 .logoutUrl("/logout")

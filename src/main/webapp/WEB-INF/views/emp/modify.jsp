@@ -111,11 +111,10 @@
                     </div>
 <%--                    <button type="button" id="Auth_button">권한부여</button>--%>
 
-                        <div class="form-group" id="Auth">
-                            <label>권한 부여</label>
-                            <input type="text" class="form-control" name='role'>
-                        </div>
-
+                            <div class="form-group" id="Auth">
+                                <label>권한 부여</label>
+                                <input type="text" class="form-control" name='role'>
+                            </div>
                     <button type="submit" data-oper='modify' class="btn btn-secondary">Modify</button>
                     <button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
                     <button type="submit" data-oper='list' class="btn btn-info">List</button>
@@ -135,13 +134,17 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        // $("#Auth").hide();
-        // $("document").on("click",function (e){
-        //
-        //     if(emp.role==="ROLE_ADMIN"){
-        //         $("#Auth").show();
-        //     }
-        // });
+        var role='<c:out value="${emp.role}"/>'
+        $("#Auth").hide();
+        $("document").on("click",function (e){
+
+            if(role==="ROLE_ADMIN"){
+                $("#Auth").show();
+            }
+        });
+
+
+
 
 
         var formObj = $("form");
