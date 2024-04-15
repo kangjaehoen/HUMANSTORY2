@@ -6,8 +6,8 @@
 
 
     <insert id="insert" parameterType="com.kosta.humanstory.domain.AttachVO">
-        insert into tbl_attach (uuid,uploadPath,fileName,filetype,lpNum,empNum )
-        values (#{uuid},#{uploadPath},#{filetype},#{lpNum},#{empNum})
+        insert into tbl_attach (uuid,uploadPath,fileName,filetype,lpNum )
+        values (#{uuid},#{uploadPath},#{fileName},#{filetype},#{lpNum})
     </insert>
 
     <delete id="delete">
@@ -17,4 +17,11 @@
     <select id="findBGyEmpNum" resultType="com.kosta.humanstory.domain.AttachVO">
         select * from tbl_attach where empNum=#{empNum}
     </select>
+
+    <insert id="insertEmp" parameterType="com.kosta.humanstory.domain.EmpAttachVO">
+        insert into  tbl_attach(uuid,uploadPath,fileName,filetype,empNum)
+        values (#{uuid},#{uploadPath},#{fileName},#{filetype},#{empNum});
+    </insert>
+
+
 </mapper>

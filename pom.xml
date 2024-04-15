@@ -102,6 +102,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>5.7.0</version> <!-- 부트 2.7.15와 함께 사용할 수 있는 Spring Security Taglibs의 버전을 지정합니다. -->
+        </dependency>
 
 
     </dependencies>

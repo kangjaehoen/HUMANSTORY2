@@ -2,15 +2,11 @@ package com.kosta.humanstory.domain;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
-public class AttachVO {
+public class EmpAttachVO {
     private String uuid;
     private String uploadPath;
     private String fileName;
     private boolean fileType;
-    private int lpNum;
-
-
+    private String empNum;
 }

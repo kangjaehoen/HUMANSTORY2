@@ -13,13 +13,13 @@ import java.util.Objects;
 @Data
 public class PrincipalDetail implements UserDetails {
     private EmployeeVO emp;
-    private Map<String, Objects> attributes;
+    private Map<String, Object> attributes;
 
     public PrincipalDetail(EmployeeVO emp){
         this.emp=emp;
     }
 
-    public PrincipalDetail(EmployeeVO emp, Map<String,Objects> attributes){
+    public PrincipalDetail(EmployeeVO emp, Map<String,Object> attributes){
         this.emp=emp;
         this.attributes=attributes;
     }

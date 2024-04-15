@@ -35,7 +35,7 @@ public class EmployeeController {
 
     private boolean enabled; // 시큐리티 적용확인
 
-    private List<AuthVO> authList; // 권한
+    
 
     private List<LeaveVO> leaveVO; //휴가 신청내역
 

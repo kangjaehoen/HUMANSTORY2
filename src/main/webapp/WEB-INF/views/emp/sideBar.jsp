@@ -1,8 +1,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%--<%@ taglib uri="http://www.springframework.org/security/tags"--%>
-<%--           prefix="sec"%>--%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+           prefix="sec"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,7 +91,7 @@
                 </button>
                 <a href="https://flowbite.com" class="flex ms-2 md:me-0">
                     <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-5 me-3" alt="HS Logo" /> -->
-                    <img src="../../../resources/img/hs2.logo.png" class="h-16 me-2" alt="HS Logo" />
+                    <img src="/img/logo.png" class="h-16 me-2"  />
                     <!-- <span class="self-center text-xl font-semibold sm:text-1xl whitespace-nowrap dark:text-white">HUMAN STORY</span> -->
                 </a>
             </div>
@@ -118,7 +118,7 @@
                     <div>
                         <button type="button" class="flex p-1 text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-whitetext-white" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                             <span class="sr-only">Open user menu</span>
-                            <img class="w-8 h-8 rounded-full border-2" src="./resources/img/profile.png" alt="user photo">
+                            <img class="w-8 h-8 rounded-full border-2" src="/img/jahun.png" alt="user photo">
                             <p class="text-1xl text-white dark:text-white p-1 mr-2" role="none">
                                 <sec:authentication property='principal.emp.empName'/>
                             </p>
@@ -128,7 +128,9 @@
                     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-whitetext-white" id="dropdown-user">
                         <div class="px-4 py-3" role="none">
                             <p class="text-sm text-black hover:text-gray-900 dark:text-white" role="none">
-                                사원번호 : <sec:authentication property='principal.emp.empNum'/>
+                                사원번호 :
+<%--                                ${PrincipalDetail.emp.empNum}--%>
+                                <sec:authentication property='principal.emp.empNum'/>
                             </p>
                             <p class="text-sm font-medium text-black hover:text-gray-900 truncate dark:text-gray-300" role="none">
                                 사원명 : <sec:authentication property='principal.emp.empName'/>
@@ -167,6 +169,7 @@
             <!--   <img id="EmpProFile" class="w-24 h-24 rounded-full border-2" src="" alt=""> -->
             <div id="EmpProFile" class="w-24 h-24 rounded-full border-2">
                 <ul>
+                    <img src="/img/s_${exthum0bnail}.jpg" class="w-24 h-24 rounded-full border-1" alt="Thumbnail Image" />
 
                 </ul>
             </div>

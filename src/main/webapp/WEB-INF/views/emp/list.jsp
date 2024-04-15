@@ -48,6 +48,22 @@
                            var files=inputFile[0].files;
                            console.log(files);
 
+                           str += "<input type='hidden' name='attachList["
+                               + i
+                               + "].uuid' value='"
+                               + jobj.data("uuid")
+                               + "'>";
+                           str += "<input type='hidden' name='attachList["
+                               + i
+                               + "].uploadPath' value='"
+                               + jobj.data("path")
+                               + "'>";
+                           str += "<input type='hidden' name='attachList["
+                               + i
+                               + "].fileType' value='"
+                               + jobj.data("type")
+                               + "'>";
+
                            for (var i=0; i<files.length;i++){
                                formData.append("uploadFile",files[i]);
                            }
@@ -57,7 +73,7 @@
                                data:formData,
                                type:'POST',
                                success:function (result){
-                                   alert("Uploaded");
+                                   alert("Upload");
                                }
                            });
                        });
@@ -305,6 +321,7 @@
                                         <td><button class="btn btn-default btn-xs
                                         btnPictureInsert pictureInsertForm">
                                             사진등록
+
                                         </button></td>
                                         <td>
                                             <button type="button" class="btn btn-default btn-xs delete"
@@ -313,6 +330,7 @@
                                         <td>
                                             <a href="/emp/modify?empNum=${emp.empNum}" role="button"
                                                class="btn btn-default btn-xs">수정</a>
+
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -321,12 +339,7 @@
 
                         <form class="form-inline" role="form" method="post">
                             <a href="/emp/register" class="btn btn-default">Add</a>
-                            <button type="button" class="btn btn-default">
-                                totalCount <span class="badge">${totalcount}</span>
-                            </button>
-                            <button type="button" class="btn btn-default">
-                                Count <span class="badge">${count}</span>
-                            </button>
+
                         </form>
                         <%-- table 들--%>
             </div>
@@ -352,7 +365,7 @@
                     <div style="text-align: center;">
 
                         <%-- Ajax 요청에 대한 응답 결과를 가지고 이미지 처리 --%>
-                        <img src="resources/img/tree.jpg" width="100%">
+                            <img src="/resources/img/s_saveFile.getName()" alt="섬네일 사진">
 
                     </div>
                 </div>
@@ -390,6 +403,8 @@
                     <div class="form-group">
                         <label for="file">사진등록 (only JPG, 100K byte 이내):</label>
                         <input type="file" name="file" multipleclass="form-control" id="file" required="required"  >
+<%--                        <input type='hidden' name='attachList["i"].uploadPath' value='"jobj.data("path")"'>"; &lt;%&ndash;path&ndash;%&gt;--%>
+
                     </div>
                     <button id="uploadBtn" type="submit" class="btn btn-default">Submit</button>
 <%--                    <button type="button" class="btn btn-default pictureModal">사진 확인</button>--%>
