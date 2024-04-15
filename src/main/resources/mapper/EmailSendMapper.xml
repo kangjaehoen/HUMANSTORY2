@@ -5,33 +5,6 @@
 
 <mapper namespace="com.kosta.humanstory.mapper.EmailSendMapper">
 
-<!--    <resultMap id="emailSendEmp" type="com.kosta.humanstory.domain.EmployeeWithPersonalLeaveDayDTO">-->
-<!--        &lt;!&ndash; EmployeeVO 매핑 &ndash;&gt;-->
-<!--        <association property="employee" javaType="com.kosta.humanstory.domain.EmployeeVO">-->
-<!--            <id property="empNum" column="empNum" />-->
-<!--            <result property="empName" column="empName" />-->
-<!--            <result property="pw" column="pw" />-->
-<!--            <result property="job" column="job" />-->
-<!--            <result property="phoneNum" column="phoneNum" />-->
-<!--            <result property="hireDate" column="hireDate" />-->
-<!--            <result property="email" column="email" />-->
-<!--            <result property="address" column="address" />-->
-<!--            <result property="workDate" column="workDate" />-->
-<!--            <result property="birthDate" column="birthDate" />-->
-<!--            <result property="departNum" column="departNum" />-->
-<!--            <result property="uploadPath" column="uploadPath" />-->
-<!--            <result property="enabled" column="enabled" />-->
-<!--        </association>-->
-<!--        &lt;!&ndash; PersonalLeaveDayVO 매핑 &ndash;&gt;-->
-<!--        <collection property="personalLeaveDay" ofType="com.kosta.humanstory.domain.PersonalLeaveDayVO" resultMap="PersonalLeaveDay"/>-->
-<!--    </resultMap>-->
-
-<!--    <resultMap id="PersonalLeaveDay" type="com.kosta.humanstory.domain.PersonalLeaveDayVO">-->
-<!--        <result property="empNum" column="empNum" />-->
-<!--        <result property="leaveType" column="leaveType" />-->
-<!--        <result property="it_days" column="it_days" />-->
-<!--        <result property="leaveGrantDay" column="leaveGrantDay" />-->
-<!--    </resultMap>-->
 
     <resultMap id="emailMap" type="com.kosta.humanstory.domain.EmployeeWithPersonalLeaveDayDTO">
         <id property="empNum" column="empNum" />

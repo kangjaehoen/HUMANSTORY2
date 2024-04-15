@@ -11,5 +11,4 @@ public class EmployeeWithPersonalLeaveDayDTO {
     private String email;
     private String leaveType;
     private double it_days;
-    private PersonalLeaveDayVO leaveVO;
 }

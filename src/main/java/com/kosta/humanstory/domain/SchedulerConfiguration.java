@@ -17,7 +17,7 @@ public class SchedulerConfiguration {
     private  AnnualLeaveDTO annualLeaveDTO;
 
 
-   @Scheduled(fixedRate = 1000000000)
+   @Scheduled(fixedRate = 100000)
     public void run(){
         System.out.println("시스템 자동부여");
 

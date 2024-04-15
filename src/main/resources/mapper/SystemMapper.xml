@@ -68,7 +68,10 @@
                  JOIN PersonalLeaveDay p ON e.empNum = p.empNum
     </select>
     
-    <resultMap id="userMap" type=""
+    <select id="findById" resultType="com.kosta.humanstory.domain.EmployeeVO" parameterType="String">
+    SELECT * FROM employee where empNum =#{empNum}
+    </select>
+
 
 
 

@@ -10,6 +10,61 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+    <!-- sockJS -->
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script>
+        // 전역변수 설정
+        var socket  = null;
+        $(document).ready(function(){
+            // 웹소켓 연결
+            sock = new SockJS("<c:url value="/echo-ws"/>");
+            socket = sock;
+
+            // 데이터를 전달 받았을때
+            sock.onmessage = onMessage; // toast 생성
+
+//----------------------------------------------
+            function fillWidth(elem, timer, limit) {
+                if (!timer) { timer = 3000; }
+                if (!limit) { limit = 100; }
+                var width = 1;
+                var id = setInterval(frame, timer / 100);
+                function frame() {
+                    if (width >= limit) {
+                        clearInterval(id);
+                    } else {
+                        width++;
+                        elem.style.width = width + '%';
+                    }
+                }
+            };
+            //-------------------------------------------
+            function onMessage(evt) {
+                //받은 메시지 내용 추출
+                var data = evt.data;
+                //메시지가 떠있을 시간 설정
+                var timer = 7000;
+
+                //토스트 노드 미리 만들어두기
+                var $elem = $("<div class='toastWrap'><span class='toast'>" + data + "<b></b><div class='timerWrap'><div class='timer'></div></div></span></div>");
+                //토스트 띄우기
+                $("#toast").append($elem); //top = prepend, bottom = append
+                //토스트 창이 나타난 후 벌어질 상황 설계
+                $elem.slideToggle(100, function() {
+                    //남은 시간 알려주며 줄어드는 바 표시
+                    $('.timerWrap', this).first().outerWidth($elem.find('.toast').first().outerWidth() - 10);
+
+                    fillWidth($elem.find('.timer').first()[0], timer);
+                    setTimeout(function() {
+                        $elem.fadeOut(function() {
+                            $(this).remove();
+                        });
+                    }, timer);
+
+                });
+            }
+        });
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
         $(function(){
@@ -63,6 +118,7 @@
 
         });
     </script>
+
     <style>
         #EmpProFile{
 
@@ -110,7 +166,7 @@
                         </svg>
                     </a>
 
-
+                    <div id="toast"></div>
 
 
 

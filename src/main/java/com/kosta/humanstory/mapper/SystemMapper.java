@@ -20,5 +20,7 @@ public interface SystemMapper {
 
     public List<EmployeeWithPersonalLeaveDayDTO> userListManager();
 
+    public EmployeeVO findById(String empNum);
+
 
 }

@@ -41,113 +41,113 @@ import javax.imageio.ImageIO;
 @Controller
 public class UploadController {
 
-//	@PostMapping("/uploadFormAction")
-//	public void uploadPost(MultipartFile[] uploadFile, Model model) {
-//		for (MultipartFile multipartFile : uploadFile) {
+	@PostMapping("/uploadFormAction")
+	public void uploadPost(MultipartFile[] uploadFile, Model model) {
+		for (MultipartFile multipartFile : uploadFile) {
 //			log.info("Uploaded file: " + multipartFile.getOriginalFilename());
-//		}
-//	}
+		}
+	}
 
-//    @PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-//    @ResponseBody
-//    public ResponseEntity<List<AttachFileDTO>> uploadAjaxPost(MultipartFile[] uploadFile) {
-//
-//
-//
-//        List<AttachFileDTO> list = new ArrayList<>();
-//        String uploadFolder = "C:\\upload\\";
-//
-//        String uploadFolderPath = getFolder();
-//        // make folder --------
-//        File uploadPath = new File(uploadFolder, uploadFolderPath);
-//
-//        if (uploadPath.exists() == false) {
-//            uploadPath.mkdirs();
-//        }
-//
-//        for (MultipartFile multipartFile : uploadFile) {
-//
-//            AttachFileDTO attachDTO = new AttachFileDTO();
-//
-//
-//
-//            String uploadFileName = multipartFile.getOriginalFilename();
-//
-//            attachDTO.setFileName(uploadFileName);
-//
-//            UUID uuid = UUID.randomUUID();
-//
-//            uploadFileName = uuid.toString() + "_" + uploadFileName;
-//
-//            try {
-//                File saveFile = new File(uploadPath, uploadFileName);
-//                multipartFile.transferTo(saveFile);
-//
-//                attachDTO.setUuid(uuid.toString());
-//                attachDTO.setUploadPath(uploadFolderPath);
-//
-//                // check image type file
-//                if (checkImageType(saveFile)) {
-//
-//                    attachDTO.setImage(true);
-//
-//                    FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
-//
-//                    Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
-//
-//                    thumbnail.close();
-//                }
-//
-//                // add to List
-//                list.add(attachDTO);
-//
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//
-//        } // end for
-//        return new ResponseEntity<>(list, HttpStatus.OK);
-//    }
+    @PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    public ResponseEntity<List<AttachFileDTO>> uploadAjaxPost(MultipartFile[] uploadFile) {
 
-    @PostMapping("/uploadAction")
-    public String uploadAction(MultipartFile uploadFile[])throws IOException {
-        String uploadFolder = "D:\\upload";
+
+
+        List<AttachFileDTO> list = new ArrayList<>();
+        String uploadFolder = "C:\\upload\\";
+
+        String uploadFolderPath = getFolder();
+        // make folder --------
+        File uploadPath = new File(uploadFolder, uploadFolderPath);
+
+        if (uploadPath.exists() == false) {
+            uploadPath.mkdirs();
+        }
 
         for (MultipartFile multipartFile : uploadFile) {
 
-            System.out.println("-------------------------------------");
-            System.out.println("Upload File Name: " + multipartFile.getOriginalFilename());
+            AttachFileDTO attachDTO = new AttachFileDTO();
 
 
-            File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+
+            String uploadFileName = multipartFile.getOriginalFilename();
+
+            attachDTO.setFileName(uploadFileName);
+
+            UUID uuid = UUID.randomUUID();
+
+            uploadFileName = uuid.toString() + "_" + uploadFileName;
 
             try {
+                File saveFile = new File(uploadPath, uploadFileName);
                 multipartFile.transferTo(saveFile);
 
+                attachDTO.setUuid(uuid.toString());
+                attachDTO.setUploadPath(uploadFolderPath);
+
+                // check image type file
                 if (checkImageType(saveFile)) {
 
-                    FileOutputStream thumbnail = new FileOutputStream(new File(uploadFolder, "s_" +
-                            saveFile.getName()));
+                    attachDTO.setImage(true);
 
-                    BufferedImage bo_image = ImageIO.read(saveFile);
-                    BufferedImage bt_image = new BufferedImage(300, 500, BufferedImage.TYPE_3BYTE_BGR);
+                    FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
 
-                    Graphics2D graphic = bt_image.createGraphics();
-
-                    graphic.drawImage(bo_image, 0, 0,300,500, null);
-
-                    ImageIO.write(bt_image, "jpg", thumbnail);
+                    Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
 
                     thumbnail.close();
                 }
 
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            } // end catch
-        } // end for
+                // add to List
+                list.add(attachDTO);
 
-        return null;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } // end for
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
+
+//    @PostMapping("/uploadAction")
+//    public String uploadAction(MultipartFile uploadFile[])throws IOException {
+//        String uploadFolder = "D:\\upload";
+//
+//        for (MultipartFile multipartFile : uploadFile) {
+//
+//            System.out.println("-------------------------------------");
+//            System.out.println("Upload File Name: " + multipartFile.getOriginalFilename());
+//
+//
+//            File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+//
+//            try {
+//                multipartFile.transferTo(saveFile);
+//
+//                if (checkImageType(saveFile)) {
+//
+//                    FileOutputStream thumbnail = new FileOutputStream(new File(uploadFolder, "s_" +
+//                            saveFile.getName()));
+//
+//                    BufferedImage bo_image = ImageIO.read(saveFile);
+//                    BufferedImage bt_image = new BufferedImage(300, 500, BufferedImage.TYPE_3BYTE_BGR);
+//
+//                    Graphics2D graphic = bt_image.createGraphics();
+//
+//                    graphic.drawImage(bo_image, 0, 0,300,500, null);
+//
+//                    ImageIO.write(bt_image, "jpg", thumbnail);
+//
+//                    thumbnail.close();
+//                }
+//
+//            } catch (Exception e) {
+//                System.out.println(e.getMessage());
+//            } // end catch
+//        } // end for
+//
+//        return null;
+//    }
 
 
 

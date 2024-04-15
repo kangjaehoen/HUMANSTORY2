@@ -11,9 +11,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.mail.internet.MimeMessage;
 import java.time.LocalDate;
@@ -70,7 +68,7 @@ public class EmailSendController {
         map.put("name", dto.getEmpName());
         map.put("leaveNum", dto.getIt_days());
 
-         return "redirect:/email/list";
+        return "redirect:/email/list";
     }
 
 //    @RequestMapping("/updateLeaveSend")
@@ -339,5 +337,12 @@ public class EmailSendController {
         return ResponseEntity.ok().body("이메일이 성공적으로 전송되었습니다.");
     }
 
+    @PostMapping("/sideBar")
+    @ResponseBody
+    public String alram(@RequestBody  EmpEmailInfoDTO empEmailInfoDTO){
+
+        System.out.println(empEmailInfoDTO.getEmpName());
+        return"success";
+    }
 
 }
