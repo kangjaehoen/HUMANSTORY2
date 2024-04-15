@@ -24,7 +24,7 @@ public class FileUploadController {
     @PostMapping("/upload")
     public static String uploadFile(@RequestParam("file") MultipartFile[] uploadFile, RedirectAttributes rttr){
 
-        String uploadFolder="D:\\upload";
+        String uploadFolder="C:\\workspace\\springboot_work\\kosta270\\HUMASTORY2\\src\\main\\resources\\img";
 
         for (MultipartFile multipartFile: uploadFile){
             System.out.println("===========================");
