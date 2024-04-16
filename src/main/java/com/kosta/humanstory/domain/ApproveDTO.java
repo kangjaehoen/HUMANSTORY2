@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class LeaveVO {
+public class ApproveDTO {
     private Long leaveNum;// 휴가 신청 번호
     private Date startDate;// 휴가 시작 날짜
     private Date endDate;// 휴가 종료 날짜
@@ -13,7 +13,8 @@ public class LeaveVO {
     private Date updateDate;//휴가 수정 날짜
     private double leaveDays; // 휴가 신청한 일수
     private String leaveReason;// 휴가 사유
+    private int num; //알람용 디폴트값 1 인 컬럼
     private String empNum; // 사원번호
     private String leaveType; // 휴가유형
-
+    private Date approvedDate; //결재 날짜
 }

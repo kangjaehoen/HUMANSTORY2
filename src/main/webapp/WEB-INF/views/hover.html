@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
+    <style>
+
+        body {
+            font-family: lato, sans-serif;
+            font-size: 16px;
+            line-height: 1.2em;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            background-image: linear-gradient(-225deg, #efefef 0%, #ffffff 100%);
+        }
+
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        @media screen and (max-width: 700px) {
+            .container {
+                width: 75%;
+            }
+        }
+
+        h1 {
+            position: relative;
+            font-family: cardo, serif;
+            font-size: 2.6em;
+            font-weight: 700;
+            color: #333333;
+            line-height: 1.2em;
+            letter-spacing: 0.03em;
+            margin-bottom: 1.66em;
+        }
+
+        h1:after {
+            content: "†";
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            transform: rotateZ(180deg);
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.4em;
+            color: #333333;
+        }
+
+        a {
+            display: inline-block;
+            position: relative;
+            color: #333333;
+            text-decoration: none;
+            padding: 0.2em 0.05em;
+            border-bottom: 2px solid #333333;
+        }
+
+        a:hover {
+            color: #efefef;
+        }
+
+        a:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: #333333;
+            z-index: -1;
+            transition: all 0.1s cubic-bezier(0, 0.59, 1, 0.26);
+        }
+
+        a:hover:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: #333333;
+            z-index: -1;
+        }
+
+    </style>
+    <script>
+        const links = document.querySelectorAll('a');
+
+        links.forEach(link => link.addEventListener('mouseenter', shootLines));
+
+        function shootLines(e) {
+
+            const itemDim = this.getBoundingClientRect(),
+                itemSize = {
+                    x: itemDim.right - itemDim.left,
+                    y: itemDim.bottom - itemDim.top },
+
+                shapes = ['line', 'zigzag'],
+                colors = ['#2FB5F3',
+                    '#FF0A47',
+                    '#FF0AC2',
+                    '#47FF0A'];
+
+            const chosenC = Math.floor(Math.random() * colors.length),
+                chosenS = Math.floor(Math.random() * shapes.length);
+
+            // create shape
+            const burst = new mojs.Burst({
+                left: itemDim.left + itemSize.x / 2,
+                top: itemDim.top + itemSize.y / 2,
+                radiusX: itemSize.x,
+                radiusY: itemSize.y,
+                count: 8,
+
+                children: {
+                    shape: shapes[chosenS],
+                    radius: 10,
+                    scale: { 0.8: 1 },
+                    fill: 'none',
+                    points: 7,
+                    stroke: colors[chosenC],
+                    strokeDasharray: '100%',
+                    strokeDashoffset: { '-100%': '100%' },
+                    duration: 350,
+                    delay: 100,
+                    easing: 'quad.out',
+                    isShowEnd: false } });
+
+
+
+            burst.play();
+        }
+    </script>
+
+</head>
+<body>
+
+<div class="container">
+    <h1>Hover My Links</h1>
+    <p><a href="">건들지마</a>
+        <a href="">손대지마</a>
+        <a href="">만지지마</a></p>
+</div>
+
+</body>
+
+</html>
