@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosta.humanstory.mapper.LeavePolicyAttachMapper">
+    <insert id="insert" parameterType="com.kosta.humanstory.domain.AttachVO">
+        insert into Attach (uuid, uploadpath, filename,
+                            filetype, lpNum)
+        values (#{uuid}, #{uploadPath}, #{fileName},
+                #{fileType}, #{lpNum} )
+    </insert>
+
+    <select id="findByBno"
+            resultType="com.kosta.humanstory.domain.AttachVO">
+        select * from Attach where lpNum = #{lpNum}
+    </select>
+
+    <delete id="delete">
+        delete from Attach where uuid =#{uuid}
+    </delete>
+
+    <delete id="deleteAll">
+        delete from Attach where lpNum = #{lpNum}
+    </delete>
+
+</mapper>

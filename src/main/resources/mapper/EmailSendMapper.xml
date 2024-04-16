@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosta.humanstory.mapper.EmailSendMapper">
+
+
+    <resultMap id="emailMap" type="com.kosta.humanstory.domain.EmployeeWithPersonalLeaveDayDTO">
+        <id property="empNum" column="empNum" />
+        <result property="empName" column="empName" />
+        <result property="email" column="email" />
+            <result property="leaveType" column="leaveType" />
+            <result property="it_days" column="it_days" />
+    </resultMap>
+
+    <select id="empEmailSend" resultMap="emailMap">
+        SELECT e.empNum, e.empName, e.email, p.leaveType, p.it_days
+        FROM Employee e
+                 JOIN PersonalLeaveDay p ON e.empNum = p.empNum
+        WHERE p.it_days > 0
+          AND p.leaveType = '연차'
+    </select>
+
+
+</mapper>

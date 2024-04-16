@@ -23,6 +23,35 @@
 			leavePolicy
 	</select>
 
+	<insert id="insert">
+		<selectKey keyProperty="lpNum" order="BEFORE"
+				   resultType="int">
+			select lpNum_seq.nextval from dual
+		</selectKey>
+
+		insert into leavePolicy(lpNum, empNum, title,
+		detail,
+		registerDate)
+		values
+		(#{lpNum},#{empNum},#{title},#{detail},sysdate)
+	</insert>
+
+	<select id="getDetail" resultType="com.kosta.humanstory.domain.LeavePolicyVO">
+		SELECT * FROM leavePolicy
+		WHERE lpNum=#{lpNUm}
+	</select>
+
+	<update id="update">
+		UPDATE leavePolicy SET title=#{title},
+							   detail=#{detail},
+							   registerDate=sysdate WHERE lpNum=#{lpNum}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM leavePolicy WHERE lpNum=#{lpNum}
+	</delete>
+
+
 
 
 </mapper>

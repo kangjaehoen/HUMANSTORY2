@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosta.humanstory.mapper.SystemMapper">
+    
+    <select id="hireDateFind" resultType="com.kosta.humanstory.domain.EmployeeVO">
+        SELECT * FROM employee
+    </select>
+
+    <update id="leaveGrantNum">
+        UPDATE LEAVECATEGORY SET grantDate = #{grantDate} WHERE leaveType  = '연차'
+    </update>
+
+    <select id="annulLeaveNumSetApply" resultType="com.kosta.humanstory.domain.LeaveCategoryVO">
+        SELECT grantDate FROM LEAVECATEGORY WHERE leaveType =  '연차'
+    </select>
+
+    <update id="annulLeaveDay">
+        UPDATE LEAVECATEGORY SET grantDay= #{grantDay} WHERE leaveType  = '연차'
+    </update>
+
+    <select id="leaveGrantDaySetApply" resultType="com.kosta.humanstory.domain.LeaveCategoryVO">
+        SELECT grantDay FROM LEAVECATEGORY WHERE leaveType  = '연차'
+    </select>
+
+    <update id="oneYearsLess">
+        <!-- 직원의 추가 휴가일을 personalLeaveDay 테이블에 반영 -->
+        UPDATE personalLeaveDay
+        SET it_days = it_days + #{leaveDays}
+        WHERE empNum = #{empNum}
+    </update>
+
+    <update id="oneYears">
+        UPDATE personalLeaveDay SET it_days =#{grantDate} WHERE empNum = #{empNum}
+    </update>
+
+
+
+    
+    <update id="leaveUpdate">
+        UPDATE  personalLeaveDay SET it_days = it_days + #{it_days}
+        WHERE leaveType = #{leaveType}
+        AND empNum = #{empNum}
+    </update>
+
+    <insert id="insertLeave">
+        INSERT INTO  personalLeaveDay (empNum,leaveType,it_days) VALUES (#{empNum},
+                                                                         #{leaveType},#{it_days})
+    </insert>
+
+    <select id="existenceLeave">
+        SELECT * FROM personalLeaveDay WHERE empNum=#{empNum} AND leaveType=#{leaveType}
+    </select>
+
+    <resultMap id="userMap" type="com.kosta.humanstory.domain.EmployeeWithPersonalLeaveDayDTO">
+        <id property="empNum" column="empNum" />
+        <result property="empName" column="empName" />
+        <result property="email" column="email" />
+        <result property="leaveType" column="leaveType" />
+        <result property="it_days" column="it_days" />
+    </resultMap>
+
+    <select id="userListManager" resultMap="userMap">
+        SELECT e.empNum, e.empName, e.email, p.leaveType, p.it_days
+        FROM Employee e
+                 JOIN PersonalLeaveDay p ON e.empNum = p.empNum
+    </select>
+    
+    <select id="findById" resultType="com.kosta.humanstory.domain.EmployeeVO" parameterType="String">
+    SELECT * FROM employee where empNum =#{empNum}
+    </select>
+
+
+
+
+
+</mapper>

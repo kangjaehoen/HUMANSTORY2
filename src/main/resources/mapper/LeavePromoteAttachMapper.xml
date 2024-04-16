@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosta.humanstory.mapper.LeavePromoteAttachMapper">
+
+    <insert id="insert" parameterType="com.kosta.humanstory.domain.PromoteAttachVO">
+        insert into PromoteAttach (uuid, uploadpath, filename,
+                                   filetype, lprNum)
+        values (#{uuid}, #{uploadPath}, #{fileName},
+                #{fileType}, #{lprNum} )
+    </insert>
+
+
+    <select id="findByBno"
+            resultType="com.kosta.humanstory.domain.PromoteAttachVO">
+        select * from PromoteAttach where lprNum = #{lprNum}
+    </select>
+
+
+
+    <delete id="deleteAll">
+        delete from PromoteAttach where lprNum = #{lprNum}
+    </delete>
+
+</mapper>
+
+
+
+
