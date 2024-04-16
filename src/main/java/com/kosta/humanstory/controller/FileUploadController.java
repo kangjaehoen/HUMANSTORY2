@@ -34,7 +34,7 @@ public class FileUploadController {
     }
 
     @PostMapping("/upload")
-    public String uploadFile(@RequestParam("file") MultipartFile[] uploadFile, @ModelAttribute("vo") EmpAttachVO vo, @ModelAttribute("emp")EmployeeVO emp ) throws IOException {
+    public String uploadFile(@RequestParam("file") MultipartFile[] uploadFile, @ModelAttribute("vo") EmpAttachVO vo) throws IOException {
 
         String uploadFolder = "C:\\workspace\\springboot_work\\kosta270\\HUMASTORY2\\src\\main\\resources\\static\\img";
 
@@ -67,10 +67,10 @@ public class FileUploadController {
             vo.setUploadPath(filePath);
 
 
+
             System.out.println(vo);
-//            service(emp,vo);
-            System.out.println(emp);
-            service.saveFileAndData(emp,vo);
+
+
 
 
 
