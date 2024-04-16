@@ -37,10 +37,10 @@
             <input class="form-control" name='email'>
         </div>
 
-        <div class="form-group">
-            <label>annualLeaveNum</label>
-            <input class="form-control" name='annualLeaveNum'>
-        </div>
+<%--        <div class="form-group">--%>
+<%--            <label>annualLeaveNum</label>--%>
+<%--            <input class="form-control" name='annualLeaveNum'>--%>
+<%--        </div>--%>
         <div class="form-group">
             <label>address</label>
             <input class="form-control" name='address'>

@@ -9,7 +9,7 @@ spring:
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver
     url: jdbc:oracle:thin:@localhost:1521:XE
-    username: kosta271
+    username: kosta270
     password: 1234
   mvc:
     view:
@@ -23,12 +23,14 @@ spring:
       location: C://upload
       enabled: true
       file-size-threshold: 2KB
+
   thymeleaf:
     cache: false
     check-template-location: true
     prefix: classpath:/templates/
     suffix: .html
     view-names: thymeleaf/*
+
 logging:
   level:
     org.springframework: debug
