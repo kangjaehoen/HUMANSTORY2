@@ -181,7 +181,7 @@
                                 <th scope="row"
                                     class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white" id="empNum">${mail.empNum }</th>
                                 <td class="px-4 py-3" id="empName">${mail.empName}</td>
-                                <td class="px-4 py-3" id="it_days">${mail.it_days}</td>
+                                <td class="px-4 py-3" id="lt_days">${mail.lt_days}</td>
                                 <td class="px-4 py-3" id="email">${mail.email}</td>
                             </tr>
                         </c:forEach>
@@ -322,7 +322,7 @@
 
     var empNum;
     var empName;
-    var it_days;
+    var lt_days;
     var email;
 
     $(function() {
@@ -341,13 +341,13 @@
                 var empRow = $(this).closest("tr");
                  empNum = empRow.find("#empNum").text();
                  empName = empRow.find("#empName").text();
-                 it_days = empRow.find("#it_days").text();
+                 lt_days = empRow.find("#lt_days").text();
                  email = empRow.find("#email").text();
 
                 console.log("empNum"+empNum);
                 console.log("empName :" + empName);
                 console.log("email :" + email);
-                console.log("it_days :" + it_days);
+                console.log("lt_days :" + lt_days);
 
                 // hidden input 필드 추가
                 $('<input>').attr({
@@ -358,8 +358,8 @@
 
                 $('<input>').attr({
                     type: 'hidden',
-                    name: 'it_days',
-                    value: it_days
+                    name: 'lt_days',
+                    value: lt_days
                 }).appendTo('#empEmailInfo');
 
                 $('<input>').attr({
@@ -370,7 +370,7 @@
 
             } else {
                 $('#empEmailInfo input[name="empName"]').remove();
-                $('#empEmailInfo input[name="it_days"]').remove();
+                $('#empEmailInfo input[name="lt_days"]').remove();
                 $('#empEmailInfo input[name="email"]').remove();
             }
         });
