@@ -1,20 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"   %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ include file="sideBar.jsp" %>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-      href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet">
 <script
         src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 
+<style>
+    .container-fluid
+    {
+        margin-left: 50px;
+        margin-top: 20px;
+    }
+    td{
+        padding: 10px;
+    }
+</style>
 
 
-<div class="container">
+
+<div class="container-fluid">
     <div style="margin-bottom: 1%;">
         <div>
             <h1 style="font-size: x-large;">
@@ -24,14 +33,12 @@
         </div>
         <div>
             <ul class="nav nav-pills nav-justified ">
-                <li class="active"><a href="/emp/list">직원관리</a></li>
-                <li><a href="regionlist.it">지역관리</a></li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/emp/list">직원관리</a>
+                </li>
+                <li class="nav-item"><a href="regionlist.it">지역관리</a></li>
                 <li><a href="/dept/list">부서관리</a></li>
                 <li><a href="positionlist.it">직위관리</a></li>
-                <%-- 세션 정보를 EL 표현으로 출력 --%>
-<%--                <li><a href="j_spring_security_logout" style="color: red">--%>
-<%--                    ${pageContext.request.userPrincipal.name} 로그아웃</a></li>--%>
-
             </ul>
         </div>
 
@@ -40,161 +47,114 @@
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-heading">직원 출력 </div>
-            <div class="panel-body">
 
-                <%--button 위치들--%>
-<%--                <div>--%>
-<%--                    <form class="form-inline" id="searchForm" action="/emp/list" method="get">--%>
-<%--                        <select class="form-control" id="key" name="type">--%>
-<%--                            <option value="1">사원번호</option>--%>
-<%--                            <option value="2">사원명</option>--%>
-<%--                            <option value="3">부서명</option>--%>
-<%--                        </select>--%>
-
-<%--                        <input type="text" name="keyword" required="required" class="form-control"--%>
-<%--                               value='<c:out value="${pageMaker.cri.keyword}"/>'--%>
-<%--                        >--%>
-<%--                        <button type="submit" class="btn btn-default">--%>
-<%--                        <span class="glyphicon glyphicon-search"></span> Search--%>
-<%--                        </button>--%>
-<%--                    </form>--%>
-<%--                </div>--%>
-<%--                    <form class="form-inline" role="form" method="post">--%>
-<%--                        <select class="form-control" id="key" name="key">--%>
-<%--                            <option value="1">번호</option>--%>
-<%--                            <option value="2">이름</option>--%>
-<%--                            <option value="3">지역</option>--%>
-<%--                            <option value="4">부서</option>--%>
-<%--                            <option value="5">직위</option>--%>
-<%--                        </select>--%>
-<%--                        <label for="name"></label>--%>
-<%--                        <input type="text" class="form-control" id="name" name="name" required="required">--%>
-<%--                        <button type="submit" class="btn btn-default">--%>
-<%--                            <span class="glyphicon glyphicon-search"></span> Search--%>
-<%--                        </button>--%>
-<%--                    </form>--%>
-
-
-
-
-
-            </div>
             <div>
-<%--                    <div class="card" style="width: 18rem;">--%>
-<%--                        <img src="..." class="card-img-top" alt="...">--%>
-<%--                        <div class="card-body">--%>
-
-<%--                            <h5 class="empNum"><c:out value="${emp.empNum}"/>--%>
-<%--                                --%>
-
-<%--                        </div>--%>
-<%--                    </div>--%>
-
-
                 <table class="table">
                     <thead>
-                        <tr>
-                            <th>사원번호</th>
-                            <th>사원명</th>
-                            <th>직책</th>
-                            <th>전화 번호</th>
-                            <th>입사일</th>
-                            <th>이메일</th>
-                            <th>연차일 </th>
-                            <th>주소</th>
-                            <th>근무일</th>
-                            <th>생년월일</th>
-                            <th>부서</th>
-                            <th>사진등록</th>
-                            <th>삭제</th>
-                            <th>수정</th>
-                        </tr>
+                    <tr>
+                        <th>사원번호</th>
+                        <th>사원명</th>
+                        <th>직책</th>
+                        <th>전화 번호</th>
+                        <th>입사일</th>
+                        <th>이메일</th>
+                        <th>연차일 </th>
+                        <th>주소</th>
+                        <th>근무일</th>
+                        <th>생년월일</th>
+                        <th>부서</th>
+                        <th>사진등록</th>
+                        <th>삭제</th>
+                        <th>수정</th>
+                    </tr>
                     </thead>
 
                     <tbody>
-                        <c:forEach items="${list}" var="emp">
-                            <tr>
-                                <td class="empNum" ><c:out value="${emp.empNum}"/></td>
+                    <c:forEach items="${list}" var="emp">
+                        <tr>
+                            <td class="empNum" ><c:out value="${emp.empNum}"/></td>
 
-                                <td><span>${emp.empName}</span>
-<%--                                        <c:if test="${not empty emp.uploadPath}">--%>
-<%--                                            <button type="button" class="btn btn-default btn-xs picture"--%>
-<%--                                            value="${emp.empNum}">사진</button>--%>
-<%--                                        </c:if>--%>
-                                        </td>
-                                        <td>${emp.job}</td>
-                                        <td>${emp.phoneNum}</td>
-                                        <c:if test="${not empty emp.hireDate}">
-                                            <fmt:formatDate value="${emp.hireDate}" pattern="yyyy/mm/dd" var="formattedhireDate"/>
-                                        <td>${formattedhireDate}</td>
-                                        </c:if>
-                                        <td>${emp.email}</td>
-                                        <td>${emp.annualLeaveNum}</td>
-                                        <td>${emp.address}</td>
-                                        <td>${emp.workDate}</td>
-                                        <td>${emp.birthDate}</td>
-                                        <td>${emp.departNum}</td>
-                                        <td><button class="btn btn-default btn-xs
-                                        btnPictureInsert pictureInsertForm">
-                                            사진등록
+                            <td><span>${emp.empName}</span>
+                                    <%--                                        <c:if test="${not empty emp.uploadPath}">--%>
+                                    <%--                                            <button type="button" class="btn btn-default btn-xs picture"--%>
+                                    <%--                                            value="${emp.empNum}">사진</button>--%>
+                                    <%--                                        </c:if>--%>
+                            </td>
+                            <td>${emp.job}</td>
+                            <td>${emp.phoneNum}</td>
+                            <c:if test="${not empty emp.hireDate}">
+                                <fmt:formatDate value="${emp.hireDate}" pattern="yyyy/mm/dd" var="formattedhireDate"/>
+                                <td>${formattedhireDate}</td>
+                            </c:if>
+                            <td>${emp.email}</td>
+                            <td>${emp.annualLeaveNum}</td>
+                            <td>${emp.address}</td>
+                            <td>${emp.workDate}</td>
+                            <td>${emp.birthDate}</td>
+                            <td>${emp.departNum}</td>
+                            <td>
+                                <button  class="btn btn-default btn-xs
+                                                                btnPictureInsert pictureInsertForm" >
+                                    사진등록
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-default btn-xs delete"
+                                        value="${emp.empNum}">삭제</button>
+                            </td>
+                            <td>
+                                <a href="/emp/modify?empNum=${emp.empNum}" role="button"
+                                   class="btn btn-default btn-xs">수정</a>
 
-                                        </button></td>
-                                        <td>
-                                            <button type="button" class="btn btn-default btn-xs delete"
-                                                    value="${emp.empNum}">삭제</button>
-                                        </td>
-                                        <td>
-                                            <a href="/emp/modify?empNum=${emp.empNum}" role="button"
-                                               class="btn btn-default btn-xs">수정</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
 
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
+                <form class="form-inline" role="form" method="post">
+                    <a href="/emp/register" class="btn btn-default">Add</a>
 
-                        <form class="form-inline" role="form" method="post">
-                            <a href="/emp/register" class="btn btn-default">Add</a>
-
-                        </form>
-                        <%-- table 들--%>
+                </form>
+                <%-- table 들--%>
             </div>
         </div>
     </div>
+</div>
     <%-- search form--%>
 
     <%--사진 보기 모달--%>
-    <div id="pictureModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-sm">
+<%--    <div id="pictureModal" class="modal fade" role="dialog">--%>
+<%--        <div class="modal-dialog modal-sm">--%>
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+<%--            <!-- Modal content-->--%>
+<%--            <div class="modal-content">--%>
+<%--                <div class="modal-header">--%>
+<%--                    <button type="button" class="close" data-dismiss="modal">&times;</button>--%>
 
-                    <%-- 사진 보기 선택한 사용자의 이름 출력 --%>
-                    <h4 class="modal-title pictureName">홍길동의 사진</h4>
+<%--                    &lt;%&ndash; 사진 보기 선택한 사용자의 이름 출력 &ndash;%&gt;--%>
+<%--                    <h4 class="modal-title pictureName">홍길동의 사진</h4>--%>
 
-                </div>
+<%--                </div>--%>
 
-                <div class="modal-body">
-                    <div style="text-align: center;">
+<%--                <div class="modal-body">--%>
+<%--                    <div style="text-align: center;">--%>
 
-                        <%-- Ajax 요청에 대한 응답 결과를 가지고 이미지 처리 --%>
-                            <img src="/resources/img/s_saveFile.getName()" alt="섬네일 사진">
+<%--                        &lt;%&ndash; Ajax 요청에 대한 응답 결과를 가지고 이미지 처리 &ndash;%&gt;--%>
+<%--                        <img src="/resources/img/s_saveFile.getName()" alt="섬네일 사진">--%>
 
-                    </div>
-                </div>
+<%--                    </div>--%>
+<%--                </div>--%>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
+<%--                <div class="modal-footer">--%>
+<%--                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
-        </div>
-    </div>
+<%--        </div>--%>
+<%--    </div>--%>
 
-</div>
+
 
 <div id="pictureInsertForm" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -274,68 +234,66 @@
 
 
 
-<style>
-    td{
-        padding: 10px;
-    }
-    .container{
-        margin-top: 20px;
-        margin-left: 200px;
-    }
-</style>
+
+
+
 <script type="text/javascript">
     $(document)
         .ready(
             function() {
-                $(".btnPictureInsert").click(function(){
-                    var tmp = $(this).parent().parent().find('td').eq(0).text();
+                <%--var tmp2=$(".btnPictureInsert").parent().parent().find('td').eq(0).text();--%>
+                <%--if (!(tmp2 ==<sec:authentication property="principal.emp.empNum"/>)){--%>
+                <%--    $(".btnPictureInsert").hide();--%>
+                <%--}--%>
 
-                    $('#empNum').val(tmp);
 
-                    $("#pictureInsertForm").modal(function (){
-                        $('#uploadBtn').on("click",function(e){
-                            var formData=new formData();
-                            var inputFile=$("input[name='file']");
-                            var files=inputFile[0].files;
-                            console.log(files);
+                    $(".btnPictureInsert").click(function () {
+                        var tmp = $(this).parent().parent().find('td').eq(0).text();
 
-                            str += "<input type='hidden' name='attachList["
-                                + i
-                                + "].uuid' value='"
-                                + jobj.data("uuid")
-                                + "'>";
-                            str += "<input type='hidden' name='attachList["
-                                + i
-                                + "].uploadPath' value='"
-                                + jobj.data("path")
-                                + "'>";
-                            str += "<input type='hidden' name='attachList["
-                                + i
-                                + "].fileType' value='"
-                                + jobj.data("type")
-                                + "'>";
+                        $('#empNum').val(tmp);
 
-                            for (var i=0; i<files.length;i++){
-                                formData.append("uploadFile",files[i]);
-                            }
-                            $.ajax({
-                                url:'/upload',
-                                processData:false,
-                                data:formData,
-                                type:'POST',
-                                success:function (result){
-                                    alert("Upload");
+                        $("#pictureInsertForm").modal(function () {
+                            $('#uploadBtn').on("click", function (e) {
+                                var formData = new formData();
+                                var inputFile = $("input[name='file']");
+                                var files = inputFile[0].files;
+                                console.log(files);
+
+                                str += "<input type='hidden' name='attachList["
+                                    + i
+                                    + "].uuid' value='"
+                                    + jobj.data("uuid")
+                                    + "'>";
+                                str += "<input type='hidden' name='attachList["
+                                    + i
+                                    + "].uploadPath' value='"
+                                    + jobj.data("path")
+                                    + "'>";
+                                str += "<input type='hidden' name='attachList["
+                                    + i
+                                    + "].fileType' value='"
+                                    + jobj.data("type")
+                                    + "'>";
+
+                                for (var i = 0; i < files.length; i++) {
+                                    formData.append("uploadFile", files[i]);
                                 }
+                                $.ajax({
+                                    url: '/upload',
+                                    processData: false,
+                                    data: formData,
+                                    type: 'POST',
+                                    success: function (result) {
+                                        alert("Upload");
+                                    }
+                                });
                             });
                         });
                     });
-                });
+
                 // $(".pictureModal").click(function (){
                 //     $("#pictureModal").modal();
                 // })
-
-
-
 
 
                 <%--$("#myModal").modal("hide");--%>
@@ -354,8 +312,8 @@
                 <%--    $("#myModal").modal("show");--%>
                 <%--}--%>
 
-                $("#regBtn").on("click",function (){
-                    self.location="/emp/register";
+                $("#regBtn").on("click", function () {
+                    self.location = "/emp/register";
                     console.log("등록이동");
                 });
 
@@ -385,7 +343,7 @@
                 $(".move")
                     .on(
                         "click",
-                        function(e) {
+                        function (e) {
 
                             e.preventDefault();
                             actionForm
@@ -403,7 +361,7 @@
 
                 $("#searchForm button").on(
                     "click",
-                    function(e) {
+                    function (e) {
 
                         if (!searchForm.find("option:selected")
                             .val()) {
@@ -424,29 +382,27 @@
                         searchForm.submit();
 
                     });
-                var formObj=$("form");
+                var formObj = $("form");
 
-                $("button.delete").on("click",function (e){
+                $("button.delete").on("click", function (e) {
                     e.preventDefault();
 
 
-
                     $("#deleteFormModal #empNum").val($(this).val());
-                    $("#deleteFormModal #comment").text("이름:"+$(this).parents("tr").find("span").text());
+                    $("#deleteFormModal #comment").text("이름:" + $(this).parents("tr").find("span").text());
                     $("#deleteFormModal").modal();
 
-                    var operation=$(this).data("oper");
+                    var operation = $(this).data("oper");
                     //
                     console.log(operation);
                     //
-                    if (operation==='remove'){
-                        formObj.attr("action","/emp/remove");
+                    if (operation === 'remove') {
+                        formObj.attr("action", "/emp/remove");
                     }
                     formObj.submit();
                 });
             });
 </script>
-
 
 
 <%@ include file="footer.jsp" %>
