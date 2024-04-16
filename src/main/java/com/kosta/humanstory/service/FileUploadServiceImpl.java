@@ -24,8 +24,8 @@ AttachMapper mapper;
 
 
     @Override
-    public void saveFileAndData(EmployeeVO emp, EmpAttachVO vo) {
-        mapper.insertEmp(emp,vo);
+    public void saveFileAndData(EmpAttachVO empAttachVO) {
+        mapper.insertEmp(empAttachVO);
     }
 
 

@@ -8,8 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 public interface FileUploadService {
-    public void saveFileAndData( EmployeeVO emp, EmpAttachVO vo);
-//    public int deleteFile(MultipartFile file, AttachVO vo);
+    public void saveFileAndData(EmpAttachVO empAttachVO);
+
 
 
 }

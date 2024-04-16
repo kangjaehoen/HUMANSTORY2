@@ -19,8 +19,8 @@
     </select>
 
     <insert id="insertEmp" parameterType="com.kosta.humanstory.domain.EmpAttachVO">
-        insert into  tbl_attach (uuid,uploadPath,fileName,filetype,empNum)
-        values (#{uuid},#{uploadPath},#{fileName},#{filetype},#{empNum});
+        insert into  tbl_attach (UUID,UPLOADPATH,FILENAME,FILETYPE,EMPNUM)
+        values (#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{empNum})
     </insert>
 
 

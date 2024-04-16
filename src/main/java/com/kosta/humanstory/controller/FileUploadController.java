@@ -34,18 +34,15 @@ public class FileUploadController {
     }
 
     @PostMapping("/upload")
-    public String uploadFile(@RequestParam("file") MultipartFile[] uploadFile, @ModelAttribute("vo") EmpAttachVO vo) throws IOException {
+    public String uploadFile(@RequestParam("file") MultipartFile[] uploadFile, @ModelAttribute("vo") EmpAttachVO empAttachVO) throws IOException {
 
         String uploadFolder = "C:\\workspace\\springboot_work\\kosta270\\HUMASTORY2\\src\\main\\resources\\static\\img";
 
-
-
+        System.out.println("empNum: " + empAttachVO.getEmpNum());
 
         for (MultipartFile multipartFile : uploadFile) {
             System.out.println("===========================");
             System.out.println("Upload File Name" + multipartFile.getOriginalFilename());
-
-
 
 
             File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
@@ -61,16 +58,14 @@ public class FileUploadController {
             System.out.println(fileType);
             System.out.println(filePath);
 
-            vo.setUuid(uuid);
-            vo.setFileName(fileName);
-            vo.setFileType(Boolean.parseBoolean(fileType));
-            vo.setUploadPath(filePath);
+            empAttachVO.setUuid(uuid);
+            empAttachVO.setFileName(fileName);
+            empAttachVO.setFileType((fileType));
+            empAttachVO.setUploadPath(filePath);
 
+            System.out.println(empAttachVO);
 
-
-            System.out.println(vo);
-
-
+            service.saveFileAndData(empAttachVO);
 
 
 

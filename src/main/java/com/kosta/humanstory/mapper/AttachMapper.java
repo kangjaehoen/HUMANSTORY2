@@ -14,5 +14,5 @@ public interface AttachMapper {
 //    public List<AttachVO> findByEmpNum(Long empNum);
     public List<AttachVO> findByEmpNum(String EmpNum);
 
-    public void insertEmp(EmployeeVO emp,EmpAttachVO vo);
+    public void insertEmp(EmpAttachVO vo);
 }

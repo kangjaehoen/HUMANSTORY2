@@ -33,13 +33,11 @@
 <script type="text/javascript">
     $(document)
         .ready(
-
-
-
-
             function() {
                 $(".btnPictureInsert").click(function(){
+                    var tmp = $(this).parent().parent().find('td').eq(0).text();
 
+                    $('#empNum').val(tmp);
 
                    $("#pictureInsertForm").modal(function (){
                        $('#uploadBtn').on("click",function(e){
@@ -406,6 +404,7 @@
 <%--                        <input type='hidden' name='attachList["i"].uploadPath' value='"jobj.data("path")"'>"; &lt;%&ndash;path&ndash;%&gt;--%>
 
                     </div>
+                        <input type="hidden" id="empNum" name="empNum" value="">
                     <button id="uploadBtn" type="submit" class="btn btn-default">Submit</button>
 <%--                    <button type="button" class="btn btn-default pictureModal">사진 확인</button>--%>
                 </form>
