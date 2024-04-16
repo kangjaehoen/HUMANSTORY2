@@ -7,9 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HelloController {
 
-    @GetMapping("/hello")
+    @GetMapping("/main")
     public String hello(){
-        return "/hello";
+        return "/main";
+    }
 
+    @GetMapping("/dashboard")
+    public String dashBoard() {
+        return "/leavePolicy/list";
     }
 }
