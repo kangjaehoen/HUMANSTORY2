@@ -526,8 +526,8 @@
                                 </div>
                                 <div date-rangepicker class="flex items-center">
                                     <div class="relative">
-                                        <!-- 								<label for="price" -->
-                                        <!-- 									class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">신청날짜</label> -->
+                                        <!--                         <label for="price" -->
+                                        <!--                            class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">신청날짜</label> -->
                                         <div
                                                 class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                             <svg class="mt-6 w-4 h-4 text-gray-500 dark:text-gray-400"

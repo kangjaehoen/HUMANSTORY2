@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kosta.humanstory.mapper.AttachMapper">
+
+
+    <insert id="insert" parameterType="com.kosta.humanstory.domain.AttachVO">
+        insert into tbl_attach (uuid,uploadPath,fileName,filetype,lpNum )
+        values (#{uuid},#{uploadPath},#{fileName},#{filetype},#{lpNum})
+    </insert>
+
+    <delete id="delete">
+        delete from tbl_attach where uuid = #{uuid}
+    </delete>
+
+    <select id="findBGyEmpNum" resultType="com.kosta.humanstory.domain.AttachVO">
+        select * from tbl_attach where empNum=#{empNum}
+    </select>
+
+    <insert id="insertEmp" parameterType="com.kosta.humanstory.domain.EmpAttachVO">
+        insert into  tbl_attach (UUID,UPLOADPATH,FILENAME,FILETYPE,EMPNUM)
+        values (#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{empNum})
+    </insert>
+
+
+</mapper>

@@ -12,7 +12,6 @@ public class Criteria {
     private int pageNum;
     private int amount;
 
-
     private String type;
     private String keyword;
 
