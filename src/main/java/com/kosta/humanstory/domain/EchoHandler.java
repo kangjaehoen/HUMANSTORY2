@@ -1,5 +1,8 @@
 package com.kosta.humanstory.domain;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -11,72 +14,57 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class EchoHandler extends TextWebSocketHandler {
-    //로그인 한 전체 session 리스트
-    List<WebSocketSession> sessions = new ArrayList<>();
-    // 현재 로그인 중인 개별 유저
-    Map<String, WebSocketSession> users = new ConcurrentHashMap<>();
 
+public class EchoHandler extends TextWebSocketHandler {
+
+    //로그인 개별저장
+    Map<String, WebSocketSession> users = new ConcurrentHashMap<String, WebSocketSession>();
+
+
+    private String getMemberId(WebSocketSession session) {
+        Map<String, Object> httpSession = session.getAttributes();
+        String empNum = (String) httpSession.get("empNum"); // 세션에 저장된  empNum 조회함
+        return empNum==null? null: empNum;
+    }
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        String senderId =  getMemberId(session); // / 접속한 유저의 http세션을 조회하여 id를 얻는 함수
-        if(senderId != null ){
-            System.out.println(senderId + " 연결 됨");
-            users.put(senderId, session);
-
+        String sessionId = getMemberId(session);// 로그인한 세션 아디 확인
+        if(sessionId!=null) {	
+            users.put(sessionId, session);   // 로그인중 개별유저 저장
         }
     }
 
+    //js 메세지를 받아보자 !!!
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         String senderId = getMemberId(session);
-        String msg = message.getPayload();
+
+        String msg = message.getPayload(); // WebSocket 메세지를 가져온다.
         if (msg != null) {
-            String[] strs = msg.split(",");
-            ;
+            String[] strs = msg.split(","); //쉼표 기준임
             System.out.println(strs.toString());
             if (strs != null && strs.length == 4) {
-                String type = strs[0];
-                String target = strs[1]; // m_id 저장
-                String content = strs[2];
-                String url = strs[3];
-                WebSocketSession targetSession = users.get(target);  // 메시지를 받을 세션 조회
+                String type = strs[0]; // 채팅인지 이벤트인지 판단한다는데 뭔지 모르겠음 ㅋㅋㅋ
+                String target = strs[1]; // 메시지를 받을 대상인거같음.
+                String content = strs[2]; //메시지의 내용( 뷰단에서 직적 입력하는 부분인가?)
+                String url = strs[3]; // 이거 진짜 뭐임?
+                WebSocketSession targetSession = users.get(target);  // 메시지를 받을 상대를 조회해서 전송
 
-                // 실시간 접속시
-                if (targetSession != null) {
+                if(targetSession!=null) {
                     TextMessage tmpMsg = new TextMessage("<a target='_blank' href='" + url + "'>[<b>" + type + "</b>] " + content + "</a>");
                     targetSession.sendMessage(tmpMsg);
+
                 }
             }
-
         }
+
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        String senderId = session.getId();
-        if(senderId!=null) {	// 로그인 값이 있는 경우만
-            System.out.println(senderId+"종료");
-            users.remove(senderId);
-            sessions.remove(session);
+        String senderId = getMemberId(session);
+        if(senderId !=null){
+            users.remove(senderId); // 세션 삭제
         }
     }
-
-    @Override
-    public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
-        System.out.println(session.getId() + " 익셉션 발생: " + exception.getMessage());
-    }
-
-    // 로그 메시지
-    private void log(String logmsg) {
-        System.out.println(new Date() + " : " + logmsg);
-    }
-    // 웹소켓에 id 가져오기
-    // 접속한 유저의 http세션을 조회하여 id를 얻는 함수
-    private String getMemberId(WebSocketSession session) {
-        Map<String, Object> httpSession = session.getAttributes();
-        String m_id = (String) httpSession.get("id"); // 세션에 저장된 m_id 기준 조회
-        return m_id==null? null: m_id;
-    }
-
 }

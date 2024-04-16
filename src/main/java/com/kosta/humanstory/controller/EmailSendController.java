@@ -337,11 +337,12 @@ public class EmailSendController {
         return ResponseEntity.ok().body("이메일이 성공적으로 전송되었습니다.");
     }
 
-    @PostMapping("/sideBar")
+    @PostMapping(value = "/sideBar")
     @ResponseBody
     public String alram(@RequestBody  EmpEmailInfoDTO empEmailInfoDTO){
 
-        System.out.println(empEmailInfoDTO.getEmpName());
-        return"success";
+        System.out.println(empEmailInfoDTO);
+        System.out.println("ajax작동돼?");
+        return "success";
     }
 }

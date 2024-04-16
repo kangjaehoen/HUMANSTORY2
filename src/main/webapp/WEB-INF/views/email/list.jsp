@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="sideBar.jsp"%>
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link
         href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
@@ -18,7 +20,7 @@
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                 <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg bg-gray-800 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-gray-800 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
-                        <a href="/" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">메인페이지</a>
+                        <a href="/main" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">메인페이지</a>
                     </li>
                     <li>
                         <a href="/system/annualForm" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">휴가 일수 부여 설정</a>
@@ -315,7 +317,14 @@
 
 <script
         src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script type="text/javascript">
+
+    var empNum;
+    var empName;
+    var it_days;
+    var email;
+
     $(function() {
         $("#actionsDropdownButton").click(function() {
             $("#empEmailInfo").submit();
@@ -330,10 +339,11 @@
         $(".tdCheck").change(function() {
             if ($(this).prop("checked")) {
                 var empRow = $(this).closest("tr");
-                var empNum = empRow.find("#empNum").text();
-                var empName = empRow.find("#empName").text();
-                var it_days = empRow.find("#it_days").text();
-                var email = empRow.find("#email").text();
+                 empNum = empRow.find("#empNum").text();
+                 empName = empRow.find("#empName").text();
+                 it_days = empRow.find("#it_days").text();
+                 email = empRow.find("#email").text();
+
                 console.log("empNum"+empNum);
                 console.log("empName :" + empName);
                 console.log("email :" + email);
@@ -389,38 +399,29 @@
         });
 
 
-
-
         $('#notifySendBtn').click(function(e){
-            console.log("ajax");
-            console.log("click+empNum" , empNum);
-
-            
-
-
-            let url = '/email/sideBar';
+            let type = '70';
+            let target = modal.find('.modal-body input').val();
+            let content = modal.find('.modal-body textarea').val();
+            let url = 'alarm/insert';
             // 전송한 정보를 db에 저장
             $.ajax({
                 type: 'post',
-                url: '/email/sideBar',
+                url: 'alarm/insert',
                 dataType: 'text',
                 data: {
-                    empNum : empNum,
-                    empName: empName,
-                    it_days: it_days,
+                    target: target,
+                    content: content,
+                    type: type,
                     url: url
                 },
                 success: function(){    // db전송 성공시 실시간 알림 전송
                     // 소켓에 전달되는 메시지
                     // 위에 기술한 EchoHandler에서 ,(comma)를 이용하여 분리시킨다.
-                    socket.send("관리자,"+empNum+","+empName+","+it_days+","+url);
-                    console.log(empNum);
-                    console.log(empName);
-                    console.log(it_days);
-                    console.log(url);
+                    socket.send("관리자,"+target+","+content+","+url);
                 }
             });
-            // modal.find('.modal-body textarea').val('');	// textarea 초기화
+
         });
     });
 </script>

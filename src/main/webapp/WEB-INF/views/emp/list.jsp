@@ -282,7 +282,6 @@
                             <th>전화 번호</th>
                             <th>입사일</th>
                             <th>이메일</th>
-                            <th>연차일 </th>
                             <th>주소</th>
                             <th>근무일</th>
                             <th>생년월일</th>
@@ -311,7 +310,6 @@
                                         <td>${formattedhireDate}</td>
                                         </c:if>
                                         <td>${emp.email}</td>
-                                        <td>${emp.annualLeaveNum}</td>
                                         <td>${emp.address}</td>
                                         <td>${emp.workDate}</td>
                                         <td>${emp.birthDate}</td>

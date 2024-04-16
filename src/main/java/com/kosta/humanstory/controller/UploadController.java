@@ -73,27 +73,44 @@ public class UploadController {
 
             String uploadFileName = multipartFile.getOriginalFilename();
 
+
+
             attachDTO.setFileName(uploadFileName);
 
             UUID uuid = UUID.randomUUID();
 
             uploadFileName = uuid.toString() + "_" + uploadFileName;
 
+            System.out.println("uploadFileName : "+ uploadFileName);
+
             try {
                 File saveFile = new File(uploadPath, uploadFileName);
                 multipartFile.transferTo(saveFile);
 
+                System.out.println("uploadPath :"+uploadPath);
+
                 attachDTO.setUuid(uuid.toString());
                 attachDTO.setUploadPath(uploadFolderPath);
+
+                System.out.println("-----");
+                System.out.println("attachDTO , UploadPath : "+attachDTO.getUploadPath());
+                System.out.println("attachDTO , UUID : "+attachDTO.getUuid());
+                System.out.println("attachDTO , FileName : "+attachDTO.getFileName());
+                System.out.println("-----");
 
                 // check image type file
                 if (checkImageType(saveFile)) {
 
                     attachDTO.setImage(true);
 
-                    FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
+                    System.out.println();
+
+                    FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "_" + uploadFileName));
+
+                    //System.out.println("썸네일 확인 : "+thumbnail);
 
                     //Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
+                    Thumbnailator.createThumbnail(new File(uploadPath+"\\" + uploadFileName), new File(uploadPath+"thums_" + uploadFileName), 100, 100);
 
                     thumbnail.close();
                 }
@@ -183,12 +200,12 @@ public class UploadController {
     public ResponseEntity<byte[]> getFile(String fileName) {
 
 
-        System.out.println("fileName: " + fileName);
+        System.out.println("disPlay , fileName: " + fileName);
 
         File file = new File("C:\\upload\\" + fileName);
 
 
-        System.out.println("file: " + file);
+        System.out.println("display , file: " + file);
 
         ResponseEntity<byte[]> result = null;
 
@@ -197,6 +214,7 @@ public class UploadController {
 
             header.add("Content-Type", Files.probeContentType(file.toPath()));
             result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+            System.out.println("display , result : "+ result);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

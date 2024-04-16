@@ -44,7 +44,6 @@ public class LeavePolicyController {
     public String registerLeavePolicy(LeavePolicyVO vo) {
         System.out.println("휴가 정책 게시판 등록");
         System.out.println("등록 정보 : " + vo);
-        vo.setEmpNum("100"); // 임시 사원번호
 
         if (vo.getAttachList() != null) {
             vo.getAttachList().forEach(attach -> System.out.println(attach));
