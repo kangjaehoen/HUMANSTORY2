@@ -38,8 +38,8 @@
                 </div>
             </div>
             <div class="text-sm" style="float: right; ">
-                <a href="/">회원가입</a>
-                <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">비밀번호 찾기</a>
+                <a href="/joinForm">회원가입</a>
+<%--                <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">비밀번호 찾기</a>--%>
             </div>
             <div>
                 <label class="inline-flex items-center cursor-pointer"><input id="customCheckLogin" type="checkbox" class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"><span class="ml-2 text-sm font-semibold text-blueGray-600">로그인 상태 유지</span></label>
