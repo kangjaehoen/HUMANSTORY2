@@ -137,13 +137,13 @@
 
 
 <form id="myForm2" action="annualNumSetting" method="post">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+<%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />--%>
 </form>
 
 
 <form id="manualBtn" action="annualLeave" method="post">
-    <!-- 	<input type="submit" value="관리자 수동 등록"> --> <input type="hidden"
-                                                                name="${_csrf.parameterName}" value="${_csrf.token}" />
+<%--    <!-- 	<input type="submit" value="관리자 수동 등록"> --> <input type="hidden"--%>
+<%--                                                                name="${_csrf.parameterName}" value="${_csrf.token}" />--%>
 </form>
 
 
@@ -328,7 +328,7 @@
                                     class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white" id="empNum">${list.empNum }</th>
                                 <td class="px-4 py-3" id="empName">${list.empName}</td>
                                 <td class="px-4 py-3" id="job">${list.job}</td>
-                                <td class="px-4 py-3" id="it_days"><fmt:formatDate pattern="yyyy-MM-dd"
+                                <td class="px-4 py-3" id="lt_days"><fmt:formatDate pattern="yyyy-MM-dd"
                                                                                    value="${list.hireDate}"/></td>
                                 <td class="px-4 py-3" id="email">${list.email}</td>
                             </tr>
@@ -437,7 +437,7 @@
                                             class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white" id="empNum1">${list.empNum }</th>
                                         <td class="px-4 py-3" id="empName1">${list.empName}</td>
                                         <td class="px-4 py-3" id="leaveType1">${list.leaveType}</td>
-                                        <td class="px-4 py-3" id="it_days1">${list.it_days}</td>
+                                        <td class="px-4 py-3" id="lt_days1">${list.lt_days}</td>
                                         <td class="px-4 py-3" id="email1">${list.email}</td>
                                     </tr>
                                 </c:forEach>
@@ -606,7 +606,7 @@
                 var empRow = $(this).closest("tr");
                 var empNum = empRow.find("#empNum").text();
                 var empName = empRow.find("#empName").text();
-               /* var it_days = empRow.find("#it_days").text();*/
+               /* var lt_days = empRow.find("#lt_days").text();*/
                 var email = empRow.find("#email").text();
                 var job = empRow.find("#job").text();
 
@@ -614,7 +614,7 @@
                 console.log("empName :" + empName);
                 console.log("email :" + email);
                 console.log("직책 : " + job);
-             /*   console.log("it_days :" + it_days);*/
+             /*   console.log("lt_days :" + lt_days);*/
                 $('<input>').attr({
                     type : "hidden",
                     name : "empNum",
@@ -682,20 +682,20 @@
         });
         $("#price").change(function (){
 
-            $('#updateLeave input[name="it_days"]').remove();
-            $('#updateLeaveEmailSend input[name="it_days"]').remove();
+            $('#updateLeave input[name="lt_days"]').remove();
+            $('#updateLeaveEmailSend input[name="lt_days"]').remove();
             var price = parseFloat($(this).val());
                 console.log(price);
 
             $('<input>').attr({
                 type : "hidden",
-                name : "it_days",
+                name : "lt_days",
                 value : price
             }).appendTo("#updateLeave");
 
             $('<input>').attr({
                 type : "hidden",
-                name : "it_days",
+                name : "lt_days",
                 value : price
             }).appendTo("#updateLeaveEmailSend");
 
@@ -708,13 +708,13 @@
            let empNum =  $('#updateLeave input[name="empNum"]').val();
            let empName =   $('#updateLeave input[name="empName"]').val();
            let email = $('#updateLeave input[name="email"]').val();
-           let it_days =  $('#updateLeave input[name="it_days"]').val();
+           let lt_days =  $('#updateLeave input[name="lt_days"]').val();
             let job =  $('#updateLeave input[name="job"]').val();
             let message = $('#message').val();
             let emailCheckboxChecked = $('#link-checkbox').prop('checked');
 
 
-            if(leaveType == null || empNum==null || empName==null || email==null || it_days ==null ){
+            if(leaveType == null || empNum==null || empName==null || email==null || lt_days ==null ){
                 alert("업데이트할 사원, 휴가명, 휴가일수를 선택해주세요.");
             }else {
                 $("#updateLeave").submit();
@@ -728,7 +728,7 @@
                             empNum: empNum,
                             empName: empName,
                             email: email,
-                            it_days: it_days,
+                            lt_days: lt_days,
                             job: job,
                             message:message
                         },
@@ -756,9 +756,9 @@
         });
         $("#updateLeave").submit(function (){
             let empName1 = $('#updateLeave input[name="empName"]').val();
-            let  itDays1 = $('#updateLeave input[name="it_days"]').val();
+            let  ltDays1 = $('#updateLeave input[name="lt_days"]').val();
 
-            alert(empName1 + "님 한테 " + clickText + "를 " + itDays1 + "일 부여하였습니다.");
+            alert(empName1 + "님 한테 " + clickText + "를 " + ltDays1 + "일 부여하였습니다.");
         })
         // $("#updateLeaveEmailSend").submit(function (){
         //     let empNum = $('#updateLeave input[name="empNum"]').val();
