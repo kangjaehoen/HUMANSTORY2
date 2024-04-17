@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="text-sm" style="float: right; ">
-                                <a href="/joinForm">회원가입</a>
+                                <a href="/joinForm" class="font-bold">회원가입</a>
                 <%--                <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">비밀번호 찾기</a>--%>
                             </div>
                                 <div>
