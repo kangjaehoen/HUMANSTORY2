@@ -10,5 +10,5 @@ public class EmployeeWithPersonalLeaveDayDTO {
     private String empName;
     private String email;
     private String leaveType;
-    private double it_days;
+    private double lt_days;
 }

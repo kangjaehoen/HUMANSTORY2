@@ -217,7 +217,7 @@
 
                     </a>
                     <div x-show="open" class="bg-gray-800 rounded-lg">
-                        <a class="py-2 px-16 block text-sm text-white hover:bg-blue-500 hover:text-gray-900 hover:bg-white rounded-lg text-center" href="http://127.0.0.1:3000/Main.html">Calendar</a>
+                        <a class="py-2 px-16 block text-sm text-white hover:bg-blue-500 hover:text-gray-900 hover:bg-white rounded-lg text-center" href="/leave/calendar">Calendar</a>
                         <a class="py-2 px-16 block text-sm text-white hover:bg-blue-500 hover:text-gray-900 hover:bg-white rounded-lg text-center" href="http://127.0.0.1:3000/Grid/Grid Main/Grid.html">PTO List</a>
                     </div>
                 </li>

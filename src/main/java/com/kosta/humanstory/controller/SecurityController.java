@@ -39,7 +39,7 @@ public class SecurityController {
     @GetMapping("/customlogin")
     public String customlogin(){
         System.out.println("customlogin 이동");
-        return "customlogin";
+        return "login/customlogin";
     }
 
 

@@ -33,11 +33,11 @@
             resultType="com.kosta.humanstory.domain.EmployeeVO">
         <![CDATA[
 	SELECT
-		EMPNUM ,EMPNAME,JOB,PW,PHONENUM,HIREDATE,EMAIL,ANNUALLEAVENUM,ADDRESS,WORKDATE,BIRTHDATE,DEPARTNUM
+		EMPNUM ,EMPNAME,JOB,PW,PHONENUM,HIREDATE,EMAIL,ADDRESS,WORKDATE,BIRTHDATE,DEPARTNUM
 	FROM
 		(
 			select
-				rownum rn,EMPNUM ,EMPNAME,JOB,PW,PHONENUM,HIREDATE,EMAIL,ANNUALLEAVENUM,ADDRESS,WORKDATE,BIRTHDATE,DEPARTNUM
+				rownum rn,EMPNUM ,EMPNAME,JOB,PW,PHONENUM,HIREDATE,EMAIL,ADDRESS,WORKDATE,BIRTHDATE,DEPARTNUM
 			FROM EMPLOYEE
 			where
 	]]>
@@ -128,7 +128,6 @@
                             phoneNum=#{phoneNum},
                             hireDate= #{hireDate},
                             email=#{email},
-                            annualLeaveNum=#{annualLeaveNum},
                             address=#{address},
                             workDate=#{workDate},
                             birthDate=#{birthDate},

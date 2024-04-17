@@ -76,11 +76,7 @@
                                value='<c:out value="${emp.email }"/>' >
                     </div>
 
-                    <div class="form-group">
-                        <label>annualLeaveNum</label>
-                        <input class="form-control" name='annualLeaveNum'
-                               value='<c:out value="${emp.annualLeaveNum }"/>' >
-                    </div>
+
 
                     <div class="form-group">
                         <label>address</label>

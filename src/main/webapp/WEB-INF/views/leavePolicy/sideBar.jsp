@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script type="text/javascript">
         $(function(){
             (function(){
@@ -79,7 +80,7 @@
 <body>
 
 
-<nav class="fixed top-0 z-50 w-full bg-white b dark:bg-gray-800 dark:border-gray-700">
+<nav class="fixed top-0 z-50 w-full bg-white dark:bg-gray-800 dark:border-gray-700">
     <div class="px-2 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
             <div class="flex items-center justify-start rtl:justify-end">
@@ -89,9 +90,9 @@
                         <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
                     </svg>
                 </button>
-                <a href="https://flowbite.com" class="flex ms-2 md:me-0">
+                <a href="http://localhost:8081/main" class="flex ms-2 md:me-0">
                     <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-5 me-3" alt="HS Logo" /> -->
-                    <img src="../../../resources/img/hs2.logo.png" class="h-16 me-2" alt="HS Logo" />
+                    <img src="/img/hs2.logo.png" class="h-16 me-2" alt="HS Logo" />
                     <!-- <span class="self-center text-xl font-semibold sm:text-1xl whitespace-nowrap dark:text-white">HUMAN STORY</span> -->
                 </a>
             </div>
@@ -160,7 +161,7 @@
 
 
 <!-- 좌측 메뉴 시작 -->
-<aside id="logo-sidebar" class="fixed top-2 left-0 z-40 w-64 h-screen pt-10 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+<aside id="logo-sidebar" class="fixed top-2 left-0 z-40 w-64 h-screen pt-10 transition-transform -translate-x-full  sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
     <div class="h-full px-4 pb-4 overflow-y-auto bg-gray-800 w-67 mt-4">
 
         <div class="flex justify-center items-center mt-8">
@@ -172,7 +173,7 @@
             </div>
 
             <input type="hidden" id="empNumPf" value="<sec:authentication property='principal.emp.empNum'/>">
-            <input type="hidden" name="empName" value="<sec:authentication property="principal.emp.empName" />">
+            <input type="hidden" name="empName" value="<sec:authentication property='principal.emp.empName'/>">
         </div>
 
 
