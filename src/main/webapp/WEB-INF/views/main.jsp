@@ -217,7 +217,7 @@
 
                     </a>
                     <div x-show="open" class="bg-gray-800 rounded-lg">
-                        <a class="py-2 px-16 block text-sm text-white hover:bg-blue-500 hover:text-gray-900 hover:bg-white rounded-lg text-center" href="http://127.0.0.1:3000/Main.html">Calendar</a>
+                        <a class="py-2 px-16 block text-sm text-white hover:bg-blue-500 hover:text-gray-900 hover:bg-white rounded-lg text-center" href="/leave/calendar">Calendar</a>
                         <a class="py-2 px-16 block text-sm text-white hover:bg-blue-500 hover:text-gray-900 hover:bg-white rounded-lg text-center" href="http://127.0.0.1:3000/Grid/Grid Main/Grid.html">PTO List</a>
                     </div>
                 </li>
@@ -526,8 +526,8 @@
                                 </div>
                                 <div date-rangepicker class="flex items-center">
                                     <div class="relative">
-                                        <!-- 								<label for="price" -->
-                                        <!-- 									class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">신청날짜</label> -->
+                                        <!--                         <label for="price" -->
+                                        <!--                            class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">신청날짜</label> -->
                                         <div
                                                 class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                             <svg class="mt-6 w-4 h-4 text-gray-500 dark:text-gray-400"

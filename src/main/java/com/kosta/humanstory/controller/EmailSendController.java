@@ -344,5 +344,4 @@ public class EmailSendController {
         System.out.println(empEmailInfoDTO.getEmpName());
         return"success";
     }
-
 }

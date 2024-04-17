@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosta.humanstory.mapper.EmployeeMapper">
+
+    <select id="getList" resultType="com.kosta.humanstory.domain.EmployeeVO">
+        select  * from employee
+    </select>
+
+
+
+
+    <sql id="criteria">
+        <trim prefix="(" suffix=") AND" prefixOverrides="OR">
+            <foreach collection="typeArr">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()"> empNum like '%'||#{keyword}||'%' </when>
+                        <when test="type == 'C'.toString()"> empName like '%'||#{keyword}||'%' </when>
+                        <when test="type == 'W'.toString()"> deptName like '%'||#{keyword}||'%' </when>
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+    </sql>
+
+
+
+
+    <select id="getListWithPaging"
+            resultType="com.kosta.humanstory.domain.EmployeeVO">
+        <![CDATA[
+	SELECT
+		EMPNUM ,EMPNAME,JOB,PW,PHONENUM,HIREDATE,EMAIL,ADDRESS,WORKDATE,BIRTHDATE,DEPARTNUM
+	FROM
+		(
+			select
+				rownum rn,EMPNUM ,EMPNAME,JOB,PW,PHONENUM,HIREDATE,EMAIL,ADDRESS,WORKDATE,BIRTHDATE,DEPARTNUM
+			FROM EMPLOYEE
+			where
+	]]>
+        <include refid="criteria" />
+        <![CDATA[
+             rownum <= #{pageNum}*#{amount}
+         )
+         WHERE rn > (#{pageNum}-1)*#{amount}
+
+      ]]>
+    </select>
+
+    <select id="getTotalCount" resultType="int">
+        <![CDATA[
+    select count(*) from Employee
+    where
+        ]]>
+        <include refid="criteria"/>
+        <![CDATA[
+        empNum >=0
+        ]]>
+
+    </select>
+
+
+
+
+    <insert id="insertEmpInfo">
+        INSERT INTO employee (
+            empNum,
+            empName,
+            pw,
+            job,
+            phoneNum,
+            hireDate,
+            email,
+            address,
+            workDate,
+            birthDate,
+            departNum,
+            enabled,
+            ROLE
+
+        )
+        VALUES (empNum_seq.NEXTVAL,
+                #{empName},
+                #{pw},
+                #{job},
+                #{phoneNum},
+                #{hireDate},
+                #{email},
+                #{address},
+                #{workDate},
+                #{birthDate},
+                #{departNum},
+                #{enabled},
+                #{role}
+               )
+    </insert>
+
+
+    <select id="read" parameterType="String">
+        select * from employee where empNum=#{empNum}
+    </select>
+
+    <select id="findByEmpNum" parameterType="String">
+        select * from employee where empNum=#{empNum}
+    </select>
+
+    <!--
+
+        <select id="authread" resultMap="managerMap">
+
+            SELECT
+                e.empNum, e.EMPNAME, e.pw, e.enabled, e.email , ea.auth
+            FROM Employee e
+                     JOIN EMPLOYEE_AUTH ea ON e.empNum=ea.empNum
+            where e.empNum=#{empNum}
+
+        </select>
+    -->
+
+    <update id="update">
+        update employee set
+                            empName=#{empName},
+                            pw=#{pw},
+                            job=#{job},
+                            phoneNum=#{phoneNum},
+                            hireDate= #{hireDate},
+                            email=#{email},
+                            address=#{address},
+                            workDate=#{workDate},
+                            birthDate=#{birthDate},
+                            departNum=#{departNum},
+                            enabled=#{enabled},
+                            role=#{role}
+
+        where empNum=#{empNum}
+    </update>
+
+    <!--    <select id="empEmailSend" resultType="com.kosta.humanstory.domain.EmployeeVO">-->
+    <!--        select *from employee where annualLeaveNum>0-->
+    <!--    </select>-->
+
+    <delete id="delete" parameterType="String">
+        delete employee where empNum=#{empNum}
+    </delete>
+    <!--
+
+        <delete id="authdelete">
+            delete employee_auth where empNum=#{empNum}
+        </delete>
+    -->
+
+</mapper>

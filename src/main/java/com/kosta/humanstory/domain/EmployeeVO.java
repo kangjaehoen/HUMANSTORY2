@@ -1,13 +1,23 @@
 package com.kosta.humanstory.domain;
 
+
 import lombok.Data;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 
 import java.util.Date;
 import java.util.List;
 
 @Data
-    public class EmployeeVO {
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 
+    public class EmployeeVO {
     private String empNum; // 사원번호
 
     private String empName; // 사원명
@@ -40,7 +50,7 @@ import java.util.List;
 
     private String manager; //사원별 매니저
 
-
+    private String role; //권한
 
 
 

@@ -15,6 +15,7 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
+
   servlet:
     multipart:
       max-file-size: 200MB
@@ -22,6 +23,13 @@ spring:
       location: C://upload
       enabled: true
       file-size-threshold: 2KB
+
+  thymeleaf:
+    cache: false
+    check-template-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+    view-names: thymeleaf/*
 
 logging:
   level:

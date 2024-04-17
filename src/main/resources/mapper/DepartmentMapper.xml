@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosta.humanstory.mapper.DeptMapper">
+
+    <select id="getList" resultType="com.kosta.humanstory.domain.DeptVO">
+        select * from department
+    </select>
+
+
+<sql id="criteria">
+    <trim prefix="(" suffix=") AND" prefixOverrides="OR">
+        <foreach collection="typeArr">
+            <trim prefix="OR">
+                <choose>
+                    <when test="type=='T'.toString()">deptNum like '%'||#{keyword}||'%'</when>
+                    <when test="type=='C'.toString()">deptName like '%'||#{keyword}||'%'</when>
+                </choose>
+            </trim>
+        </foreach>
+    </trim>
+</sql>
+
+<select id="getListWithPaging"
+        resultType="com.kosta.humanstory.domain.DeptVO">
+<![CDATA[
+select
+    DeptNum,DeptName
+FROM
+    (select
+         rownum rn,deptnum, deptname from department
+    where
+        ]]>
+        <include refid="criteria"></include>
+        <![CDATA[
+        rownum<=#{pageNum}*#{amount}
+        )
+        where rn>(#{pageNum}-1)*#{amount}
+        ]]>
+
+</select>
+
+<select id="getTotalCount" resultType="int">
+<![CDATA[
+select count(*) from Department
+where
+        ]]>
+<include refid="criteria"/>
+        <![CDATA[
+    deptNum>=0
+            ]]>
+</select>
+
+    <insert id="insertDeptInfo">
+        INSERT INTO department(
+                               deptNum,
+                               deptName
+        )
+        VALUES (deptNum_seq.NEXTVAL,
+                            #{deptName}
+                )
+    </insert>
+
+    <select id="read" parameterType="String">
+        select * from department where deptNum=#{deptNum}
+    </select>
+
+    <update id="update">
+    update department set
+        deptName=#{deptName}
+    where deptNum=#{deptNum}
+</update>
+
+    <delete id="delete" parameterType="String">
+        delete department where deptNum=#{deptNum}
+    </delete>
+
+</mapper>

@@ -42,7 +42,7 @@ public class LeavePolicyService {
             System.out.println("파일 등록 서비스 :"+attach);
         });
 
-   }
+    }
     public LeavePolicyVO getLeavePolicyOne(int lpNum) {
         System.out.println("휴가 정책 서비스단  세부 조회"+lpNum);
         return leavePolicyMapper.getDetail(lpNum);

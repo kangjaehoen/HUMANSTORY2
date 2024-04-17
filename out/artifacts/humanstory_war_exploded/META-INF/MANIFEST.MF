@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: KOSTA
+Build-Jdk: Oracle OpenJDK version 11.0.12
+Implementation-Title: humanstory
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.kosta
+Main-Class: ${start-class}
+

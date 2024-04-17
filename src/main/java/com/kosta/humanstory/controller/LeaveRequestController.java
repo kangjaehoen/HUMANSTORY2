@@ -1,16 +1,17 @@
 package com.kosta.humanstory.controller;
 
+import com.kosta.humanstory.Config.auth.PrincipalDetail;
 import com.kosta.humanstory.domain.LeaveRequestDTO;
 import com.kosta.humanstory.service.LeaveRequestService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/leave/")
@@ -25,12 +26,12 @@ public class LeaveRequestController {
     }
 
     /*@Secured("ROLE_USER")*/
-    @GetMapping("/calendar")
-    public String list(Model model,@RequestParam("empNum") String empNum) {
-        System.out.println("===========" + model + "===========" );
+    @GetMapping("/calendar{empNum}")
+    public String list(@PathVariable String empNum,Model model) {
+
         System.out.println("컨트롤러 /조회/달력/ 작동");
         model.addAttribute("list", service.getEmpLeaveCharts(empNum)); // 이벤트 데이터를 모델에 추가
-
+        System.out.println("===========" + model + "===========" );
         return "/leave/calendar"; // 해당 JSP 페이지 이름 반환
     }
 
