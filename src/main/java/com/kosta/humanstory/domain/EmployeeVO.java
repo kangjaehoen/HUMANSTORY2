@@ -38,7 +38,7 @@ import java.util.List;
 
     private int birthDate; // 생년월일
 
-    private  String  departNum; // 부서 // -추가
+    private  String  deptNum; // 부서 // -추가
 
     private String uploadPath; // 사원 프로필사진 - > 수정(추가)
 

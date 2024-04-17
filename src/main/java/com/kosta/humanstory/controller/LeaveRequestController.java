@@ -25,10 +25,11 @@ public class LeaveRequestController {
 
     }
 
-    /*@Secured("ROLE_USER")*/
-    @GetMapping("/calendar{empNum}")
-    public String list(@PathVariable String empNum,Model model) {
 
+    /*@Secured("ROLE_USER")*/
+    @GetMapping("/calendar")
+    public String list(@AuthenticationPrincipal PrincipalDetail principalDetail,Model model) {
+        String empNum = principalDetail.getEmp().getEmpNum();
         System.out.println("컨트롤러 /조회/달력/ 작동");
         model.addAttribute("list", service.getEmpLeaveCharts(empNum)); // 이벤트 데이터를 모델에 추가
         System.out.println("===========" + model + "===========" );

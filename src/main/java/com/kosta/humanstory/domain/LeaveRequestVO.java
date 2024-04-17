@@ -54,20 +54,19 @@ public class LeaveRequestVO {
         return requestFormattedDate;
     }
 
-    public String getupdateDate() {
-        new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String updateFormattedDate = formatter.format(this.updateDate);
-        return updateFormattedDate;
+    public String getUpdateDate() {
+        if (updateDate == null) {
+            return null;
+        } else {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            return formatter.format(updateDate);
+        }
     }
 
     public Long getLeaveNum() {
         return this.leaveNum;
     }
 
-    public Date getUpdateDate() {
-        return this.updateDate;
-    }
 
     public String getLeaveReason() {
         return this.leaveReason;

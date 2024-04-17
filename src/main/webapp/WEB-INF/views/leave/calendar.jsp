@@ -69,7 +69,7 @@
 							<span class="sr-only">Open user menu</span>
 							<img class="w-8 h-8 rounded-full border-2" src="/img/profile.jpg" alt="user photo">
 							<p class="text-1xl text-white dark:text-white p-1 mr-2" role="none">
-								박길동
+								<sec:authentication property="principal.emp.empName"/>
 							</p>
 
 						</button>
@@ -80,7 +80,7 @@
 								사원번호: <sec:authentication property="principal.emp.empNum"/> 번
 							</p>
 							<p class="text-sm font-medium text-black hover:text-gray-900 truncate dark:text-gray-300" role="none">
-								부서명 : 회계 팀
+								부서 번호 : <sec:authentication property="principal.emp.deptNum"/> 팀
 							</p>
 						</div>
 						<ul class="py-1" role="none">
@@ -115,8 +115,8 @@
 			<img class="w-24 h-24 rounded-full border-2" src="/img/profile.jpg" alt="user photo">
 		</div>
 
-		<p class="text-xl text-white dark:text-white text-center font-bold mt-2" role="none">박 길동</p>
-		<p class="text-sm text-white dark:text-white text-center" role="none">Hong101@KOTSTA270.COM</p>
+		<p class="text-xl text-white dark:text-white text-center font-bold mt-2" role="none"><sec:authentication property="principal.emp.empName"/></p>
+		<p class="text-sm text-white dark:text-white text-center" role="none"><sec:authentication property="principal.emp.email"/></p>
 
 		<!-- 프로필 하단 3개 아이콘 -->
 		<div class="inline-flex rounded-md shadow-sm mt-3" role="group">
@@ -173,7 +173,6 @@
 					<span class="inline-flex items-center justify-center px-2 ms-3 text-xs font-bold text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">ADD</span>
 				</a>
 			</li>
-
 			<div x-data="{ open: false }">
 				<li>
 					<a href="#" class="flex items-center p-2 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">

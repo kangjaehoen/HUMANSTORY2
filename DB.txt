@@ -121,7 +121,7 @@ create table EMPLOYEE
     BIRTHDATE  NUMBER        not null,
     PW         VARCHAR2(200) not null,
     ENABLED    CHAR,
-    DEPARTNUM  VARCHAR2(225),
+    deptNum  VARCHAR2(225),
     UPLOADPATH VARCHAR2(225),
     ROLE       VARCHAR2(225)
 )

@@ -1,5 +1,6 @@
 package com.kosta.humanstory.controller;
 
+import com.kosta.humanstory.Config.auth.PrincipalDetail;
 import com.kosta.humanstory.domain.ApproveDTO;
 import com.kosta.humanstory.domain.ApproveVO;
 import com.kosta.humanstory.domain.Criteria;
@@ -7,6 +8,7 @@ import com.kosta.humanstory.domain.PageDTO;
 import com.kosta.humanstory.service.ApprovalService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,12 +30,13 @@ public class ApprovalController {
 
     /*사원 휴가 리스트 (결재)*/
     @GetMapping("/list")
-    public String approveList(Criteria cri,Model model, @RequestParam("empNum") String empNum) {
+    public String approveList(Criteria cri, Model model, @AuthenticationPrincipal PrincipalDetail principalDetail) {
+        String empNum = principalDetail.getEmp().getEmpNum();
         System.out.println("===========" + model + "===========");
         System.out.println("컨트롤러 /조회/결재/ 작동");
         model.addAttribute("list", service.getLeaveCharts(empNum,cri));
         model.addAttribute("pageMaker", new PageDTO(cri, service.getTotalCount(cri)));
-        return "/approve/list";
+        return "/test";
     }
 
     /*매니저 휴가 리스트 (결재)*/
