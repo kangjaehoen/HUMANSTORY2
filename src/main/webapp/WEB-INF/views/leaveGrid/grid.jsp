@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +14,12 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- Include tui-grid CSS -->
     <link rel="stylesheet" href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
+
+    <!-- jquery(공통) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
     <style>
         .cell-content {
             display: flex;
@@ -317,13 +322,11 @@
             <li>
                 <a href="#"
                    class="flex items-center p-1 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="w-7 h-7 text-gray-100 transition duration-75 dark:text-gray-400 group-hover:text-white hover:text-gray-900 dark:group-hover:text-gray-100"" aria-hidden="
-                    true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                    viewBox="0 0 24 24">
-                    <path fill-rule="evenodd"
-                          d="M20 10H4v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8ZM9 13v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1Z"
-                          clip-rule="evenodd" />
-                    <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 1 1 0 4H4a2 2 0 0 1-2-2Z" />
+                    <svg class="w-7 h-7 text-gray-100 transition duration-75 dark:text-gray-400 group-hover:text-white hover:text-gray-900 dark:group-hover:text-gray-100" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                              d="M20 10H4v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8ZM9 13v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1Z"
+                              clip-rule="evenodd" />
+                        <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 1 1 0 4H4a2 2 0 0 1-2-2Z" />
                     </svg>
 
                     <span class="flex-1 ms-2 whitespace-nowrap">Document</span>
@@ -419,9 +422,7 @@
            <span class="flex-1 ms-2 whitespace-nowrap">Logout</span>
         </a>
      </li> -->
-    </div>
-
-    </ul>
+        </ul>
     </div>
 </aside>
 
@@ -456,6 +457,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+
             let currentDate = new Date();
             let currentYear = currentDate.getFullYear();
             let currentMonth = currentDate.getMonth() + 1; // 월은 1을 더해줍니다.
@@ -469,8 +471,8 @@
                 // 요일을 추가합니다.
                 for (let i = 1; i <= daysInMonth; i++) {
                     columns.push({
-                        header: `${i}`,
-                        name: `col${i}`,
+                        header: i,
+                        name: 'col'+i,
                         renderer: 'html' // HTML 렌더링을 사용합니다.
                     });
                 }
@@ -480,26 +482,26 @@
 
 
             async function generateData(year, month) {
+
                 const daysInMonth = new Date(year, month, 0).getDate(); // 이전 달의 마지막 날을 가져옵니다.
                 const data = [];
 
-                const response = await fetch('data.json');
+                const response = await fetch('http://localhost:8081/leave/grid');
                 const jsonData = await response.json();
 
                 for (const employee of jsonData) {
-                    const employeeData = { employeeId: employee.employeeId, employeeName: employee.employeeName }; // employeeId 추가
+                    const employeeData = { employeeId: employee.empNum, employeeName: employee.employeeName }; // employeeId 추가
                     for (let i = 1; i <= daysInMonth; i++) {
-                        const currentDate = new Date(year, month - 1, i); // 날짜는 1을 빼주고 1일부터 시작합니다.
+                        const currentDate = new Date(year, month - 1, i + 1); // 날짜는 1을 빼주고 1일부터 시작합니다.
                         const key = currentDate.toISOString().split('T')[0]; // ISO 형식으로 변환하여 키 생성
                         const value = (key >= employee.startDate && key <= employee.endDate) ? `<div class="cell-content"><img src="./img/plane.png" alt="V"></div>` : ''; // 이미지로 표시
-                        employeeData[`col${i}`] = value;
+                        employeeData['col'+i] = value;
                     }
                     data.push(employeeData);
                 }
 
                 return data;
             }
-
 
 
             const instance = new tui.Grid({
@@ -542,11 +544,11 @@
                 grid.resetData(newData);
 
                 // 월 표시 업데이트
-                document.getElementById('currentMonth').textContent = `${year}년 ${month}월`; // 월은 1을 더하지 않습니다.
+                document.getElementById('currentMonth').textContent = year + '년 ' + month + '월'; // 월은 1을 더하지 않습니다.
             }
 
             // 초기 월 표시
-            document.getElementById('currentMonth').textContent = `${currentYear}년 ${currentMonth}월`; // 월은 1을 더하지 않습니다.
+            document.getElementById('currentMonth').textContent = `${currentYear}년  ${currentMonth}월`; // 월은 1을 더하지 않습니다.
 
             // 초기 그리드 업데이트
             updateGrid(currentYear, currentMonth);
@@ -608,6 +610,9 @@
 </div>
 
 </body>
+
+
+</html>
 
 
 </html>
