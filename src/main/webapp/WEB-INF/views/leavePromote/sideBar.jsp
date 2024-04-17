@@ -90,7 +90,7 @@
                 </button>
                 <a href="https://flowbite.com" class="flex ms-2 md:me-0">
                     <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-5 me-3" alt="HS Logo" /> -->
-                    <img src="../../../resources/img/hs2.logo.png" class="h-16 me-2" alt="HS Logo" />
+                    <img src="/img/hs2.logo.png" class="h-16 me-2" alt="HS Logo" />
                     <!-- <span class="self-center text-xl font-semibold sm:text-1xl whitespace-nowrap dark:text-white">HUMAN STORY</span> -->
                 </a>
             </div>

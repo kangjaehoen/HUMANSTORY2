@@ -25,7 +25,7 @@ public class AlarmVO {
     private String checked; 
     private String prefix;
 
-    public List<AlarmDTO> selectAlarm(String empNum) {
+    public List<AlarmDTO1> selectAlarm(String empNum) {
         service.alarmSessionEmpNum(empNum);
         return null;
     }

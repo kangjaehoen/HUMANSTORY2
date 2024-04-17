@@ -313,7 +313,7 @@
                                         <td>${emp.address}</td>
                                         <td>${emp.workDate}</td>
                                         <td>${emp.birthDate}</td>
-                                        <td>${emp.departNum}</td>
+                                        <td>${emp.deptNum}</td>
                                         <td><button class="btn btn-default btn-xs
                                         btnPictureInsert pictureInsertForm">
                                             사진등록

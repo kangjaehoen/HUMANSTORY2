@@ -1,5 +1,6 @@
 package com.kosta.humanstory.controller;
 
+import com.kosta.humanstory.domain.AlarmDTO;
 import com.kosta.humanstory.domain.Criteria;
 import com.kosta.humanstory.domain.EmpEmailInfoDTO;
 import com.kosta.humanstory.domain.EmployeeWithPersonalLeaveDayDTO;
@@ -337,12 +338,10 @@ public class EmailSendController {
         return ResponseEntity.ok().body("이메일이 성공적으로 전송되었습니다.");
     }
 
-    @PostMapping(value = "/sideBar")
-    @ResponseBody
-    public String alram(@RequestBody  EmpEmailInfoDTO empEmailInfoDTO){
-
-        System.out.println(empEmailInfoDTO);
-        System.out.println("ajax작동돼?");
+    @RequestMapping(value =  "echo-ws/email/alarm")
+    public String alarm(@RequestBody AlarmDTO alarmDTO){
+        System.out.println("소켓 성공하자");
+        System.out.println(alarmDTO);
         return "success";
     }
 }

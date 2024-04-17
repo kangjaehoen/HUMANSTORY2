@@ -101,9 +101,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label>departNum</label>
-                        <input class="form-control" name='departNum'
-                               value='<c:out value="${emp.departNum }"/>' >
+                        <label>deptNum</label>
+                        <input class="form-control" name='deptNum'
+                               value='<c:out value="${emp.deptNum }"/>' >
                     </div>
                     <div class="form-group">
                         <input type="hidden" class="form-control" name='Enabled'

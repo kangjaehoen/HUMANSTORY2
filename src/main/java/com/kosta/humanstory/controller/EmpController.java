@@ -41,6 +41,7 @@ public class EmpController {
     }
     @PostMapping("/register")
     public String register(EmployeeVO emp, RedirectAttributes rttr){
+        emp.setRole("ROLE_USER");
         service.register(emp);
         rttr.addFlashAttribute("result",emp.getEmpNum());
 

@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@include file="sideBar.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@include file="sideBar.jsp"%>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
@@ -11,61 +12,70 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<div class="navigation">
-    <nav class="dark:bg-gray-900 pt-4">
-        <div class="max-w-screen-xl justify-between mx-auto p-4">
-            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg bg-gray-800 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-gray-800 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                    <li>
-                        <a href="/main" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">메인페이지</a>
-                    </li>
-                    <li>
-                        <a href="/system/annualForm" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">휴가 일수 부여 설정</a>
-                    </li>
-                    <li>
-                        <a href="/email/list" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">휴가 촉진 대상자</a>
-                    </li>
-                    <li>
-                        <a href="/leavePromote/list"  id="promoteNav" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">휴가 촉진</a>
-                    </li>
-                    <li>
-                        <a href="/leavePolicy/list" id="policyNav" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">휴가 정책</a>
-                    </li>
-                </ul>
+
+<nav class="bg-gray-800 mt-[58.5px]">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="relative flex h-16 items-center justify-between">
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <!-- Mobile menu button-->
+                <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="absolute -inset-0.5"></span>
+                    <span class="sr-only">Open main menu</span>
+                    <!--
+                      Icon when menu is closed.
+
+                      Menu open: "hidden", Menu closed: "block"
+                    -->
+                    <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                    <!--
+                      Icon when menu is open.
+
+                      Menu open: "block", Menu closed: "hidden"
+                    -->
+                    <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
+            <div class="flex flex-1 items-center justify-left sm:items-stretch sm:justify-start">
+                <div class="flex flex-shrink-0 items-center">
+                    <svg class="w-8 h-8 text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M17 10v1.126c.367.095.714.24 1.032.428l.796-.797 1.415 1.415-.797.796c.188.318.333.665.428 1.032H21v2h-1.126c-.095.367-.24.714-.428 1.032l.797.796-1.415 1.415-.796-.797a3.979 3.979 0 0 1-1.032.428V20h-2v-1.126a3.977 3.977 0 0 1-1.032-.428l-.796.797-1.415-1.415.797-.796A3.975 3.975 0 0 1 12.126 16H11v-2h1.126c.095-.367.24-.714.428-1.032l-.797-.796 1.415-1.415.796.797A3.977 3.977 0 0 1 15 11.126V10h2Zm.406 3.578.016.016c.354.358.574.85.578 1.392v.028a2 2 0 0 1-3.409 1.406l-.01-.012a2 2 0 0 1 2.826-2.83ZM5 8a4 4 0 1 1 7.938.703 7.029 7.029 0 0 0-3.235 3.235A4 4 0 0 1 5 8Zm4.29 5H7a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h6.101A6.979 6.979 0 0 1 9 15c0-.695.101-1.366.29-2Z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="hidden sm:ml-6 sm:block">
+                    <div class="flex space-x-4">
+                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                        <a href="/system/annualForm" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">휴가 일수 부여 설정</a>
+                        <a href="/email/list" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">휴가 촉진 대상자</a>
+                        <a href="/leavePromote/list" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">휴가 촉진 게시판</a>
+                        <a href="/leavePolicy/list" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">휴가 정책 게시판</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </nav>
-</div>
+    </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="sm:hidden" id="mobile-menu">
+        <div class="space-y-1 px-2 pb-3 pt-2">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <a href="/system/annualForm" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">휴가 일수 부여 설정</a>
+            <a href="/email/list" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">휴가 촉진 대상자</a>
+            <a href="/leavePromote/list" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">휴가 촉진</a>
+            <a href="/leavePolicy/list" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">휴가 정책</a>
+        </div>
+    </div>
+</nav>
 
 
-
-
-<%-- 	<div id="divBox">
-		<table>
-			<thead>
-				<tr id="theadTr">
-					<th id="bno">번호</th>
-					<th id="title">제목</th>
-					<th id="writer">작성자번호</th>
-					<th id="registerDate">등록일</th>
-				</tr>
-			</thead>
-			<tbody id="listTbody">
-				<c:forEach items="${list}" var="leavePromote">
-					<tr id="listTr">
-						<td>${leavePromote.lprNum }</td>
-						<td>${leavePromote.title }</td>
-						<td>${leavePromote.empNum }</td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd"
-								value="${leavePromote.registerDate}" /></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div> --%>
 
 <div id="sessionBox">
-    <section class="bg-gray-100 dark:bg-gray-900 p-3 sm:p-5">
+    <section class="bg-gray-100 dark:bg-gray-900 p-3 sm:p-5 h-screen">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
             <!-- Start coding here -->
             <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
@@ -205,89 +215,6 @@
     </form>
 </div>
 
-<style type="text/css">
-
-    .w-6 h-6 text-gray-800 dark:text-white{
-        margin-right: 10px;
-
-    }
-    #sessionBox{
-        margin-top: 80px;
-    }
-
-
-    #page li {
-        display: inline;
-        margin-right: 30px;
-    }
-
-    #pagingBox {
-        margin-left: 700px;
-        margin-top: 35px;
-    }
-
-    .pagination-link {
-        list-style-type: none;
-        display: inline;
-        padding: 4px 10px;
-        text-decoration: none;
-        color: #333;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        transition: background-color 0.3s;
-        font-weight: bold;
-    }
-
-    .pagination-link:hover {
-        background-color: #c9c9c9;
-        color: white;
-    }
-
-    .pagination-link.active {
-        background-color: #c9c9c9;
-        color: #fff;
-        border-color: #c9c9c9;
-    }
-
-    .navigation {
-        margin-top: 25px;
-        margin-left: 255px;
-    }
-
-    .navigation div {
-        display: inline;
-
-        margin-right: 20px;
-
-
-    }
-
-    .navigation div a {
-        text-decoration: none;
-        color: #dae0eb;
-        font-weight: bold;
-        display: block; /* a태그는 글자성격 = inline */
-        float: left;
-        font-size: 16px;
-        font-weight: 900;
-        line-height: 80px;
-        padding: 0 30px;
-        margin-right: 10px;
-    }
-
-    .navigation div a:hover {
-        color: #2900c5;
-    }
-
-    #promoteNav{
-        color: #676767;
-    }
-
-    #promoteNav:hover{
-        color: #2900c5;
-    }
-
-</style>
 
 <script
         src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

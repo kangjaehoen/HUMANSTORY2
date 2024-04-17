@@ -8,5 +8,4 @@ import lombok.ToString;
 public class DeptVO {
     private String deptNum;
     private  String deptName;
-
 }

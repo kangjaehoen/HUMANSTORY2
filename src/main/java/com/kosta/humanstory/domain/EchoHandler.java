@@ -1,5 +1,6 @@
 package com.kosta.humanstory.domain;
 
+import com.kosta.humanstory.Config.auth.PrincipalDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,11 +22,7 @@ public class EchoHandler extends TextWebSocketHandler {
     Map<String, WebSocketSession> users = new ConcurrentHashMap<String, WebSocketSession>();
 
 
-    private String getMemberId(WebSocketSession session) {
-        Map<String, Object> httpSession = session.getAttributes();
-        String empNum = (String) httpSession.get("empNum"); // 세션에 저장된  empNum 조회함
-        return empNum==null? null: empNum;
-    }
+
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         String sessionId = getMemberId(session);// 로그인한 세션 아디 확인
@@ -66,5 +63,12 @@ public class EchoHandler extends TextWebSocketHandler {
         if(senderId !=null){
             users.remove(senderId); // 세션 삭제
         }
+    }
+    private String getMemberId(WebSocketSession session) {
+        Map<String, Object> httpSession = session.getAttributes();
+      //  String empNum = (String) httpSession.get("empNum"); // 세션에 저장된  empNum 조회함
+        System.out.println("웹소켓 httpSession : "+httpSession);
+     //   return empNum==null? null: empNum;
+        return  null;
     }
 }

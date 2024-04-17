@@ -10,35 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-
-    <!-- sockJS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-    <script>
-        // 전역변수 설정
-        var socket  = null;
-        $(document).ready(function(){
-            // 웹소켓 연결
-            sock = new SockJS("<c:url value="ws://localhost:8081/echo-ws"/>");
-            socket = sock;
-
-            // 데이터를 전달 받았을때
-            sock.onmessage = onMessage; // toast 생성
-        });
-
-            function onMessage(evt){
-                var data = evt.data;
-                // toast
-                let toast = "<div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>";
-                toast += "<div class='toast-header'><i class='fas fa-bell mr-2'></i><strong class='mr-auto'>알림</strong>";
-                toast += "<small class='text-muted'>just now</small><button type='button' class='ml-2 mb-1 close' data-dismiss='toast' aria-label='Close'>";
-                toast += "<span aria-hidden='true'>&times;</span></button>";
-                toast += "</div> <div class='toast-body'>" + data + "</div></div>";
-                $("#msgStack").append(toast);   // msgStack div에 생성한 toast 추가
-                $(".toast").toast({"animation": true, "autohide": false});
-                $('.toast').toast('show');
-            };
-    </script>
     <script type="text/javascript">
         $(function(){
             (function(){
@@ -91,7 +63,6 @@
 
         });
     </script>
-
     <style>
         #EmpProFile{
 
@@ -119,7 +90,7 @@
                 </button>
                 <a href="https://flowbite.com" class="flex ms-2 md:me-0">
                     <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-5 me-3" alt="HS Logo" /> -->
-                    <img src="../../../resources/img/hs2.logo.png" class="h-16 me-2" alt="HS Logo" />
+                    <img src="/img/hs2.logo.png" class="h-16 me-2" alt="HS Logo" />
                     <!-- <span class="self-center text-xl font-semibold sm:text-1xl whitespace-nowrap dark:text-white">HUMAN STORY</span> -->
                 </a>
             </div>
@@ -321,8 +292,8 @@
             <li>
                 <a href="#" class="flex items-center p-1 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg class="w-7 h-7 text-gray-100 transition duration-75 dark:text-gray-400 group-hover:text-white hover:text-gray-900 dark:group-hover:text-gray-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd" d="M20 10H4v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8ZM9 13v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
-                    <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 1 1 0 4H4a2 2 0 0 1-2-2Z"/>
+                        <path fill-rule="evenodd" d="M20 10H4v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8ZM9 13v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
+                        <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 1 1 0 4H4a2 2 0 0 1-2-2Z"/>
                     </svg>
 
                     <span class="flex-1 ms-2 whitespace-nowrap">Document</span>
@@ -400,16 +371,7 @@
 
 
 
-
-
-
-
-
-
-
-
-    </ul>
+        </ul>
     </div>
 </aside>
 
-<div id="msgStack"></div>
