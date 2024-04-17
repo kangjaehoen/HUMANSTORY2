@@ -24,7 +24,7 @@ public class LeaveRequestController {
 
     }
 
-    /*@Secured("ROLE_USER")*/
+    /*@Secured("_USER")*/
     @GetMapping("/calendar")
     public String list(Model model,@RequestParam("empNum") String empNum) {
         System.out.println("===========" + model + "===========" );
@@ -35,7 +35,7 @@ public class LeaveRequestController {
     }
 
 
-    /*@Secured("ROLE_MANAGER")*/
+    /*@Secured("_MANAGER")*/
     /*@GetMapping("/calendar")
     public String managerList(Model model) {
         System.out.println("===========" + model + "===========" );

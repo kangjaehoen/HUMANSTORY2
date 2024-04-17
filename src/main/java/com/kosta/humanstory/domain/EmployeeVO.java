@@ -28,13 +28,13 @@ import java.util.List;
     private String address; // 주소
     private int workDate; // 근무일
     private int birthDate; // 생년월일
-    private  String  departNum; // 부서 // -추가
+    private  String  deptNum; // 부서 // -추가
     private String uploadPath; // 사원 프로필사진 - > 수정(추가)
     private boolean enabled; // 시큐리티 적용확인
     private List<AuthVO> authList; // 권한
     private List<LeaveRequestVO> leaveVO; //휴가 신청내역
     private String manager; //사원별 매니저
     private String role; //권한
-    private int annualLeaveNum; // 연차일
+
 
 }

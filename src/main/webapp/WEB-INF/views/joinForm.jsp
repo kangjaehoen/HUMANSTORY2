@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +12,8 @@
 <h1>회원가입 페이지</h1>
 <hr>
     <form role="form" action="/join" method="post">
+
+
         <div class="form-group">
             <label>empName</label>
             <input class="form-control" name='empName'>
@@ -38,10 +42,6 @@
         </div>
 
         <div class="form-group">
-            <label>annualLeaveNum</label>
-            <input class="form-control" name='annualLeaveNum'>
-        </div>
-        <div class="form-group">
             <label>address</label>
             <input class="form-control" name='address'>
         </div>
@@ -54,8 +54,8 @@
             <input class="form-control" name='birthDate'>
         </div>
         <div class="form-group">
-            <label>departNum</label>
-            <input class="form-control" name='departNum'>
+            <label>deptNum</label>
+            <input class="form-control" name='deptNum'>
         </div>
         <div class="form-group">
             <input type="hidden" class="form-control" name='Enabled' value="1">

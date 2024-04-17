@@ -11,100 +11,144 @@
 
 
 <style>
-    .container-fluid
+    .container
     {
-        margin-left: 50px;
-        margin-top: 20px;
+        margin-left: 270px;
+        margin-top: 100px;
     }
     td{
         padding: 10px;
     }
+    .modal{
+        /*margin-left: 270px;*/
+        /*margin-top: 100px;*/
+
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        /*transform: translate(-50%, -50%);*/
+        z-index: 50; /* 모달은 더 위에 위치 */
+        /* 필요한 다른 스타일들 */
+    }
+    .Add{
+        margin-top: 20px;
+    }
+    #background{
+        background-color: #ddd;
+    }
+    .panel {
+        font-family: '굴림', 'Gulim', sans-serif; /* 굵은 궁서체 */
+        font-weight: bold; /* 굵게 */
+        color: black; /* 흰색 */
+    }
+
+
+    a.manage{
+        background-color: #337ab7;
+        border-radius: 10px; /* 둥근 모서리 설정 */
+        padding: 10px; /* 내부 여백 추가 (선택 사항) */
+        margin: 5px 0; /* 바깥쪽 여백 추가 (선택 사항) */
+        color: white;
+        text-align: center;
+
+    }
+
+    .col-span-1{
+        margin-bottom: 15px;
+    }
+
 </style>
 
 
 
-<div class="container-fluid">
-    <div style="margin-bottom: 1%;">
+<div class="container">
+    <div class="grid grid-raws-2 gap-4">
         <div>
             <h1 style="font-size: x-large;">
-                <img src="${pageContext.request.contextPath}/resources/img/sist_logo.png"
-                     alt="logo" style="vertical-align: bottom;"> 직원관리<small>v3.0</small>
+                직원관리<small>v3.0</small>
             </h1>
         </div>
-        <div>
-            <ul class="nav nav-pills nav-justified ">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/emp/list">직원관리</a>
+
+        <div class=" grid grid-raws-1 gap-10">
+            <ul class="grid grid-cols-4 gap-10">
+                <li class="col-span-1">
+                    <a  class="manage" href="/emp/list">직원관리</a>
                 </li>
-                <li class="nav-item"><a href="regionlist.it">지역관리</a></li>
-                <li><a href="/dept/list">부서관리</a></li>
-                <li><a href="positionlist.it">직위관리</a></li>
+                <li class="col-span-1"><a class="manage" href="regionlist.it">지역관리</a></li>
+                <li class="col-span-1"><a class="manage" href="/dept/list">부서관리</a></li>
+                <li class="col-span-1"><a class="manage" href="positionlist.it">직위관리</a></li>
             </ul>
         </div>
 
     </div>
 
     <div class="panel-group">
-        <div class="panel panel-default">
-            <div class="panel-heading">직원 출력 </div>
+        <div id="background" class=" relative overflow-x-auto shadow-md sm:rounded-lg" >
+            <div class="panel">직원 출력 </div>
 
-            <div>
-                <table class="table">
-                    <thead>
+            <div >
+                <table class="table w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th>사원번호</th>
-                        <th>사원명</th>
-                        <th>직책</th>
-                        <th>전화 번호</th>
-                        <th>입사일</th>
-                        <th>이메일</th>
-                        <th>연차일 </th>
-                        <th>주소</th>
-                        <th>근무일</th>
-                        <th>생년월일</th>
-                        <th>부서</th>
-                        <th>사진등록</th>
-                        <th>삭제</th>
-                        <th>수정</th>
+                        <th scope="col" class="px-6 py-3">사원번호</th>
+                        <th scope="col" class="px-6 py-3">사원명</th>
+                        <th scope="col" class="px-6 py-3">직책</th>
+                        <th scope="col" class="px-6 py-3">전화 번호</th>
+                        <th scope="col" class="px-6 py-3">입사일</th>
+                        <th scope="col" class="px-6 py-3">이메일</th>
+
+                        <th scope="col" class="px-6 py-3">주소</th>
+                        <th scope="col" class="px-6 py-3">근무일</th>
+                        <th scope="col" class="px-6 py-3">생년월일</th>
+                        <th scope="col" class="px-6 py-3">부서</th>
+                        <th scope="col" class="px-6 py-3">사진등록</th>
+                        <th scope="col" class="px-6 py-3">삭제</th>
+                        <th scope="col" class="px-6 py-3">수정</th>
                     </tr>
                     </thead>
 
                     <tbody>
                     <c:forEach items="${list}" var="emp">
-                        <tr>
-                            <td class="empNum" ><c:out value="${emp.empNum}"/></td>
+                        <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <td class="empNum px-6 py-4" ><c:out value="${emp.empNum}"/></td>
 
-                            <td><span>${emp.empName}</span>
+                            <td class="px-6 py-4"><span>${emp.empName}</span>
                                     <%--                                        <c:if test="${not empty emp.uploadPath}">--%>
                                     <%--                                            <button type="button" class="btn btn-default btn-xs picture"--%>
                                     <%--                                            value="${emp.empNum}">사진</button>--%>
                                     <%--                                        </c:if>--%>
                             </td>
-                            <td>${emp.job}</td>
-                            <td>${emp.phoneNum}</td>
+                            <td class="px-6 py-4">${emp.job}</td>
+                            <td class="px-6 py-4">${emp.phoneNum}</td>
                             <c:if test="${not empty emp.hireDate}">
                                 <fmt:formatDate value="${emp.hireDate}" pattern="yyyy/mm/dd" var="formattedhireDate"/>
-                                <td>${formattedhireDate}</td>
+                                <td class="px-6 py-4">${formattedhireDate}</td>
                             </c:if>
-                            <td>${emp.email}</td>
-                            <td>${emp.annualLeaveNum}</td>
-                            <td>${emp.address}</td>
-                            <td>${emp.workDate}</td>
-                            <td>${emp.birthDate}</td>
-                            <td>${emp.departNum}</td>
-                            <td>
-                                <button  class="btn btn-default btn-xs
-                                                                btnPictureInsert pictureInsertForm" >
+                            <td class="px-6 py-4">${emp.email}</td>
+                            <td class="px-6 py-4">${emp.address}</td>
+                            <td class="px-6 py-4">${emp.workDate}</td>
+                            <td class="px-6 py-4">${emp.birthDate}</td>
+                            <td class="px-6 py-4">${emp.deptNum}</td>
+                            <td class="px-6 py-4">
+                                <button     data-modal-target="default-modal"
+                                             data-modal-toggle="default-modal"
+                                             class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300
+                                             font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600
+                                             dark:hover:bg-blue-700 dark:focus:ring-blue-800  btnPictureInsert pictureInsertForm"
+                                        type="button"
+<%--                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded--%>
+<%--                                                               " --%>
+                                >
                                     사진등록
                                 </button>
                             </td>
-                            <td>
-                                <button type="button" class="btn btn-default btn-xs delete"
+                            <td class="px-6 py-4">
+                                <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded delete"
                                         value="${emp.empNum}">삭제</button>
                             </td>
-                            <td>
+                            <td class="px-4 py-4">
                                 <a href="/emp/modify?empNum=${emp.empNum}" role="button"
-                                   class="btn btn-default btn-xs">수정</a>
+                                   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">수정</a>
 
                             </td>
                         </tr>
@@ -112,8 +156,8 @@
                     </tbody>
                 </table>
 
-                <form class="form-inline" role="form" method="post">
-                    <a href="/emp/register" class="btn btn-default">Add</a>
+                <form class="form Add" role="form" method="post">
+                    <a href="/emp/register" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add</a>
 
                 </form>
                 <%-- table 들--%>
@@ -155,89 +199,99 @@
 <%--    </div>--%>
 
 
+<div class="modal">
+    <div id="pictureInsertForm" tabindex="-1" aria-hidden="true" role="dialog"
+         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center
+                  items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full modal fade"
+         >
+        <div class="modal-dialog relative p-4 w-full max-w-2xl max-h-full">
 
-<div id="pictureInsertForm" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content relative bg-white rounded-lg shadow dark:bg-gray-700">
+<%--                Modal header--%>
+                <div class="modal-header flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <button type="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title text-xl font-semibold text-gray-900 dark:text-white">사진 등록</h4>
+                </div>
+                <div class="modal-body p-4 md:p-5 space-y-4">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">사진 등록</h4>
+                     <%--파일 업로드를 위한 설정 추가. enctype="multipart/form-data" --%>
+                    <form id="fileUpload" role="form" action="/upload" method="post"
+                          enctype="multipart/form-data">
+
+                        <%-- 파일 업로드를 위한 직원 번호 전송 준비 --%>
+                        <%--<input type="hidden" id="empNum" name="empNum" value="">--%>
+                        <%-- 파일 업로드를 위한 사진 액션 구분(신규 등록 0, 수정 1) --%>
+                        <%--<input type="hidden" id="picturekey" name="picturekey" value="0">--%>
+
+                        <div class="form-group">
+                            <label for="file">사진등록 (only JPG, 100K byte 이내):</label>
+                            <input type="file" name="file" multipleclass="form-control" id="file" required="required"  >
+                            <%--<input type='hidden' name='attachList["i"].uploadPath' value='"jobj.data("path")"'>"; &lt;%&ndash;path&ndash;%&gt;--%>
+                        </div>
+                            <input type="hidden" id="empNum" name="empNum" value="">
+                        <button id="uploadBtn" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                        <%--<button type="button" class="btn btn-default pictureModal">사진 확인</button>--%>
+                            <button type="button" data-modal-hide="default-modal"
+                                    class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" data-dismiss="modal">Close</button>
+                    </form>
+
+
+                </div>
+<%--                <div class="modal-footer flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">--%>
+<%--                    <button type="button" data-modal-hide="default-modal"--%>
+<%--                            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" data-dismiss="modal">Close</button>--%>
+<%--                </div>--%>
+                <div class="modal-footer"></div>
             </div>
-            <div class="modal-body">
 
-                <%-- 파일 업로드를 위한 설정 추가. enctype="multipart/form-data" --%>
-                <form id="fileUpload" role="form" action="/upload" method="post"
-                      enctype="multipart/form-data">
+        </div>
+    </div>
 
-                    <%-- 파일 업로드를 위한 직원 번호 전송 준비 --%>
-<%--                    <input type="hidden" id="empNum" name="empNum" value="">--%>
-                    <%-- 파일 업로드를 위한 사진 액션 구분(신규 등록 0, 수정 1) --%>
-<%--                    <input type="hidden" id="picturekey" name="picturekey" value="0">--%>
+    <div id="deleteFormModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
-                    <div class="form-group">
-                        <label for="file">사진등록 (only JPG, 100K byte 이내):</label>
-                        <input type="file" name="file" multipleclass="form-control" id="file" required="required"  >
-<%--                        <input type='hidden' name='attachList["i"].uploadPath' value='"jobj.data("path")"'>"; &lt;%&ndash;path&ndash;%&gt;--%>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">직원 삭제</h4>
+                </div>
+                <div class="modal-body">
 
-                    </div>
+                    <p>현재 선택한 직원 정보(<span id="comment"></span>)를 삭제할까요?</p>
+                    <!-- 삭제 진행시 번호와 패스워드를 서버로 전송해야 한다. -->
+                    <form action="remove" method="post">
+
+                        <!-- 번호 전송은 hidden form 사용 -->
+                        <%-- hidden form 추가 --%>
                         <input type="hidden" id="empNum" name="empNum" value="">
-                    <button id="uploadBtn" type="submit" class="btn btn-default">Submit</button>
-<%--                    <button type="button" class="btn btn-default pictureModal">사진 확인</button>--%>
-                </form>
 
+                        <button type="submit" data-oper='remove'
+                                  class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">삭제</button>
 
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                            data-dismiss="modal">Close</button>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+
         </div>
-
     </div>
-</div>
+</div>EMPLOYEE
 
-<div id="deleteFormModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">직원 삭제</h4>
-            </div>
-            <div class="modal-body">
-
-                <p>현재 선택한 직원 정보(<span id="comment"></span>)를 삭제할까요?</p>
-                <!-- 삭제 진행시 번호와 패스워드를 서버로 전송해야 한다. -->
-                <form action="remove" method="post">
-
-                    <!-- 번호 전송은 hidden form 사용 -->
-                    <%-- hidden form 추가 --%>
-                    <input type="hidden" id="empNum" name="empNum" value="">
-
-                    <button type="submit" data-oper='remove'
-                              class="btn btn-default">삭제</button>
-
-                </form>
-
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" class="btn btn-default btn-sm"
-                        data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
-
+PW
 
 
 
 <script type="text/javascript">
+
+
+    /*기존*/
     $(document)
         .ready(
             function() {
@@ -383,14 +437,14 @@
 
                     });
                 var formObj = $("form");
-
+                $("#deleteFormModal").hide();
                 $("button.delete").on("click", function (e) {
                     e.preventDefault();
 
 
                     $("#deleteFormModal #empNum").val($(this).val());
                     $("#deleteFormModal #comment").text("이름:" + $(this).parents("tr").find("span").text());
-                    $("#deleteFormModal").modal();
+
 
                     var operation = $(this).data("oper");
                     //
@@ -402,6 +456,8 @@
                     formObj.submit();
                 });
             });
+
+
 </script>
 
 
