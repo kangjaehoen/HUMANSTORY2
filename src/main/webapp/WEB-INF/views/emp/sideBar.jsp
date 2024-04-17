@@ -3,6 +3,7 @@
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
            prefix="sec"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,7 +130,7 @@
                         <div class="px-4 py-3" role="none">
                             <p class="text-sm text-black hover:text-gray-900 dark:text-white" role="none">
                                 사원번호 :
-<%--                                ${PrincipalDetail.emp.empNum}--%>
+                                <%--                                ${PrincipalDetail.emp.empNum}--%>
                                 <sec:authentication property='principal.emp.empNum'/>
                             </p>
                             <p class="text-sm font-medium text-black hover:text-gray-900 truncate dark:text-gray-300" role="none">
@@ -169,7 +170,8 @@
             <!--   <img id="EmpProFile" class="w-24 h-24 rounded-full border-2" src="" alt=""> -->
             <div id="EmpProFile" class="w-24 h-24 rounded-full border-2">
                 <ul>
-                    <img src="/img/s_${exthum0bnail}.jpg" class="w-24 h-24 rounded-full border-1" alt="Thumbnail Image" />
+
+                     <img src="/img/s_<sec:authentication property='principal.emp.empNum'/>.jpg" class="w-24 h-24 rounded-full border-1" alt="Thumbnail Image" />
 
                 </ul>
             </div>
@@ -183,7 +185,7 @@
         <p class="text-sm text-white dark:text-white text-center" role="none"><sec:authentication property="principal.emp.email" /></p>
 
 
-<%--        <!-- 프로필 하단 3개 아이콘 -->--%>
+        <%--        <!-- 프로필 하단 3개 아이콘 -->--%>
         <div class="inline-flex rounded-md shadow-sm mt-3" role="group">
             <button id="profileMove" type="button" class="inline-flex flex-col items-center px-5 py-1 font-medium text-gray-400 bg-transparent border border-gray-700 rounded-s-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -296,8 +298,8 @@
             <li>
                 <a href="#" class="flex items-center p-1 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg class="w-7 h-7 text-gray-100 transition duration-75 dark:text-gray-400 group-hover:text-white hover:text-gray-900 dark:group-hover:text-gray-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd" d="M20 10H4v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8ZM9 13v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
-                    <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 1 1 0 4H4a2 2 0 0 1-2-2Z"/>
+                        <path fill-rule="evenodd" d="M20 10H4v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8ZM9 13v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
+                        <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 1 1 0 4H4a2 2 0 0 1-2-2Z"/>
                     </svg>
 
                     <span class="flex-1 ms-2 whitespace-nowrap">Document</span>
@@ -375,6 +377,6 @@
 
 
 
-    </ul>
-</div>
+        </ul>
+    </div>
 </aside>

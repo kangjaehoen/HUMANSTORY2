@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+           prefix="sec"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,12 +108,12 @@
     <div class="h-full px-4 pb-4 overflow-y-auto bg-gray-800 w-67 mt-4">
 
         <div class="flex justify-center items-center mt-8">
-            <img class="w-24 h-24 rounded-full border-2" src="/images/profile.png" alt="user photo">
+            <img src="/img/s_<sec:authentication property='principal.emp.empNum'/>.jpg" class="w-24 h-24 rounded-full border-1" alt="Thumbnail Image" />
         </div>
 
 
-        <p class="text-xl text-white dark:text-white text-center font-bold mt-2" role="none">강재헌</p>
-        <p class="text-sm text-white dark:text-white text-center" role="none">XXXX@KOTSTA270.COM</p>
+        <p class="text-xl text-white dark:text-white text-center font-bold mt-2" role="none"><sec:authentication property="principal.emp.empName" /></p>
+        <p class="text-sm text-white dark:text-white text-center" role="none"><sec:authentication property="principal.emp.email" /></p>
 
 
         <!-- 프로필 하단 3개 아이콘 -->
@@ -255,8 +257,7 @@
                     </a>
                     <div x-show="open" class="bg-gray-800 rounded-lg">
                         <a class="py-2 px-16 block text-sm text-white hover:bg-blue-500 hover:text-gray-900 hover:bg-white rounded-lg text-center" href="#">Employees</a>
-                        <a class="py-2 px-16 block text-sm text-white hover:bg-blue-500 hover:text-gray-900 hover:bg-white rounded-lg text-center" href="#">Department</a>
-                    </div>
+                        <a class="py-2 px-16 block text-sm text-white hover:bg-blue-500 hover:text-gray-900 hover:bg-white rounded-lg text-center" href="/dept/list">Department</a>                 </div>
                 </li>
             </div>
 
@@ -283,7 +284,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center p-2 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <a href="/logout" class="flex items-center p-2 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 text-gray-100 transition duration-75 dark:text-gray-400 group-hover:text-white hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"/>
                     </svg>
