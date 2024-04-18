@@ -221,8 +221,14 @@
                     </tbody>
                 </table>
                 <form class="form-inline Add" role="form" method="post">
-                    <a href="/dept/register" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded Add">Add</a>
+                    <a href="/dept/register"
+                       class="text-gray-900 hover:text-white border border-gray-800
+                             hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300
+                             font-medium rounded-lg text-sm px-4 py-2.5 text-center me-2 mb-2
+                             dark:border-gray-600 dark:text-gray-400 dark:hover:text-white
+                             dark:hover:bg-gray-600 dark:focus:ring-gray-800 bg-white ">Add</a>
                 </form>
+
             </div>
         </div>
     </div>

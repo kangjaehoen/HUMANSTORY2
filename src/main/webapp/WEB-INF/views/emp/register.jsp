@@ -11,7 +11,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function closeTabClick() {
+        // 변수를 close해 새창을 닫음
+        myWindow.close();
+    }
 
+</script>
 
 </head>
 <body>
@@ -93,6 +99,7 @@
                             </div>
 
                             <button type="submit"
+                                    onclick="closeTabClick()"
                                     class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >Register Button</button>
                             <button type="reset"
