@@ -44,8 +44,6 @@ import java.util.List;
 
     private boolean enabled; // 시큐리티 적용확인
 
-    private List<AuthVO> authList; // 권한
-
     private List<LeaveRequestVO> leaveVO; //휴가 신청내역
 
     private String manager; //사원별 매니저
