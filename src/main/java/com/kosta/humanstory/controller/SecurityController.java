@@ -46,7 +46,7 @@ public class SecurityController {
     @GetMapping("/joinForm")
     public String joinForm(){
         System.out.println("회원가입");
-        return "/joinForm";
+        return "/login/joinForm";
     }
     @PostMapping("/join")
     public @ResponseBody String join(EmployeeVO emp){
@@ -59,7 +59,7 @@ public class SecurityController {
 
         service.register(emp);
 
-        return "join";
+        return "/login/customlogin";
     }
     @Secured("ROLE_ADMIN")
     @GetMapping("/info")
