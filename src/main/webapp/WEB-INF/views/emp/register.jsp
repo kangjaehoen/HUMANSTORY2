@@ -32,7 +32,7 @@
 
 
                 <form role="form" action="/emp/register" method="post">
-                    <div class="form-group">
+                    <div class="w-50">
                         <label>image</label>
                         <input class="form-control" name="img-thumbnail">
                         <img src="" class="img-thumbnail" alt="">

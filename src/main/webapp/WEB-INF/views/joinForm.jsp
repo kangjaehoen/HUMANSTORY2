@@ -16,46 +16,46 @@
 
         <div class="form-group">
             <label>empName</label>
-            <input class="form-control" name='empName'>
+            <input class="form-control" name='empName' placeholder="jongwon">
         </div>
 
         <div class="form-group">
             <label>pw</label>
-            <input class="form-control" name='pw'>
+            <input class="form-control" name='pw' placeholder="pjwmcf234">
         </div>
 
         <div class="form-group">
             <label>job</label>
-            <input class="form-control" name='job'>
+            <input class="form-control" name='job' placeholder="주임">
         </div>
         <div class="form-group">
             <label>phoneNum</label>
-            <input class="form-control" name='phoneNum'>
+            <input class="form-control" name='phoneNum' placeholder="26467154">
         </div>
         <div class="form-group">
             <label>hireDate</label>
-            <input type="text" class="form-control" name='hireDate'>
+            <input type="text" class="form-control" name='hireDate' placeholder="1997/03/05">
         </div>
         <div class="form-group">
             <label>email</label>
-            <input class="form-control" name='email'>
+            <input class="form-control" name='email' placeholder="p7374982@naver.com">
         </div>
 
         <div class="form-group">
             <label>address</label>
-            <input class="form-control" name='address'>
+            <input class="form-control" name='address' placeholder="성남시 ">
         </div>
         <div class="form-group">
             <label>workDate</label>
-            <input class="form-control" name='workDate'>
+            <input class="form-control" name='workDate' placeholder="190">
         </div>
         <div class="form-group">
             <label>birthDate</label>
-            <input class="form-control" name='birthDate'>
+            <input class="form-control" name='birthDate' placeholder="970305">
         </div>
         <div class="form-group">
             <label>deptNum</label>
-            <input class="form-control" name='deptNum'>
+            <input class="form-control" name='deptNum' placeholder="1">
         </div>
         <div class="form-group">
             <input type="hidden" class="form-control" name='Enabled' value="1">

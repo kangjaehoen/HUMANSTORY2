@@ -92,8 +92,8 @@
                 </button>
                 <a href="https://flowbite.com" class="flex ms-2 md:me-0">
                     <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-5 me-3" alt="HS Logo" /> -->
-                    <img src="../../../resources/img/hs2.logo.png" class="h-16 me-2" alt="HS Logo" />
-                    <!-- <span class="self-center text-xl font-semibold sm:text-1xl whitespace-nowrap dark:text-white">HUMAN STORY</span> -->
+                    <img src="/img/hs2.logo.png" class="h-16 me-2" alt="HS Logo" />
+                    <!-- <span class="self-center text-xl font-semibfold sm:text-1xl whitespace-nowrap dark:text-white">HUMAN STORY</span> -->
                 </a>
             </div>
 
@@ -119,7 +119,7 @@
                     <div>
                         <button type="button" class="flex p-1 text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-whitetext-white" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                             <span class="sr-only">Open user menu</span>
-                            <img class="w-8 h-8 rounded-full border-2" src="./resources/img/profile.png" alt="user photo">
+                            <img class="w-8 h-8 rounded-full border-2" src="/img/<sec:authentication property='principal.emp.empNum'/>.jpg" alt="user photo">
                             <p class="text-1xl text-white dark:text-white p-1 mr-2" role="none">
                                 <sec:authentication property='principal.emp.empName'/>
                             </p>
@@ -171,9 +171,6 @@
                     <img src="/img/s_<sec:authentication property='principal.emp.empNum'/>.jpg" class="w-24 h-24 rounded-full border-1" alt="Thumbnail Image" />
                 </ul>
             </div>
-
-            <input type="hidden" id="empNumPf" value="<sec:authentication property='principal.emp.empNum'/>">
-            <input type="hidden" name="empName" value="<sec:authentication property="principal.emp.empName" />">
         </div>
 
 

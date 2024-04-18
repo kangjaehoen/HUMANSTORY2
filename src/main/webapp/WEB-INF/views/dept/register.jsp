@@ -18,11 +18,11 @@
     <form role="form" action="/dept/register" method="post">
         <div>
             <label>deptNum</label>
-            <input name="deptNum">
+            <input name="deptNum" placeholder="ex) 1">
         </div>
         <div >
             <label>deptName</label>
-            <input name='deptName'>
+            <input name='deptName' placeholder=" ex) 인사과">
         </div>
 
         <button type="submit">Submit button</button>
