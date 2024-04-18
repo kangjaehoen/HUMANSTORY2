@@ -30,10 +30,12 @@
         UPDATE personalLeaveDay
         SET lt_days = lt_days + #{leaveDays}
         WHERE empNum = #{empNum}
+        AND leaveType ='연차'
     </update>
 
     <update id="oneYears">
         UPDATE personalLeaveDay SET lt_days =#{grantDate} WHERE empNum = #{empNum}
+                                                            AND leaveType ='연차'
     </update>
 
 

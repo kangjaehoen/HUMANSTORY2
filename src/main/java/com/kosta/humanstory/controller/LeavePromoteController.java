@@ -31,7 +31,6 @@ public class LeavePromoteController {
 
         System.out.println("휴가촉진 등록 컨트롤러");
         System.out.println(vo);
-        vo.setEmpNum("101");
 
         if (vo.getAttachList() != null) {
 

@@ -12,3 +12,4 @@ public class EmpEmailInfoDTO {
     private String job;
     private String message;
 }
+
