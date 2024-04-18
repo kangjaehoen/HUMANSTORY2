@@ -29,10 +29,10 @@ public class DeptController {
 
     }
     @PostMapping("/register")
-    public String register(DeptVO dept, RedirectAttributes rttr){
+    public void register(DeptVO dept, RedirectAttributes rttr){
         service.register(dept);
         rttr.addFlashAttribute("result",dept.getDeptNum());
-        return "redirect:/dept/list";
+
     }
     @GetMapping({"/get","/modify"})
     public void get(@RequestParam("deptNum")String deptNum,Model model){

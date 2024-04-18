@@ -92,8 +92,8 @@
                 </button>
                 <a href="https://flowbite.com" class="flex ms-2 md:me-0">
                     <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-5 me-3" alt="HS Logo" /> -->
-                    <img src="../../../resources/img/hs2.logo.png" class="h-16 me-2" alt="HS Logo" />
-                    <!-- <span class="self-center text-xl font-semibold sm:text-1xl whitespace-nowrap dark:text-white">HUMAN STORY</span> -->
+                    <img src="/img/hs2.logo.png" class="h-16 me-2" alt="HS Logo" />
+                    <!-- <span class="self-center text-xl font-semibfold sm:text-1xl whitespace-nowrap dark:text-white">HUMAN STORY</span> -->
                 </a>
             </div>
 
@@ -119,7 +119,7 @@
                     <div>
                         <button type="button" class="flex p-1 text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-whitetext-white" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                             <span class="sr-only">Open user menu</span>
-                            <img class="w-8 h-8 rounded-full border-2" src="./resources/img/profile.png" alt="user photo">
+                            <img class="w-8 h-8 rounded-full border-2" src="/img/<sec:authentication property='principal.emp.empNum'/>.jpg" alt="user photo">
                             <p class="text-1xl text-white dark:text-white p-1 mr-2" role="none">
                                 <sec:authentication property='principal.emp.empName'/>
                             </p>
@@ -171,9 +171,6 @@
                     <img src="/img/s_<sec:authentication property='principal.emp.empNum'/>.jpg" class="w-24 h-24 rounded-full border-1" alt="Thumbnail Image" />
                 </ul>
             </div>
-
-            <input type="hidden" id="empNumPf" value="<sec:authentication property='principal.emp.empNum'/>">
-            <input type="hidden" name="empName" value="<sec:authentication property="principal.emp.empName" />">
         </div>
 
 
@@ -208,7 +205,7 @@
 
         <ul class="space-y-4 font-midium">
             <li>
-                <a href="#" class="flex items-center p-1 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group mt-5">
+                <a href="/main" class="flex items-center p-1 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group mt-5">
                     <svg class="w-6 h-6 text-gray-100 transition duration-75 dark:text-gray-400 group-hover:text-white hover:text-gray-900 dark:group-hover:text-gray-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 21" style="margin-left: -1px;">
                         <path fill-rule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" clip-rule="evenodd"/>
                     </svg>
@@ -318,7 +315,7 @@
 
                     </a>
                     <div x-show="open" class="bg-gray-800 rounded-lg">
-                        <a class="py-2 px-16 block text-sm text-white hover:bg-blue-500 hover:text-gray-900 hover:bg-white rounded-lg text-center" href="/leaveSystem/src/main/webapp/WEB-INF/views/calendar.jsp">Employees</a>
+                        <a class="py-2 px-16 block text-sm text-white hover:bg-blue-500 hover:text-gray-900 hover:bg-white rounded-lg text-center" href="/emp/list">Employees</a>
                         <a class="py-2 px-16 block text-sm text-white hover:bg-blue-500 hover:text-gray-900 hover:bg-white rounded-lg text-center" href="/dept/list">Department</a>
                     </div>
                 </li>
@@ -338,7 +335,7 @@
 
             <!-- Logout -->
             <li>
-                <a href="leavePolicy/list" class="flex items-center p-2 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <a href="/leavePolicy/list" class="flex items-center p-2 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg class="w-6 h-6 text-gray-100 transition duration-75 dark:text-gray-400 group-hover:text-white hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                         <path fill-rule="evenodd" d="M9.586 2.586A2 2 0 0 1 11 2h2a2 2 0 0 1 2 2v.089l.473.196.063-.063a2.002 2.002 0 0 1 2.828 0l1.414 1.414a2 2 0 0 1 0 2.827l-.063.064.196.473H20a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-.089l-.196.473.063.063a2.002 2.002 0 0 1 0 2.828l-1.414 1.414a2 2 0 0 1-2.828 0l-.063-.063-.473.196V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.089l-.473-.196-.063.063a2.002 2.002 0 0 1-2.828 0l-1.414-1.414a2 2 0 0 1 0-2.827l.063-.064L4.089 15H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h.09l.195-.473-.063-.063a2 2 0 0 1 0-2.828l1.414-1.414a2 2 0 0 1 2.827 0l.064.063L9 4.089V4a2 2 0 0 1 .586-1.414ZM8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" clip-rule="evenodd"/>
                     </svg>

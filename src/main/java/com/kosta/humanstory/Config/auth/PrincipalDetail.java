@@ -14,7 +14,6 @@ import java.util.Objects;
 public class PrincipalDetail implements UserDetails {
     private EmployeeVO emp;
     private Map<String, Object> attributes;
-
     public PrincipalDetail(EmployeeVO emp){
         this.emp=emp;
     }
@@ -23,7 +22,6 @@ public class PrincipalDetail implements UserDetails {
         this.emp=emp;
         this.attributes=attributes;
     }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> collect = new ArrayList<>();
@@ -35,34 +33,26 @@ public class PrincipalDetail implements UserDetails {
         });
         return collect;
     }
-
     @Override
     public String getPassword() {
         return emp.getPw();
     }
-
     @Override
     public String getUsername() {
         return emp.getEmpName();
     }
-
-
-
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
-
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
-
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
-
     @Override
     public boolean isEnabled() {
         return true;
