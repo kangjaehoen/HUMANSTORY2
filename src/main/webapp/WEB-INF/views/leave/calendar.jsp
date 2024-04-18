@@ -200,7 +200,7 @@
 									<label for="empNum"
 										class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">사원
 										번호</label> <input type="text" name="empNum" id="empNum"
-										class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+										class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
 										placeholder="사원 번호를 입력하세요" required="">
 								</div>
 								<!-- 부서 선택  -->
@@ -223,7 +223,7 @@
 										</div>
 										<label for="datepicker"></label> <label for="startDate"></label><input name="startDate"
 																											   type="text"
-																											   class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+																											   class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 																											   id="startDate" placeholder="    시작일 선택하세요">
 									</div>
 									<!-- 휴가 시작 날짜  끝 -->
@@ -244,7 +244,7 @@
 										</div>
 										<label for="datepicker"></label> <input id="endDate"
 											name="endDate" type="text"
-											class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+											class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 											placeholder="    종료일 선택하세요">
 									</div>
 									<!-- 휴가 종료 날짜  끝 -->
@@ -254,7 +254,7 @@
 									<label for="leaveType"
 										class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">휴가
 										유형</label> <select id="leaveType" name="leaveType"
-										class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+										class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
 										<option selected="">휴가 유형 선택하세요</option>
 										<option value="반차">반차</option>
 										<option value="반반차">반반차</option>
@@ -271,7 +271,7 @@
 										사유</label>
 
 									<label for="leaveReason"></label><textarea id="leaveReason" name="leaveReason" rows="4"
-																			   class="block p-2.5 w-full text-sm text-gray-900 bg-gray-100 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+																			   class="block p-2.5 w-full text-sm text-gray-900 bg-gray-100 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
 																			   placeholder="휴가 사유를 작성해 주세요"></textarea>
 								</div>
 
@@ -384,7 +384,7 @@
 							</div>
 							<label for="datepicker"></label> <input name="startDate"
 								type="text"
-								class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								id="startDate1" placeholder="    시작일 선택하세요">
 						</div>
 						<!-- 휴가 시작 날짜  끝 -->
@@ -405,7 +405,7 @@
 							</div>
 							<label for="datepicker"></label> <input id="endDate1"
 								name="endDate" type="text"
-								class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								placeholder="    종료일 선택하세요">
 						</div>
 						<!-- 휴가 종료 날짜  끝 -->
@@ -415,7 +415,7 @@
 						<label for="leaveType"
 							class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">휴가유형</label>
 						<select id="leaveType1" name="leaveType"
-							class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+							class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
 							<option selected="">휴가 유형 선택하세요</option>
 							<option value="반차">반차</option>
 							<option value="반반차">반반차</option>

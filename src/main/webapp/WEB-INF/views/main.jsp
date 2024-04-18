@@ -193,14 +193,14 @@
                                     <label for="empNum"
                                            class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">사원 번호</label>
                                     <input type="text" name="empNum" id="empNum"
-                                           class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                           class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                            placeholder="사원 번호를 입력하세요" required="" x-model="event_title">
                                 </div>
                                 <div>
                                     <label for="deptNum"
                                            class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">부서</label>
                                     <select id="category" name="deptNum" id="empNum"
-                                            class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                            class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         <option dark:gray-400 selected="">부서 선택</option>
                                         <option value="100">100</option>
                                         <option value="200">200</option>
@@ -222,7 +222,7 @@
                                             </svg>
                                         </div>
                                         <input name="startDate" type="text"
-                                               class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                               class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                type="text" placeholder="시작">
                                     </div>
                                     <span class="mt-6 mx-4 text-gray-500">to</span>
@@ -237,20 +237,20 @@
                                             </svg>
                                         </div>
                                         <input name="End" type="text"
-                                               class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                               class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                placeholder="종료">
                                     </div>
                                 </div>
                                 <!--                     <div> -->
                                 <!--                         <label for="price" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Price</label> -->
-                                <!--                         <input type="number" name="price" id="price" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required=""> -->
+                                <!--                         <input type="number" name="price" id="price" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required=""> -->
                                 <!--                     </div> -->
                                 <div>
                                     <!-- <label for="category"
                                 class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">휴가
                                 유형</label>  -->
                                     <select id="category" name="leaveType"
-                                            class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                            class="mt-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         <option selected="">휴가 유형 선택</option>
                                         <option value="연차">연차</option>
                                         <option value="병가">병가</option>
@@ -262,7 +262,7 @@
                                     <label for="description"
                                            class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">메모</label>
                                     <textarea id="description" name="leaveReason" rows="4"
-                                              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-100 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-100 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                               placeholder="휴가 사유를 작성해 주세요"></textarea>
                                 </div>
                             </div>
