@@ -142,7 +142,7 @@
         border-radius: 10px;
     }
     body {
-        background-color: #b8b4b1 !important;
+        background-color: #e2e8f0;
     }
     .navi{
         margin-bottom: 10px;
