@@ -16,4 +16,9 @@ public class HelloController {
     public String dashBoard() {
         return "/leavePolicy/list";
     }
+
+    @GetMapping("/")
+    public String test() {
+        return "/getStart";
+    }
 }
