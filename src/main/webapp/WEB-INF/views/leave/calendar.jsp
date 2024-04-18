@@ -8,22 +8,11 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="">
-	<meta name="author" content="">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
-	<!-- Alpine.js -->
-	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
-	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 
 
@@ -69,7 +58,7 @@
 							<span class="sr-only">Open user menu</span>
 							<img class="w-8 h-8 rounded-full border-2" src="/img/profile.jpg" alt="user photo">
 							<p class="text-1xl text-white dark:text-white p-1 mr-2" role="none">
-								박길동
+								<sec:authentication property="principal.emp.empName"/>
 							</p>
 
 						</button>
@@ -80,7 +69,7 @@
 								사원번호: <sec:authentication property="principal.emp.empNum"/> 번
 							</p>
 							<p class="text-sm font-medium text-black hover:text-gray-900 truncate dark:text-gray-300" role="none">
-								부서명 : 회계 팀
+								부서 번호 : <sec:authentication property="principal.emp.deptNum"/> 팀
 							</p>
 						</div>
 						<ul class="py-1" role="none">
@@ -115,8 +104,8 @@
 			<img class="w-24 h-24 rounded-full border-2" src="/img/profile.jpg" alt="user photo">
 		</div>
 
-		<p class="text-xl text-white dark:text-white text-center font-bold mt-2" role="none">박 길동</p>
-		<p class="text-sm text-white dark:text-white text-center" role="none">Hong101@KOTSTA270.COM</p>
+		<p class="text-xl text-white dark:text-white text-center font-bold mt-2" role="none"><sec:authentication property="principal.emp.empName"/></p>
+		<p class="text-sm text-white dark:text-white text-center" role="none"><sec:authentication property="principal.emp.email"/></p>
 
 		<!-- 프로필 하단 3개 아이콘 -->
 		<div class="inline-flex rounded-md shadow-sm mt-3" role="group">
@@ -173,7 +162,6 @@
 					<span class="inline-flex items-center justify-center px-2 ms-3 text-xs font-bold text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">ADD</span>
 				</a>
 			</li>
-
 			<div x-data="{ open: false }">
 				<li>
 					<a href="#" class="flex items-center p-2 text-white hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -267,50 +255,6 @@
 <script>
 
 	 $(document).ready(function() {
-	        // 휴가 시작일과 종료일이 변경될 때마다 총 휴가일수를 계산합니다.
-	        /*$('#startDate, #endDate,#leaveType').change(function() {
-	            calculateLeaveDays();
-	        });
-	        function calculateLeaveDays() {
-	        	console.log("시작");
-	        	var startDateValue = $('#startDate').val(); // input 요소의 값을 가져옴
-	        	var startDate = new Date(startDateValue); // 값에서 Date 객체 생성
-	        	var endDateValue = $('#endDate').val(); // input 요소의 값을 가져옴
-	        	var endDate = new Date(endDateValue); // 값에서 Date 객체 생성
-
-	            var leaveType = $('#leaveType').val(); // 휴가 유형
-	            var leaveDays = 0; // 총 휴가일수
-
-	            if (startDate && endDate) {
-	                // 종료일에서 시작일을 뺀 후 하루를 더해서 기간을 구합니다.
-	                var timeDiff = endDate.getTime() - startDate.getTime();
-	                var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;
-	                // 시작일과 종료일이 같은 경우
-	                if (startDate.getTime() === endDate.getTime()) {
-	                    // 휴가 유형에 따라 총 휴가일수를 결정합니다.
-	                    if (leaveType === '연차' || leaveType === '병가' || leaveType === '가족돌봄휴가' || leaveType === '출산휴가') {
-	                        leaveDays = 1;
-	                    } else if (leaveType === '반차') {
-	                        leaveDays = 0.5;
-	                    } else if (leaveType === '반반차') {
-	                        leaveDays = 0.25;
-	                    }
-	                } else { // 시작일과 종료일이 다른 경우
-	                    // 반차나 반반차를 선택했을 때 경고 메시지를 표시하고 다른 값을 선택하도록 합니다.
-	                    if (leaveType === '반차' || leaveType === '반반차') {
-	                        alert('시작일과 종료일이 다를 때 반차나 반반차는 선택할 수 없습니다.\n다른 값을 선택해주세요.');
-	                        $('#leaveType').val('연차'); // 휴가 유형을 연차로 변경합니다.
-	                        return; // 함수 종료
-	                    } else {
-	                        // 그 외의 경우에는 실제 기간에 맞춰 총 휴가일수를 계산합니다.
-	                        leaveDays = diffDays;
-	                    }
-	                }
-	            }
-
-	            // 총 휴가일수를 출력합니다.
-	            $('#leaveDays').val(leaveDays);
-	        }*/
 
             //시작일, 종료일 다를때 고를 수 없음
 	        $('#startDate, #endDate,#leaveType').change(function() {

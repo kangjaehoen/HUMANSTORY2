@@ -56,19 +56,40 @@ public class ApproveVO {
     }
 
     public String getStartDate() {
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String startFormattedDate = formatter.format(startDate);
-
-        return startFormattedDate;
+        if (startDate == null) {
+            return null;
+        } else {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            return formatter.format(startDate);
+        }
     }
-    public String getEndDate() {
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String endFormattedDate = formatter.format(endDate);
 
-        calculateLeaveDays();
-        return endFormattedDate;
+    public String getEndDate() {
+        if (endDate == null) {
+            return null;
+        } else {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            calculateLeaveDays();
+            return formatter.format(endDate);
+        }
+    }
+
+    public String getRequestDate() {
+        if (requestDate == null) {
+            return null;
+        } else {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            return formatter.format(requestDate);
+        }
+    }
+
+    public String getApprovedDate() {
+        if (approvedDate == null) {
+            return null;
+        } else {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            return formatter.format(approvedDate);
+        }
     }
 
     private void calculateLeaveDays() {
@@ -79,22 +100,6 @@ public class ApproveVO {
         leaveDays = (int) diffDays + 1;
     }
 
-
-    public String getRequestDate() {
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String requestFormattedDate = formatter.format(requestDate);
-
-        return requestFormattedDate;
-    }
-
-    public String getApprovedDate() {
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String approvedFormattedDate = formatter.format(approvedDate);
-
-        return approvedFormattedDate;
-    }
 
 }
 

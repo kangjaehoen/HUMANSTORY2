@@ -9,9 +9,10 @@ import java.util.List;
 @Mapper
 public interface ApprovalMapper {
     public List<ApproveVO> getList();
-    public List<ApproveVO> getListWithPaging(String empNum ,Criteria cri);
+    public List<ApproveVO> getListWithPaging(String empNum);
     public int getTotalCount(Criteria cri);
 
+    public ApproveVO getOne(Long leaveNum);
     /*public void insert(BoardVO board);
     public Integer insertSelectKey(BoardVO board);
     public BoardVO read(Long bno);
