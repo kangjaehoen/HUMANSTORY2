@@ -34,10 +34,17 @@ public class ApprovalController {
         String empNum = principalDetail.getEmp().getEmpNum();
         System.out.println("===========" + model + "===========");
         System.out.println("컨트롤러 /조회/결재/ 작동");
-        model.addAttribute("list", service.getLeaveCharts(empNum,cri));
+        model.addAttribute("list", service.getLeaveCharts(empNum));
         model.addAttribute("pageMaker", new PageDTO(cri, service.getTotalCount(cri)));
-        return "/test";
+        return "/approve/list";
     }
+
+    @GetMapping("/get")
+    public void get(@RequestParam("leaveNum") Long leaveNum, @ModelAttribute("cri") Criteria cri, Model model) {
+        model.addAttribute("chart", service.get(leaveNum));
+        System.out.println("===========" + model + "===========");
+    }
+
 
     /*매니저 휴가 리스트 (결재)*/
 
