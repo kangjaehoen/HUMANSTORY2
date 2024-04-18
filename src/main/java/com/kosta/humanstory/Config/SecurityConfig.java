@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/emp2/**").permitAll();
 
         http.authorizeRequests()
-                .antMatchers("/**").authenticated() //등록하면 유저 권한만 들어갈 수 있다.
+                .antMatchers("/main").authenticated() //등록하면 유저 권한만 들어갈 수 있다.
                 .antMatchers("/dept/**") //어드민과 매니저 권한이 있어야한다.
                 .access("hasRole('ROLE_ADMIN')or hasRole('ROLE_MANAGER')")
                 .antMatchers("/system/**","/email/**")//어드민 권한이 있어야 한다.
