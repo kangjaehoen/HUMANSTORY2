@@ -21,7 +21,7 @@
         <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
 
             <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-                <img class="mx-auto h-100 w-auto" src="/img/hs.logo.png?color=indigo&shade=600" alt="Your Company">
+                <img class="mx-auto h-100 w-auto" src="/img/hs2.logo.png?color=indigo&shade=600" alt="Your Company">
                 <h2 class="mt-10 text-center text-1xl font-bold leading-9 tracking-tight text-gray-900">HUMAN STORY 휴가 관리 시스템</h2>
             </div>
             <div class="bg-gray-100 shadow w-full rounded-lg divide-y divide-gray-200">
@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                             <div class="text-sm" style="float: right; ">
-                                <a href="/joinForm" class="font-bold">회원가입</a>
+                                <a href="/login/joinForm" class="font-bold">회원가입</a>
                 <%--                <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">비밀번호 찾기</a>--%>
                             </div>
                                 <div>

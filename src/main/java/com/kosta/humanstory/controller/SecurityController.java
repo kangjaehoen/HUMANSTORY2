@@ -43,10 +43,10 @@ public class SecurityController {
     }
 
 
-    @GetMapping("/joinForm")
+    @GetMapping("/login/joinForm")
     public String joinForm(){
         System.out.println("회원가입");
-        return "joinForm";
+        return "login/joinForm";
     }
     @PostMapping("/join")
     public @ResponseBody String join(EmployeeVO emp){

@@ -12,21 +12,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
     @Bean
     public BCryptPasswordEncoder encoderPwd(){
         return new BCryptPasswordEncoder();
     }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // /emp로 들어가는 주소는 모두 허락해준다.
 //        http.headers().frameOptions().disable();
 //        http.authorizeRequests().antMatchers("/emp2/**").permitAll();
-
         //csrf토큰을 막는다.
         http.csrf().disable();
-
         http.authorizeRequests()
                 .antMatchers("/main","/leavePolicy/**","/leabePromote/**")
                 .authenticated() //등록하면 유저 권한만 들어갈 수 있다.
@@ -40,7 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/customlogin")
                 .loginProcessingUrl("/customlogin")
                 .defaultSuccessUrl("/main");
-
         http.logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/customlogin")

@@ -66,9 +66,9 @@
                         <li class="col-span-1 ">
                             <a  class="manage" href="/emp/list">   직원 관리   </a>
                         </li>
-                        <li class="col-span-1 "><a class="manage" href="">   지역 관리   </a></li>
+<%--                        <li class="col-span-1 "><a class="manage" href="">   지역 관리   </a></li>--%>
                         <li class="col-span-1 "><a class="manage" href="/dept/list">   부서 관리   </a></li>
-                        <li class="col-span-1 "><a class="manage" href="">   직위 관리   </a></li>
+<%--                        <li class="col-span-1 "><a class="manage" href="">   직위 관리   </a></li>--%>
                     </ul>
                 </div>
             </div>
@@ -241,34 +241,12 @@
                                 var inputFile = $("input[name='file']");
                                 var files = inputFile[0].files;
                                 console.log(files);
-                                str += "<input type='hidden' name='attachList["
-                                    + i
-                                    + "].uuid' value='"
-                                    + jobj.data("uuid")
-                                    + "'>";
-                                str += "<input type='hidden' name='attachList["
-                                    + i
-                                    + "].uploadPath' value='"
-                                    + jobj.data("path")
-                                    + "'>";
-                                str += "<input type='hidden' name='attachList["
-                                    + i
-                                    + "].fileType' value='"
-                                    + jobj.data("type")
-                                    + "'>";
+
 
                                 for (var i = 0; i < files.length; i++) {
                                     formData.append("uploadFile", files[i]);
                                 }
-                                $.ajax({
-                                    url: '/upload',
-                                    processData: false,
-                                    data: formData,
-                                    type: 'POST',
-                                    success: function (result) {
-                                        alert("Upload");
-                                    }
-                                });
+
                             });
                         });
                     });

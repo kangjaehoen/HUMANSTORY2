@@ -161,9 +161,9 @@
                 <div class="container mx-auto flex items-center h-16">
                     <ul class="grid grid-cols-4">
                         <li class="col-span-1"><a class="manage" href="/emp/list">직원관리</a></li>
-                        <li class="col-span-1"><a class="manage" href="">지역관리</a></li>
+<%--                        <li class="col-span-1"><a class="manage" href="">지역관리</a></li>--%>
                         <li class="col-span-1"><a class="manage" href="/dept/list">부서관리</a></li>
-                        <li class="col-span-1"><a class="manage" href="">직위관리</a></li>
+<%--                        <li class="col-span-1"><a class="manage" href="">직위관리</a></li>--%>
                     </ul>
                 </div>
             </div>

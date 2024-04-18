@@ -15,8 +15,6 @@ public class PrincipalDetailService implements UserDetailsService {
     private EmployeeMapper mapper;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 //        System.out.println("empNum: "+ username);
