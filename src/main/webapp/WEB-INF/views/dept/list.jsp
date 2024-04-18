@@ -2,15 +2,9 @@
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ include file="sideBar.jsp" %>
+<%@ include file="../ShareView/sideBar.jsp" %>
  <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1">
-<%--    <link rel="stylesheet"--%>
-<%--          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">--%>
-    <script
-            src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script
-            src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <style>
         td{
@@ -182,10 +176,10 @@
                 <table class="table items-center w-full bg-transparent border-collapse">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-white-300 border-white-700">부서번호</th>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-white-300 border-white-700">부서명</th>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-white-300 border-white-700">삭제</th>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-white-300 border-white-700">수정</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300 ">부서번호</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300 ">부서명</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300 ">삭제</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300 ">수정</th>
                         </tr>
                     </thead>
 
@@ -275,5 +269,5 @@
     </div>
 </section>
 
-<%@ include file="footer.jsp" %>
+<%@ include file="../ShareView/footer.jsp" %>
 

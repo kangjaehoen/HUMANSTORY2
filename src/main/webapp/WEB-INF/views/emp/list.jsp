@@ -1,13 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"   %>
-
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ include file="sideBar.jsp" %>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet">
-<script
-        src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"   %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="../ShareView/sideBar.jsp" %>
+<%--<%@ include file="sideBar.jsp" %>--%>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <style>
     .container
     {
@@ -55,8 +50,6 @@
     }
 </style>
 
-
-
 <section class="relative py-16 bg-blueGray-50">
     <div class="container grid grid-raws-3">
         <div class="rows-cols-1">
@@ -79,19 +72,19 @@
                     <table class="table items-center w-full bg-transparent border-collapse">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-white-300 border-white-700">사원번호</th>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-pink-300 border-pink-700">사원명</th>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-pink-300 border-pink-700">직책</th>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-pink-300 border-pink-700">전화 번호</th>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-pink-300 border-pink-700">입사일</th>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-pink-300 border-pink-700">이메일</th>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-pink-300 border-pink-700">주소</th>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-pink-300 border-pink-700">근무일</th>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-pink-300 border-pink-700">생년월일</th>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-pink-300 border-pink-700">부서</th>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-pink-300 border-pink-700">사진등록</th>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-pink-300 border-pink-700">삭제</th>
-                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-300 text-pink-300 border-pink-700">수정</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300  ">사원번호</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300  ">사원명</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300  ">직책</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300  ">전화 번호</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300  ">입사일</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300  ">이메일</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300  ">주소</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300  ">근무일</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300  ">생년월일</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300  ">부서</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300  ">사진등록</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300  ">삭제</th>
+                            <th scope="col" class="px-6 align-middle border border-solid py-3 text-xs uppercase border-r-1 whitespace-nowrap font-semibold text-left bg-gray-300  ">수정</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -316,7 +309,7 @@
                 });
             });
 </script>
-<%@ include file="footer.jsp" %>
+<%@ include file="../ShareView/footer.jsp" %>
 
 
 

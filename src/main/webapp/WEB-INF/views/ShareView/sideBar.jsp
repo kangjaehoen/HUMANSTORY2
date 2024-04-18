@@ -75,7 +75,7 @@
                                 <a href="#" class="block px-3 py-1 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-whitetext-white dark:hover:text-white" role="menuitem">Document</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-3 py-1 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-whitetext-white dark:hover:text-white" role="menuitem">Sign out</a>
+                                <a href="/logout" class="block px-3 py-1 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-whitetext-white dark:hover:text-white" role="menuitem">Sign out</a>
                             </li>
                         </ul>
                     </div>
