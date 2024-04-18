@@ -13,67 +13,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript">
-        $(function(){
-            (function(){
-                var empNum = $("#empNumPf").val();
-                console.log("직원 번호: " + empNum);
-
-                $.getJSON("/getEmpProfile", {empNum: empNum}, function(arr){
-                    console.log("==============");
-                    console.log(arr);
-                    var str = "";
-
-                    $(arr).each(function(i, attach){
-                        //image type
-                        if(attach.fileType){
-                            var fileCallPath =  encodeURIComponent( attach.uploadPath+ "/s_"+attach.uuid +"_"+attach.fileName);
-
-                            str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='"+attach.fileType+"' ><div>";
-                            str += "<img src='/display?fileName=" + fileCallPath + "' style='border-radius: 50%;'>";
-                            str += "</div>";
-                            str +"</li>";
-                        }else{
-
-                            str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='"+attach.fileType+"' ><div>";
-                            str += "<span> "+ attach.fileName+"</span><br/>";
-                            str += "<img src='/resources/img/attach.png'></a>";
-                            str += "</div>";
-                            str +"</li>";
-                        }
-                    });
-                    $("#EmpProFile ul").html(str);
-
-
-                });
-            })();
-            function showImage(fileCallPath){
-
-                alert(fileCallPath);
-
-                $(".bigPictureWrapper").css("display","flex").show();
-
-                $(".bigPicture")
-                    .html("<img src='/display?fileName="+fileCallPath+"' >")
-                    .animate({width:'100%', height: '100%'}, 1000);
-
-            }
-
-            $("#profileMove").click(function(){
-                window.location.href="/emp/proFile"
-            });
-
-        });
-    </script>
-    <style>
-        #EmpProFile{
-
-
-        }
-
-    </style>
-
-
 
     <title>Document</title>
 </head>
