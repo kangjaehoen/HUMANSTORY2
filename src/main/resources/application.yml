@@ -8,7 +8,7 @@ mybatis:
 spring:
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@localhost:1521:XE
+    url: jdbc:oracle:thin:@192.168.0.13:1521:XE
     username: kosta270
     password: 1234
   mvc:
