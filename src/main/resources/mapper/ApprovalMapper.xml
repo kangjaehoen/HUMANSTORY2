@@ -5,26 +5,31 @@
 <mapper namespace="com.kosta.humanstory.mapper.ApprovalMapper">
 
     <select id="getListWithPaging" resultType="com.kosta.humanstory.domain.ApproveVO">
-        <![CDATA[
-        SELECT *
-        FROM LEAVEREQUEST
-        WHERE empNum IN (
-            SELECT EMPNUM
-            FROM EMPLOYEE
-            WHERE DEPTNUM = (
-                SELECT DEPTNUM
-                FROM EMPLOYEE
-                WHERE EMPNUM = #{empNum}
+        SELECT * FROM leaveRequest WHERE
+        <if test="empNum == '101' or empNum == '201' or empNum == '301' or empNum == '401' or empNum == '501'">
+            empNum IN (
+            SELECT empNum FROM employee WHERE deptNum = (
+            SELECT deptNum FROM employee WHERE empNum = #{empNum}
+            ) AND empNum != #{empNum}
             )
-        ) AND num = 0 AND empNum != #{empNum}
-		]]>
+        </if>
+        <if test="empNum != '101' and empNum != '201' and empNum != '301' and empNum != '401' and empNum != '501'">
+            empNum = #{empNum}
+        </if>
+
     </select>
 
     <select id="getTotalCount" resultType="int">
         <![CDATA[
-select count(*) from leaverequest where leavenum > 0
+select count(*) from leaverequest where num = 1
 		]]>
     </select>
+
+    <select id="getOne" resultType="com.kosta.humanstory.domain.ApproveVO">
+
+        select * from leaverequest where leaveNum = #{leaveNum}
+    </select>
+
 
 
     <!--<resultMap type="org.zerock.domain.MemberVO" id="memberMap">

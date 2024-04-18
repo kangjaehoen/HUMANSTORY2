@@ -15,11 +15,18 @@ public class ApprovalServiceImpl implements ApprovalService{
     private ApprovalMapper mapper;
 
     @Override
-    public List<ApproveVO> getLeaveCharts(String empNum , Criteria cri) {
-        return mapper.getListWithPaging(empNum,cri);
+    public List<ApproveVO> getLeaveCharts(String empNum) {
+        return mapper.getListWithPaging(empNum);
     }
     @Override
     public int getTotalCount(Criteria cri) {
         return mapper.getTotalCount(cri);
     }
+
+    @Override
+    public ApproveVO get(Long leaveNum) {
+        return mapper.getOne(leaveNum);
+    }
+
+
 }

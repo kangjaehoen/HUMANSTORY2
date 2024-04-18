@@ -56,7 +56,7 @@ public class LeaveRequestVO {
 
     public String getUpdateDate() {
         if (updateDate == null) {
-            return "";
+            return null;
         } else {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             return formatter.format(updateDate);
@@ -66,6 +66,7 @@ public class LeaveRequestVO {
     public Long getLeaveNum() {
         return this.leaveNum;
     }
+
 
     public String getLeaveReason() {
         return this.leaveReason;
