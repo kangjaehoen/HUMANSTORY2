@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"   %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../ShareView/sideBar.jsp" %>
-<%--<%@ include file="sideBar.jsp" %>--%>
+
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <style>
     .container
@@ -118,7 +118,6 @@
                                                  dark:border-gray-600 dark:text-gray-400 dark:hover:text-white
                                                  dark:hover:bg-gray-600 dark:focus:ring-gray-800
                                                  btnPictureInsert pictureInsertForm"
-
                                                  type="button">
                                         사진등록
                                     </button>
@@ -171,7 +170,7 @@
                 <div class="modal-content relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <%--Modal header--%>
                     <div class="modal-header flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                        <button type="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" class="close" data-dismiss="modal">&times;</button>
+                        <button type="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title text-xl font-semibold text-gray-900 dark:text-white">사진 등록</h4>
                     </div>
                     <div class="modal-body p-4 md:p-5 space-y-4">
@@ -223,21 +222,20 @@
     </div>
 </section>
 <script type="text/javascript">
-    /*기존*/
     $(document)
         .ready(
             function() {
                     $(".btnPictureInsert").click(function () {
                         var tmp = $(this).parent().parent().find('td').eq(0).text();
+
                         $('#empNum').val(tmp);
+                        console.log("EMPNUMTMP"+tmp);
                         $("#pictureInsertForm").modal(function () {
                             $('#uploadBtn').on("click", function (e) {
                                 var formData = new formData();
                                 var inputFile = $("input[name='file']");
                                 var files = inputFile[0].files;
                                 console.log(files);
-
-
                                 for (var i = 0; i < files.length; i++) {
                                     formData.append("uploadFile", files[i]);
                                 }

@@ -36,7 +36,7 @@ public class FileUploadController {
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile[] uploadFile, @ModelAttribute("vo") EmpAttachVO empAttachVO) throws IOException {
 
-        String uploadFolder = "C:\\workspace\\springboot_work\\kosta270\\HUMASTORY2\\src\\main\\resources\\static\\img";
+        String uploadFolder = "C:\\workspace\\springboot_work\\kosta270\\HUMASTORY2\\src\\main\\resources\\static\\img\\profilePhoto";
 
         System.out.println("empNum: " + empAttachVO.getEmpNum());
 
