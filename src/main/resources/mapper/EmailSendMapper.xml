@@ -11,14 +11,14 @@
         <result property="empName" column="empName" />
         <result property="email" column="email" />
             <result property="leaveType" column="leaveType" />
-            <result property="it_days" column="it_days" />
+            <result property="lt_days" column="lt_days" />
     </resultMap>
 
     <select id="empEmailSend" resultMap="emailMap">
-        SELECT e.empNum, e.empName, e.email, p.leaveType, p.it_days
+        SELECT e.empNum, e.empName, e.email, p.leaveType, p.lt_days
         FROM Employee e
                  JOIN PersonalLeaveDay p ON e.empNum = p.empNum
-        WHERE p.it_days > 0
+        WHERE p.lt_days > 0
           AND p.leaveType = '연차'
     </select>
 

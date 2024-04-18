@@ -2,6 +2,8 @@
 		 pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+		   prefix="sec"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +77,7 @@
 					<div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-whitetext-white" id="dropdown-user">
 						<div class="px-4 py-3" role="none">
 							<p class="text-sm text-black hover:text-gray-900 dark:text-white" role="none">
-								사원번호: 101 번
+								사원번호: <sec:authentication property="principal.emp.empNum"/> 번
 							</p>
 							<p class="text-sm font-medium text-black hover:text-gray-900 truncate dark:text-gray-300" role="none">
 								부서명 : 회계 팀

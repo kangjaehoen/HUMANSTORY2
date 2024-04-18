@@ -1,4 +1,4 @@
-<%@include file="sideBar.jsp"%>
+<%@include file="../ShareView/sideBar.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -423,4 +423,4 @@
         });
     });//end function
 </script>
-<%@include file="footer.jsp"%>
+<%@include file="../ShareView/footer.jsp"%>

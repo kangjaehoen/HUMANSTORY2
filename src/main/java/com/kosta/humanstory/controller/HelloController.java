@@ -16,6 +16,4 @@ public class HelloController {
     public String dashBoard() {
         return "/leavePolicy/list";
     }
-
-
 }

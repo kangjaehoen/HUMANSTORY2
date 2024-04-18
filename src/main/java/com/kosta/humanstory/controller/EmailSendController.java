@@ -47,7 +47,7 @@ public class EmailSendController {
         String tomail = dto.getEmail();
         String title = "안녕하세요 HUMANSTORY에서 보내는 휴가 잔여 촉구 안내입니다.";
         sb.append(String.format("안녕하세요 %s님\n", dto.getEmpName()));
-        sb.append("휴가 잔여일은 ").append(dto.getIt_days()).append(" 일입니다.\n");
+        sb.append("휴가 잔여일은 ").append(dto.getLt_days()).append(" 일입니다.\n");
         sb.append(String.format("만료일 까지 연차 휴가 사용을 부탁드립니다."));
         String content = sb.toString();
 
@@ -66,7 +66,7 @@ public class EmailSendController {
         }
         map.put("status", true);
         map.put("name", dto.getEmpName());
-        map.put("leaveNum", dto.getIt_days());
+        map.put("leaveNum", dto.getLt_days());
 
         return "redirect:/email/list";
     }
@@ -83,8 +83,8 @@ public class EmailSendController {
 //        String title = dto.getLeaveType()+" 부여 안내 메일";
 //        sb.append(String.format("안녕하세요 %s님\n", dto.getEmpName()));
 //        sb.append(String.format(" %s가\t", dto.getLeaveType()));
-//        sb.append(String.format(" %s일 부여되었습니다.\n", dto.getIt_days()));
-////        sb.append("휴가  ").append(dto.getIt_days()).append(" 일입니다.\n");
+//        sb.append(String.format(" %s일 부여되었습니다.\n", dto.getlt_days()));
+////        sb.append("휴가  ").append(dto.getlt_days()).append(" 일입니다.\n");
 //        sb.append(String.format("자신이 해당하지 않는 메일이라면 인사팀에 문의해주십시오.\n"));
 //        sb.append(String.format("감사합니다..\n"));
 //
@@ -105,7 +105,7 @@ public class EmailSendController {
 //        }
 //        map.put("status", true);
 //        map.put("name", dto.getEmpName());
-//        map.put("leaveNum", dto.getIt_days());
+//        map.put("leaveNum", dto.getlt_days());
 //
 //
 //
@@ -263,7 +263,7 @@ public class EmailSendController {
         sb.append("<td style=\"background: rgb(255, 255, 255); padding: 5px; border: 1px solid black; height: 25px; text-align: center; color: rgb(0, 0, 0); font-size: 14px; vertical-align: middle;\">");
         sb.append("  <span unselectable=\"on\" contenteditable=\"false\" class=\"comp_wrap\" data-cid=\"8\" data-dsl=\"{{period}}\" data-wrapper=\"\" style=\"font-family: &quot;malgun gothic&quot;, dotum, arial, tahoma; font-size: 11pt; line-height: normal; margin-top: 0px; margin-bottom: 0px;\" data-value=\"\"> ");
         sb.append("<input class=\"ipt_editor ipt_editor_date\"  readonly type=\"text\" value='");
-        sb.append(dto.getIt_days()); //
+        sb.append(dto.getLt_days()); //
         sb.append("'> <span contenteditable=\"false\" class=\"comp_active\" style=\"display: none; font-family: &quot;malgun gothic&quot;, dotum, arial, tahoma; font-size: 11pt; line-height: normal; margin-top: 0px; margin-bottom: 0px;\"> <span class=\"Active_dot1\" style=\"font-family: &quot;malgun gothic&quot;, dotum, arial, tahoma; font-size: 11pt; line-height: normal; margin-top: 0px; margin-bottom: 0px;\">");
         sb.append("</span>");
         sb.append("<span class=\"Active_dot2\" style=\"font-family: &quot;malgun gothic&quot;, dotum, arial, tahoma; font-size: 11pt; line-height: normal; margin-top: 0px; margin-bottom: 0px;\"></span> <span class=\"Active_dot3\" style=\"font-family: &quot;malgu n gothic&quot;, dotum, arial, tahoma; font-size: 11pt; line-height: normal; margin-top: 0px; margin-bottom: 0px;\">");
@@ -278,7 +278,7 @@ public class EmailSendController {
         sb.append("  <td style=\"background: rgb(255, 255, 255); padding: 5px; border: 1px solid black; height: 25px; text-align: center; color: rgb(0, 0, 0); font-size: 14px; vertical-align: middle;\">");
         sb.append("<span unselectable=\"on\" contenteditable=\"false\" class=\"comp_wrap\" data-cid=\"10\" data-dsl=\"{{text$width:60$}}\" data-wrapper=\"\" style=\"width: 60px; font-family: &quot;malgun gothic&quot;, dotum, arial, tahoma; font-size: 11pt; line-height: normal; margin-top: 0px; margin-bottom: 0px;\" data-value=\"\">");
         sb.append("<input class=\"ipt_editor\" readonly type=\"text\"value='");
-        sb.append(dto.getIt_days()); //잔여일 임시
+        sb.append(dto.getLt_days()); //잔여일 임시
         sb.append("'>");
         sb.append("<span contenteditable=\"false\" class=\"comp_active\" \"=\"\" style=\"display: none; font-family: &quot;malgun gothic&quot;, dotum, arial, tahoma; font-size: 11pt; line-height: normal; margin-top: 0px; margin-bottom: 0px;\"> <span class=\"Active_dot1\" style=\"font-family: &quot;malgun gothic&quot;, dotum, arial, tahoma; font-size: 11pt; line-height: normal; margin-top: 0px; margin-bottom: 0px;\"></span><span class=\"Active_dot2\" style=\"font-family: &quot;malgun gothic&quot;, dotum, arial, tahoma; font-size: 11pt; line-height: normal; margin-top: 0px; margin-bottom: 0px;\"></span> <span class=\"Active_dot3\" style=\"font-family: &quot;malgun gothic&quot;, dotum, arial, tahoma; font-size: 11pt; line-height: normal; margin-top: 0px; margin-bottom: 0px;\">");
         sb.append("</span>");

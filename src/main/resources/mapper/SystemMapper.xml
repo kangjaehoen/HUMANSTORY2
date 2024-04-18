@@ -28,28 +28,26 @@
     <update id="oneYearsLess">
         <!-- 직원의 추가 휴가일을 personalLeaveDay 테이블에 반영 -->
         UPDATE personalLeaveDay
-        SET it_days = it_days + #{leaveDays}
+        SET lt_days = lt_days + #{leaveDays}
         WHERE empNum = #{empNum}
-        AND leaveType ='연차'
     </update>
 
     <update id="oneYears">
-        UPDATE personalLeaveDay SET it_days =#{grantDate} WHERE empNum = #{empNum}
-                                                            AND leaveType ='연차'
+        UPDATE personalLeaveDay SET lt_days =#{grantDate} WHERE empNum = #{empNum}
     </update>
 
 
 
     
     <update id="leaveUpdate">
-        UPDATE  personalLeaveDay SET it_days = it_days + #{it_days}
+        UPDATE  personalLeaveDay SET lt_days = lt_days + #{lt_days}
         WHERE leaveType = #{leaveType}
         AND empNum = #{empNum}
     </update>
 
     <insert id="insertLeave">
-        INSERT INTO  personalLeaveDay (empNum,leaveType,it_days) VALUES (#{empNum},
-                                                                         #{leaveType},#{it_days})
+        INSERT INTO  personalLeaveDay (empNum,leaveType,lt_days) VALUES (#{empNum},
+                                                                         #{leaveType},#{lt_days})
     </insert>
 
     <select id="existenceLeave">
@@ -61,11 +59,11 @@
         <result property="empName" column="empName" />
         <result property="email" column="email" />
         <result property="leaveType" column="leaveType" />
-        <result property="it_days" column="it_days" />
+        <result property="lt_days" column="lt_days" />
     </resultMap>
 
     <select id="userListManager" resultMap="userMap">
-        SELECT e.empNum, e.empName, e.email, p.leaveType, p.it_days
+        SELECT e.empNum, e.empName, e.email, p.leaveType, p.lt_days
         FROM Employee e
                  JOIN PersonalLeaveDay p ON e.empNum = p.empNum
     </select>

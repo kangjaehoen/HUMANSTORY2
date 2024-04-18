@@ -33,11 +33,11 @@
             resultType="com.kosta.humanstory.domain.EmployeeVO">
         <![CDATA[
 	SELECT
-		EMPNUM ,EMPNAME,JOB,PW,PHONENUM,HIREDATE,EMAIL,ANNUALLEAVENUM,ADDRESS,WORKDATE,BIRTHDATE,DEPARTNUM
+		EMPNUM ,EMPNAME,JOB,PW,PHONENUM,HIREDATE,EMAIL,ADDRESS,WORKDATE,BIRTHDATE,deptNum
 	FROM
 		(
 			select
-				rownum rn,EMPNUM ,EMPNAME,JOB,PW,PHONENUM,HIREDATE,EMAIL,ANNUALLEAVENUM,ADDRESS,WORKDATE,BIRTHDATE,DEPARTNUM
+				rownum rn,EMPNUM ,EMPNAME,JOB,PW,PHONENUM,HIREDATE,EMAIL,ADDRESS,WORKDATE,BIRTHDATE,deptNum
 			FROM EMPLOYEE
 			where
 	]]>
@@ -77,7 +77,7 @@
             address,
             workDate,
             birthDate,
-            departNum,
+            deptNum,
             enabled,
             ROLE
 
@@ -92,7 +92,7 @@
                 #{address},
                 #{workDate},
                 #{birthDate},
-                #{departNum},
+                #{deptNum},
                 #{enabled},
                 #{role}
                )
@@ -128,20 +128,17 @@
                             phoneNum=#{phoneNum},
                             hireDate= #{hireDate},
                             email=#{email},
-                            annualLeaveNum=#{annualLeaveNum},
                             address=#{address},
                             workDate=#{workDate},
                             birthDate=#{birthDate},
-                            departNum=#{departNum},
+                            deptNum=#{deptNum},
                             enabled=#{enabled},
                             role=#{role}
 
         where empNum=#{empNum}
     </update>
 
-    <!--    <select id="empEmailSend" resultType="com.kosta.humanstory.domain.EmployeeVO">-->
-    <!--        select *from employee where annualLeaveNum>0-->
-    <!--    </select>-->
+
 
     <delete id="delete" parameterType="String">
         delete employee where empNum=#{empNum}

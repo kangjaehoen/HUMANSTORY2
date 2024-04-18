@@ -179,7 +179,7 @@
                                 <th scope="row"
                                     class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white" id="empNum">${mail.empNum }</th>
                                 <td class="px-4 py-3" id="empName">${mail.empName}</td>
-                                <td class="px-4 py-3" id="it_days">${mail.it_days}</td>
+                                <td class="px-4 py-3" id="lt_days">${mail.lt_days}</td>
                                 <td class="px-4 py-3" id="email">${mail.email}</td>
                             </tr>
                         </c:forEach>
@@ -332,12 +332,12 @@
                 var empRow = $(this).closest("tr");
                 var empNum = empRow.find("#empNum").text();
                 var empName = empRow.find("#empName").text();
-                var it_days = empRow.find("#it_days").text();
+                var lt_days = empRow.find("#lt_days").text();
                 var email = empRow.find("#email").text();
                 console.log("empNum"+empNum);
                 console.log("empName :" + empName);
                 console.log("email :" + email);
-                console.log("it_days :" + it_days);
+                console.log("lt_days :" + lt_days);
 
                 // hidden input 필드 추가
                 $('<input>').attr({
@@ -348,8 +348,8 @@
 
                 $('<input>').attr({
                     type: 'hidden',
-                    name: 'it_days',
-                    value: it_days
+                    name: 'lt_days',
+                    value: lt_days
                 }).appendTo('#empEmailInfo');
 
                 $('<input>').attr({
@@ -360,7 +360,7 @@
 
             } else {
                 $('#empEmailInfo input[name="empName"]').remove();
-                $('#empEmailInfo input[name="it_days"]').remove();
+                $('#empEmailInfo input[name="lt_days"]').remove();
                 $('#empEmailInfo input[name="email"]').remove();
             }
         });
@@ -407,16 +407,16 @@
                 data: {
                     empNum : empNum,
                     empName: empName,
-                    it_days: it_days,
+                    lt_days: lt_days,
                     url: url
                 },
                 success: function(){    // db전송 성공시 실시간 알림 전송
                     // 소켓에 전달되는 메시지
                     // 위에 기술한 EchoHandler에서 ,(comma)를 이용하여 분리시킨다.
-                    socket.send("관리자,"+empNum+","+empName+","+it_days+","+url);
+                    socket.send("관리자,"+empNum+","+empName+","+lt_days+","+url);
                     console.log(empNum);
                     console.log(empName);
-                    console.log(it_days);
+                    console.log(lt_days);
                     console.log(url);
                 }
             });

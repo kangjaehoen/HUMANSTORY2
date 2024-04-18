@@ -1,8 +1,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%--<%@ taglib uri="http://www.springframework.org/security/tags"--%>
-<%--           prefix="sec"%>--%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+           prefix="sec"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -168,7 +168,7 @@
             <!--   <img id="EmpProFile" class="w-24 h-24 rounded-full border-2" src="" alt=""> -->
             <div id="EmpProFile" class="w-24 h-24 rounded-full border-2">
                 <ul>
-
+                    <img src="/img/s_<sec:authentication property='principal.emp.empNum'/>.jpg" class="w-24 h-24 rounded-full border-1" alt="Thumbnail Image" />
                 </ul>
             </div>
 

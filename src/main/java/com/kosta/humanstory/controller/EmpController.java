@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,8 +40,14 @@ public class EmpController {
     public void register(){
 
     }
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
     @PostMapping("/register")
     public String register(EmployeeVO emp, RedirectAttributes rttr){
+        emp.setRole("ROLE_USER");
+        String rawPassword= emp.getPw();
+        String encPassword=bCryptPasswordEncoder.encode(rawPassword);
+        emp.setPw(encPassword);
         service.register(emp);
         rttr.addFlashAttribute("result",emp.getEmpNum());
 
@@ -53,6 +60,10 @@ public class EmpController {
     }
     @PostMapping("/modify")
     public String modify(EmployeeVO emp,RedirectAttributes rttr){
+        emp.setRole("ROLE_USER");
+        String rawPassword= emp.getPw();
+        String encPassword=bCryptPasswordEncoder.encode(rawPassword);
+        emp.setPw(encPassword);
         System.out.println(emp);
         if(service.modify(emp)){
             rttr.addFlashAttribute("result","success");
