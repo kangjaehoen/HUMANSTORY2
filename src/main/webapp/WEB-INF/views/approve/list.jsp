@@ -2,200 +2,140 @@
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!DOCTYPE html>
+<%@ include file="../ShareView/sideBar.jsp"%>
 
-<html lang="en">
-<head>
-    <meta charset="utf-8">
+<style>
+    .card-body {
+        font-family: "Helvetica Neue", Helvetica, Arial;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        color: #3b3b3b;
+        -webkit-font-smoothing: antialiased;
+        font-smoothing: antialiased;
+        background: #8793a9;
+    }
 
-    <title>Title</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
+    @media screen and (max-width: 580px) {
         .card-body {
-            font-family: "Helvetica Neue", Helvetica, Arial;
-            font-size: 14px;
-            line-height: 20px;
-            font-weight: 400;
-            color: #3b3b3b;
-            -webkit-font-smoothing: antialiased;
-            font-smoothing: antialiased;
-            background: #8793a9;
+            font-size: 16px;
+            line-height: 22px;
         }
+    }
 
-        @media screen and (max-width: 580px) {
-            .card-body {
-                font-size: 16px;
-                line-height: 22px;
-            }
-        }
+    .wrapper {
+        margin-top:60px ;
+        margin-left: 320px;
+        padding: 40px;
+        max-width: 800px;
+    }
 
-        .wrapper {
-            margin: 0 auto;
-            padding: 40px;
-            max-width: 800px;
-        }
+    .ttt {
+        margin: 0 0 40px 0;
+        width: 100%;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        display: table;
+    }
 
+    @media screen and (max-width: 580px) {
         .ttt {
-            margin: 0 0 40px 0;
-            width: 100%;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-            display: table;
+            display: block;
         }
+    }
 
-        @media screen and (max-width: 580px) {
-            .ttt {
-                display: block;
-            }
-        }
+    .row {
+        display: table-row;
+        background: #f6f6f6;
+    }
 
+    .row:nth-of-type(odd) {
+        background: #e9e9e9;
+    }
+
+    .row.header {
+        font-weight: 900;
+        color: #ffffff;
+        background: #ea6153;
+    }
+
+    .row.green {
+        background: #27ae60;
+    }
+
+    .row.blue {
+        background: #2980b9;
+    }
+
+    @media screen and (max-width: 580px) {
         .row {
-            display: table-row;
-            background: #f6f6f6;
-        }
-
-        .row:nth-of-type(odd) {
-            background: #e9e9e9;
+            padding: 14px 0 7px;
+            display: block;
         }
 
         .row.header {
-            font-weight: 900;
-            color: #ffffff;
-            background: #ea6153;
+            padding: 0;
+            height: 6px;
         }
 
-        .row.green {
-            background: #27ae60;
+        .row.header .cell {
+            display: none;
         }
 
-        .row.blue {
-            background: #2980b9;
+        .row .cell {
+            margin-bottom: 10px;
         }
 
-        @media screen and (max-width: 580px) {
-            .row {
-                padding: 14px 0 7px;
-                display: block;
-            }
-
-            .row.header {
-                padding: 0;
-                height: 6px;
-            }
-
-            .row.header .cell {
-                display: none;
-            }
-
-            .row .cell {
-                margin-bottom: 10px;
-            }
-
-            .row .cell:before {
-                margin-bottom: 3px;
-                content: attr(data-title);
-                min-width: 98px;
-                font-size: 10px;
-                line-height: 10px;
-                font-weight: bold;
-                text-transform: uppercase;
-                color: #969696;
-                display: block;
-            }
-            .row tr:before {
-                margin-bottom: 3px;
-                content: attr(data-title);
-                min-width: 98px;
-                font-size: 10px;
-                line-height: 10px;
-                font-weight: bold;
-                text-transform: uppercase;
-                color: #969696;
-                display: block;
-            }
-
+        .row .cell:before {
+            margin-bottom: 3px;
+            content: attr(data-title);
+            min-width: 98px;
+            font-size: 10px;
+            line-height: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #969696;
+            display: block;
+        }
+        .row tr:before {
+            margin-bottom: 3px;
+            content: attr(data-title);
+            min-width: 98px;
+            font-size: 10px;
+            line-height: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #969696;
+            display: block;
         }
 
+    }
+
+    .cell {
+        padding: 6px 12px;
+        display: table-cell;
+    }
+
+    @media screen and (max-width: 580px) {
         .cell {
-            padding: 6px 12px;
-            display: table-cell;
+            padding: 2px 16px;
+            display: block;
         }
+    }
 
-        @media screen and (max-width: 580px) {
-            .cell {
-                padding: 2px 16px;
-                display: block;
-            }
-        }
+    .move {
+        color: #0000ff;
+        text-decoration: none;
+        font-weight: bold;
+    }
 
-        .modal{
-            position:absolute;
-            display:none;
+    /*!* 마우스 호버 시 스타일 변경 *!*/
+     .move:hover {
+         color: red;
 
-            justify-content: center;
-            top:0;
-            left:0;
+     }
 
-            width:100%;
-            height:100%;
+</style>
 
-
-
-            background-color: rgba(0,0,0,0.4);
-        }
-        .modal_body{
-            position:absolute;
-            top:50%; //모달을 화면가운데 놓기위함.
-
-
-        width:400px;  //모달의 가로크기
-        height:600px; //모달의 세로크기
-
-        padding:40px;
-
-            text-align: center;
-
-            background-color: rgb(255,255,255); //모달창 배경색 흰색
-        border-radius:10px; //테두리
-        box-shadow:0 2px 3px 0 rgba(34,36,38,0.15); //테두리 그림자
-
-        transform:translateY(-50%); //모듈창열었을때 위치설정 가운데로
-        }
-
-        a {
-            color: #0000ff; /* 링크 색상을 파란색으로 설정 */
-            text-decoration: none; /* 밑줄 제거 */
-            font-weight: bold; /* 텍스트를 굵게 표시 */
-        }
-
-        li {
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            color: #333;
-            padding: 5px;
-            margin-bottom: 5px;
-        }
-
-        ul {
-            list-style-type: none; /* 목록 스타일 제거 */
-        }
-
-        ul li:before {
-            content: "-"; /* 각 항목 앞에 점 대신 하이픈(-)을 추가 */
-            margin-right: 5px; /* 하이픈과 텍스트 사이의 간격 조정 */
-        }
-
-
-        /* 마우스 호버 시 스타일 변경 */
-        a:hover {
-            color: red;
-
-        }
-    </style>
-
-</head>
-<body>
 
 <div class="card-body">
 
