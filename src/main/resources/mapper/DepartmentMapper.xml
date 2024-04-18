@@ -58,7 +58,7 @@ where
                                deptNum,
                                deptName
         )
-        VALUES (deptNum_seq.NEXTVAL,
+        VALUES (#{deptNum},
                             #{deptName}
                 )
     </insert>

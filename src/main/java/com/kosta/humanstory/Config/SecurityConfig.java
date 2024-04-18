@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").authenticated() //등록하면 유저 권한만 들어갈 수 있다.
                 .antMatchers("/dept/**") //어드민과 매니저 권한이 있어야한다.
                 .access("hasRole('ROLE_ADMIN')or hasRole('ROLE_MANAGER')")
-                .antMatchers("/leavePolicy/**")//어드민 권한이 있어야 한다.
+                .antMatchers("/system/**","/email/**")//어드민 권한이 있어야 한다.
                 .access("hasRole('ROLE_ADMIN')")
                 .anyRequest().permitAll() // 그 외는 모두 허락
                 .and()
@@ -39,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/customlogin")
                 .loginProcessingUrl("/customlogin")
                 .defaultSuccessUrl("/main");
+
         http.logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/customlogin")
