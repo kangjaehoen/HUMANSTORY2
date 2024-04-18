@@ -1,14 +1,13 @@
 package com.kosta.humanstory.controller;
 
-import com.kosta.humanstory.domain.AlarmDTO;
 import com.kosta.humanstory.domain.AnnualLeaveDTO;
 import com.kosta.humanstory.domain.LeaveUserDTO;
-import com.kosta.humanstory.service.EmailSendService;
 import com.kosta.humanstory.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import com.kosta.humanstory.service.EmailSendService;
 
 @Controller
 @RequestMapping("/system")
