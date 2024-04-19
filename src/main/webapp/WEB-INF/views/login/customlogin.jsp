@@ -61,7 +61,7 @@
 
 <script>
     document.getElementById("joinButton").addEventListener("click", function() {
-        window.location.href = "/joinForm";
+        window.location.href = "/login/joinForm";
     });
 </script>
 </html>
