@@ -2,7 +2,7 @@
   <servers>
     <server>
       <id>github</id> <!-- Maven deploy plugin에서 사용하는 서버 ID -->
-      <username>${env.GITHUB_ACTOR}</username> <!-- GitHub 사용자 이름 -->
+      <username>${env.GITHUB_ID}</username> <!-- GitHub 사용자 이름 -->
       <password>${env.GITHUB_TOKEN}</password> <!-- GitHub 액세스 토큰 -->
     </server>
   </servers>
