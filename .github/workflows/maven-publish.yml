@@ -29,5 +29,5 @@ jobs:
         push: true
         tags: |
           kangejaeheon/human:latest  # Docker Hub 레지스트리에 업로드할 이미지 태그
-        username: ${{ secrets.kangjaeheon }}  # Docker Hub 사용자 이름은 비밀로 관리되는 저장소 시크릿에서 가져옴
-        password: ${{ secrets.gjsdms3340! }}  # Docker Hub 암호는 비밀로 관리되는 저장소 시크릿에서 가져옴
+        username: ${{ secrets.DOCKERHUB_ID }}  # Docker Hub 사용자 이름은 비밀로 관리되는 저장소 시크릿에서 가져옴
+        password: ${{ secrets.DOCKERHUB_TOKEN }}  # Docker Hub 암호는 비밀로 관리되는 저장소 시크릿에서 가져옴
