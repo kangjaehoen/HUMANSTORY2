@@ -19,7 +19,7 @@ jobs:
         java-version: '11'
 
     - name: Build with Maven
-      run: mvn clean package -DskipTests  # Maven을 사용하여 프로젝트를 빌드하고 테스트를 건너뜁니다.
+      run: mvn clean package -DskipTests  # Maven을 사용하여 Spring Boot 프로젝트를 빌드하고 테스트를 건너뜁니다.
 
     - name: Build and Push Docker image
       uses: docker/build-push-action@v2
@@ -28,6 +28,6 @@ jobs:
         file: ./Dockerfile  # 사용할 Dockerfile 경로
         push: true
         tags: |
-          kangjaehoen/human:latest  # Docker Hub 레지스트리에 업로드할 이미지 태그
+          kangjaeheon/human:latest  
         username: ${{ secrets.DOCKERHUB_ID }}  # Docker Hub 사용자 이름은 비밀로 관리되는 저장소 시크릿에서 가져옴
         password: ${{ secrets.DOCKERHUB_TOKEN }}  # Docker Hub 암호는 비밀로 관리되는 저장소 시크릿에서 가져옴
