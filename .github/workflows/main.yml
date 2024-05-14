@@ -25,9 +25,9 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t kangjaeheon/human:${{ github.sha }} .
-        docker login -u ${{ secrets.DOCKERHUB_ID }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-        docker push kangjaeheon/human:${{ github.sha }}
+       echo $DOCKER_PASSWORD | docker login -u $DOCKERHUB_ID --password-stdin
+       docker build -t $DOCKERHUB_ID/human:${{ github.sha }} .
+       docker push $DOCKERHUB_ID/human:${{ github.sha }}
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKERHUB_ID }}
         DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
