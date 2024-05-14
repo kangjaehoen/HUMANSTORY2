@@ -17,6 +17,8 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '11'
+        distribution: 'adopt'
+
 
     - name: Build Spring Boot Project
       run: mvn clean package -DskipTests
