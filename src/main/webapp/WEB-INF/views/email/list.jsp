@@ -2,7 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@include file="sideBar.jsp"%>
+<%@ include file="../ShareView/sideBar.jsp" %>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -489,23 +489,29 @@
 
 
         $("#actionsDropdownButton").click(function() {
+            var checkedCheckbox = $(".tdCheck:checked");
 
-            $("#readProductButton").click();
+            if (checkedCheckbox.length === 0) {
+                alert("사원을 클릭해주세요.");
+            } else {
+                $("#readProductButton").click();
 
-            $("#modalTitle").text("사원명 : "+ empName);
+                $("#modalTitle").text("사원명 : " + empName);
 
-            $("#modalEmpNum").text("사원번호 : "+empNum);
+                $("#modalEmpNum").text("사원번호 : " + empNum);
 
-            $("#mailInfo").text(empName+"님에게 촉구 메일을 발송하시겠습니까? (연차 잔여일 "+lt_days+"일)" );
+                $("#mailInfo").text(empName + "님에게 촉구 메일을 발송하시겠습니까? (연차 잔여일 " + lt_days + "일)");
 
-            $("#modalEmail").text("이메일 주소 : "+email);
-            // $("#empEmailInfo").submit();
+                $("#modalEmail").text("이메일 주소 : " + email);
+                // $("#empEmailInfo").submit();
+
+            }
         });
 
 
         $("#emailSendModal").click(function (){
-
             $("#empEmailInfo").submit();
+            alert(empNum + " 님에게 연차 촉구 메일을 보냈습니다.");
         })
 
 
@@ -558,5 +564,5 @@
 
 </script>
 
-<%@include file="footer.jsp"%>
+<%@ include file="../ShareView/footer.jsp" %>
 

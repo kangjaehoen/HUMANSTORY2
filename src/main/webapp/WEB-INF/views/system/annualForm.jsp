@@ -2,21 +2,11 @@
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@include file="sideBar.jsp"%>
+<%@ include file="../ShareView/sideBar.jsp" %>
 
 
 <style>
 
-    /*#sessionBox{*/
-    /*    margin-top:70px;*/
-    /*}*/
-
-
-
-    /*#divBox {*/
-    /*    margin-left: 300px;*/
-    /*    margin-top: 100px;*/
-    /*}*/
 
     h2 {
         font-size: 20px;
@@ -785,4 +775,4 @@
 
 </script>
 
-<%@include file="footer.jsp"%>
+<%@ include file="../ShareView/footer.jsp" %>

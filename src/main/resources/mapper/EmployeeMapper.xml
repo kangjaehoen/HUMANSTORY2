@@ -66,6 +66,12 @@
 
 
     <insert id="insertEmpInfo">
+
+        <selectKey keyProperty="empNum" order="BEFORE"
+                   resultType="String">
+            select empNum_seq.nextval from dual
+        </selectKey>
+
         INSERT INTO employee (
             empNum,
             empName,

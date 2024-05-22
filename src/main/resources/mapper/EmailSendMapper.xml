@@ -22,5 +22,12 @@
           AND p.leaveType = '연차'
     </select>
 
+<insert id="empEmailInfo">
+    INSERT INTO
+    EMAILINFO(empNum, sendDate, empNum, empName, message, email)
+    VALUES (sequence_email, sysdate,
+            #empNum, #empName, #message, #email)
+</insert>
+
 
 </mapper>

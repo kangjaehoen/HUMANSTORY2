@@ -18,6 +18,8 @@ public class EmpServiceImpl implements EmpService{
     EmployeeMapper mapper;
     @Override
     public void register(EmployeeVO emp) {
+
+
         mapper.insertEmpInfo(emp);
     }
 

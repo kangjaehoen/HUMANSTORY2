@@ -13,9 +13,15 @@ public class EmailSendService {
     @Autowired
     private EmailSendMapper emailSendMapper;
 
+
     public List<EmployeeWithPersonalLeaveDayDTO> empEmailSend() {
-        System.out.println("휴가 촉진 대상 리스트 출력(서비스)");
-        System.out.println(emailSendMapper.empEmailSend());
         return emailSendMapper.empEmailSend();
+    }
+
+    public int empSendInfo(EmployeeWithPersonalLeaveDayDTO dto) {
+        System.out.println("저장된듯");
+        System.out.println(dto.getEmail());
+        emailSendMapper.empEmailInfo(dto);
+        return 1; //zz
     }
 }

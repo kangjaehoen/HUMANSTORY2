@@ -49,8 +49,8 @@ public class EmpController {
         String encPassword=bCryptPasswordEncoder.encode(rawPassword);
         emp.setPw(encPassword);
         service.register(emp);
-        rttr.addFlashAttribute("result",emp.getEmpNum());
-
+        rttr.addAttribute("result",emp.getEmpNum());
+        System.out.println(emp.getEmpNum());
         return "redirect:/emp/list";
     }
     @GetMapping({"/get","/modify"})

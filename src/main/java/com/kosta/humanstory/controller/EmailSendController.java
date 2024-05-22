@@ -337,5 +337,10 @@ public class EmailSendController {
         return ResponseEntity.ok().body("이메일이 성공적으로 전송되었습니다.");
     }
 
-
+    @PostMapping("/empSendInfo")
+    public int empsendInfo(EmployeeWithPersonalLeaveDayDTO dto){
+        System.out.println(dto);
+        emailSendService.empSendInfo(dto);
+     return 1;
+    }
 }

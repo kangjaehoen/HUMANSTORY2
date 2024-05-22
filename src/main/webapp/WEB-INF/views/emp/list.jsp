@@ -222,6 +222,10 @@
         </div>
     </div>
 </section>
+
+<input  id="empNumReturn" type="hidden" name="result" value="${result}">
+
+
 <script type="text/javascript">
     /*기존*/
     $(document)
@@ -307,7 +311,18 @@
                     }
                     formObj.submit();
                 });
+
             });
+</script>
+
+<script>
+    $(document).ready(function() {
+        console.log("왜 안돼");
+
+       let empNum1 =  $("#empNumReturn").val();
+        console.log("사원번호 : " + empNum1);
+    });
+
 </script>
 <%@ include file="../ShareView/footer.jsp" %>
 

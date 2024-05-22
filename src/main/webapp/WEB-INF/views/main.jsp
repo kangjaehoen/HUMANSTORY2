@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@include file="ShareView/sideBar.jsp" %>
 
+<script src="https://fastly.jsdelivr.net/npm/alpinejs@2/dist/alpine.min.js" defer></script>
 <link rel="dns-prefetch" href="//unpkg.com"/>
 <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
 

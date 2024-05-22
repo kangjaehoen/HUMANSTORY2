@@ -10,4 +10,6 @@ import java.util.List;
 @Mapper
 public interface EmailSendMapper {
     public List<EmployeeWithPersonalLeaveDayDTO> empEmailSend();
+    public int empEmailInfo(EmployeeWithPersonalLeaveDayDTO dto);
+
 }
